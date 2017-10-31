@@ -35,8 +35,27 @@ class LoginViewController: UIViewController {
         
         //Now we need a request token so we can show twitter that we are the actual app not some random 3rd party app or loser who lives with his mom
         twitterClient?.fetchRequestToken(withPath: "oauth/request_token", method: "GET", callbackURL: nil, scope: nil
-            , success: { (requestToken: BDBOAuth1Credential?) in
+            , success: { (reqToken: BDBOAuth1Credential?) in
+                guard let requestToken = reqToken?.token else {
+                    print("No token received ::")
+                    return;
+                }
                 print ("I got a token!")
+                print("request token: \(requestToken)")
+                //Go to url where user will be able to login
+                guard  let authorizeUrl = URL(string: "https://api.twitter.com/oauth/authorize?oauth_token=\(requestToken)") else {
+                    print("Could not create URL.")
+                    return
+                }
+            
+                
+                UIApplication.shared.open(authorizeUrl, options: [:], completionHandler: { (success: Bool) in
+                    if (success){
+                        print("Successfully finished opening the url")
+                    }
+                })
+                
+                
                 
         }, failure: { (error: Error?) in
             if let error = error{
