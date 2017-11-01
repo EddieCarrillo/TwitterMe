@@ -34,7 +34,7 @@ class LoginViewController: UIViewController {
         twitterClient?.deauthorize()
         
         //Now we need a request token so we can show twitter that we are the actual app not some random 3rd party app or loser who lives with his mom
-        twitterClient?.fetchRequestToken(withPath: "oauth/request_token", method: "GET", callbackURL: nil, scope: nil
+        twitterClient?.fetchRequestToken(withPath: "oauth/request_token", method: "GET", callbackURL: URL(string: "twitterdemo://oauth"), scope: nil
             , success: { (reqToken: BDBOAuth1Credential?) in
                 guard let requestToken = reqToken?.token else {
                     print("No token received ::")
