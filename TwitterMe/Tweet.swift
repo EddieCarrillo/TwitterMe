@@ -27,7 +27,7 @@ class Tweet: NSObject {
             
             formatter.dateFormat = "EEE MMM d HH:mm:ss Z y"
             
-           self.timeStamp = formatter.date(from: timestampString)
+           self.timeStamp = formatter.date(from: timestampString) as NSDate?
         }
       
         
@@ -44,6 +44,8 @@ class Tweet: NSObject {
             tweets.append(tweet)
         }
         
+        
+        return tweets
     }
 
 }

@@ -16,12 +16,14 @@ class User: NSObject {
     var screenname: String?
     var profileUrl: URL?
     var tagline: String?
-    
+    var dictionary: NSDictionary?
     
     init(dictionary: NSDictionary){
         
         //Deserialization code
         self.name = dictionary["name"] as? String
+        
+        self.dictionary = dictionary
         
         self.screenname = dictionary["screen_name"] as? String
         
@@ -32,6 +34,48 @@ class User: NSObject {
         
         self.tagline = dictionary["description"] as? String
         
+    }
+    
+    
+    static var _currentUser: User?
+    
+    class var currentUser: User?{
+        get {
+            if (_currentUser == nil){
+                let defaults = UserDefaults.standard
+                
+                let jsonUserData =  defaults.object(forKey: "currentUser")
+                
+                if let jsonUserData = jsonUserData{
+                    let dictionary = try! JSONSerialization.data(withJSONObject: jsonUserData, options: []) as! NSDictionary
+                    
+                    _currentUser = User(dictionary: dictionary)
+                }
+                
+            }
+           
+            
+           
+            
+            return _currentUser
+        }
+        
+        set(user){
+            let defaults = UserDefaults.standard
+            _currentUser = user
+            
+            
+            if let user = user {
+                let jsonData  = try! JSONSerialization.data(withJSONObject: user.dictionary!, options: [])
+                
+                defaults.set(jsonData, forKey: "currentUser")
+            }else {
+                defaults.set(nil, forKey:"currentUser")
+            }
+            
+            
+            defaults.synchronize()
+        }
     }
 
 }

@@ -27,42 +27,19 @@ class LoginViewController: UIViewController {
    
     @IBAction func onLoginTapped(_ sender: Any) {
         //Give information about base url and consumer secret and key to be placed in request header
-        let twitterClient = BDBOAuth1SessionManager(baseURL: URL(string: "https://api.twitter.com"), consumerKey: "hVQQ9kHseRNEOhVOsOqPeTXfY", consumerSecret: "6oHbCoKAZsz64CGSisAwZyQShq4TXomNupeBh3wk0jQMWXP1EW")
+        let twitterClient = TwitterClient.sharedInstance
         
-        
-        //Make sure to logout first....
-        twitterClient?.deauthorize()
-        
-        //Now we need a request token so we can show twitter that we are the actual app not some random 3rd party app or loser who lives with his mom
-        twitterClient?.fetchRequestToken(withPath: "oauth/request_token", method: "GET", callbackURL: URL(string: "twitterdemo://oauth"), scope: nil
-            , success: { (reqToken: BDBOAuth1Credential?) in
-                guard let requestToken = reqToken?.token else {
-                    print("No token received ::")
-                    return;
-                }
-                print ("I got a token!")
-                print("request token: \(requestToken)")
-                //Go to url where user will be able to login
-                guard  let authorizeUrl = URL(string: "https://api.twitter.com/oauth/authorize?oauth_token=\(requestToken)") else {
-                    print("Could not create URL.")
-                    return
-                }
+        twitterClient?.login(success: { 
+            //Segue to next view controller now that we are loggged in.
+            print("I am logged in!")
             
-                
-                UIApplication.shared.open(authorizeUrl, options: [:], completionHandler: { (success: Bool) in
-                    if (success){
-                        print("Successfully finished opening the url")
-                    }
-                })
-                
-                
-                
-        }, failure: { (error: Error?) in
-            if let error = error{
-                print("[ERROR]: \(error.localizedDescription)")
-            }
-            
-        })
+        }) { (error: Error) in
+            print("[ERROR]: \(error)")
+        }
+        
+        
+
+       
         
         
     }
