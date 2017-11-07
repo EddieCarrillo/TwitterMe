@@ -12,6 +12,9 @@ import BDBOAuth1Manager
 class LoginViewController: UIViewController {
     
     
+    let feedSegueIdentifier: String = "FeedSegue"
+    
+    
 //    let baseu
 
     override func viewDidLoad() {
@@ -44,14 +47,20 @@ class LoginViewController: UIViewController {
         
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+//        // Get the new view controller using segue.destinationViewController.
+//       let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        
+//        let destinationViewController = segue.destination
+//       
+//        if segue.identifier == self.feedSegueIdentifier {
+//        if let feedViewController = (destinationViewController as?
+//        }
     }
-    */
+    
 
 }
