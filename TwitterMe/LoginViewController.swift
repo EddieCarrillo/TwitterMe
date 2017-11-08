@@ -13,6 +13,7 @@ class LoginViewController: UIViewController {
     
     
     let feedSegueIdentifier: String = "FeedSegue"
+   
     
     
 //    let baseu
@@ -36,14 +37,13 @@ class LoginViewController: UIViewController {
             //Segue to next view controller now that we are loggged in.
             print("I am logged in!")
             
+            self.performSegue(withIdentifier: self.feedSegueIdentifier, sender: nil)
+            
+            
         }) { (error: Error) in
             print("[ERROR]: \(error)")
         }
-        
-        
-
-       
-        
+     
         
     }
 
@@ -52,14 +52,18 @@ class LoginViewController: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        // Get the new view controller using segue.destinationViewController.
-//       let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        
-//        let destinationViewController = segue.destination
-//       
-//        if segue.identifier == self.feedSegueIdentifier {
-//        if let feedViewController = (destinationViewController as?
-//        }
+        // Get the new view controller using segue.destinationViewController.
+       let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let destinationViewController = segue.destination
+       
+        if segue.identifier == self.feedSegueIdentifier {
+            if let feedViewController = destinationViewController as? FeedViewController{
+                print("FeedViewController segue triggered.")
+
+            }
+        
+        }
     }
     
 
