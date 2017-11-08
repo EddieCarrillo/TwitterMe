@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0542E1C41FB29BE4006DE1EC /* FeedViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0542E1C31FB29BE4006DE1EC /* FeedViewTableViewCell.swift */; };
 		1F5A58F81FA8F03B0065A8C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5A58F71FA8F03B0065A8C5 /* AppDelegate.swift */; };
 		1F5A58FD1FA8F03B0065A8C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F5A58FB1FA8F03B0065A8C5 /* Main.storyboard */; };
 		1F5A58FF1FA8F03B0065A8C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F5A58FE1FA8F03B0065A8C5 /* Assets.xcassets */; };
@@ -33,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0542E1C31FB29BE4006DE1EC /* FeedViewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewTableViewCell.swift; sourceTree = "<group>"; };
 		1F5A58F41FA8F03B0065A8C5 /* TwitterMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F5A58F71FA8F03B0065A8C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F5A58FC1FA8F03B0065A8C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 			children = (
 				1F5A591E1FA8F6B10065A8C5 /* LoginViewController.swift */,
 				1FC71B361FB16F2B00D94696 /* FeedViewController.swift */,
+				0542E1C31FB29BE4006DE1EC /* FeedViewTableViewCell.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F5A591F1FA8F6B10065A8C5 /* LoginViewController.swift in Sources */,
+				0542E1C41FB29BE4006DE1EC /* FeedViewTableViewCell.swift in Sources */,
 				1F5A591B1FA8F3DD0065A8C5 /* TwitterClient.swift in Sources */,
 				1F5A59251FAA33B30065A8C5 /* Tweet.swift in Sources */,
 				1F5A59231FAA33A30065A8C5 /* User.swift in Sources */,
