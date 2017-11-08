@@ -10,8 +10,7 @@ import UIKit
 
 class FeedViewController: UIViewController {
     
-    
-    
+   
     let tweets: [Tweet] = []
 
     override func viewDidLoad() {
