@@ -25,6 +25,7 @@ class User: NSObject {
         get{
             if (_profilePicture == nil){
                 //Load picture from API
+                return nil // Stub
             }else {
                 return _profilePicture
             }
