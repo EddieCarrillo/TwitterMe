@@ -49,7 +49,16 @@ class FeedViewTableViewCell: UITableViewCell {
             
             
             //Update the UI.
-        
+          //  self.profilePictureImageView =
+            self.nameLabel = tweet.ownerName
+            self.handleLabel = tweet.handle
+            self.dateLabel = tweet.dateText
+            self.tweetTextLabel = tweet.text
+            self.favoriteNumberLabel = "\(tweet.favoritesCount)"
+            self.retweetNumberLabel = "\(tweet.retweetCount)"
+            
+            
+           
         }
     
     }
