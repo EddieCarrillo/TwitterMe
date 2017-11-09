@@ -11,7 +11,7 @@ import UIKit
 class Tweet: NSObject {
     
     var text: String?
-    var timeStamp: NSDate?
+    var timeStamp: Date?
     var owner: User?
     var retweetCount: Int = 0
     var favoritesCount: Int = 0
@@ -72,7 +72,7 @@ class Tweet: NSObject {
             
             formatter.dateFormat = "EEE MMM d HH:mm:ss Z y"
             
-           self.timeStamp = formatter.date(from: timestampString) as NSDate?
+           self.timeStamp = formatter.date(from: timestampString) as Date?
         }
         
         if let owner = dictionary as? NSDictionary{
