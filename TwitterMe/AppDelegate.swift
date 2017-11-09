@@ -13,6 +13,7 @@ import BDBOAuth1Manager
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    let navigationControllerId: String = "TweetsNavigationController"
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -20,6 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if User.currentUser != nil {
              print("There is a current user")
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: navigationControllerId)
+            
+            window?.rootViewController = vc
+            
         }else {
            print("There is not a current user.")
         }
