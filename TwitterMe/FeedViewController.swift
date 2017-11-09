@@ -37,7 +37,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: FeedViewTableViewCell.reuseId) as!FeedViewTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: feedViewCellReuseId) as!FeedViewTableViewCell
         
         let tweet = tweets[indexPath.row]
         
