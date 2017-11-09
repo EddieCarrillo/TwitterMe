@@ -211,9 +211,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="6w4-fj-RCL" firstAttribute="top" secondItem="In6-2u-9Fz" secondAttribute="bottom" id="5JO-zG-mUj"/>
+                            <constraint firstItem="6w4-fj-RCL" firstAttribute="leading" secondItem="cGg-5A-kap" secondAttribute="leading" id="8VT-TP-fbP"/>
+                            <constraint firstItem="6w4-fj-RCL" firstAttribute="top" secondItem="In6-2u-9Fz" secondAttribute="bottom" id="Ijr-ZU-Yjn"/>
                             <constraint firstAttribute="trailing" secondItem="6w4-fj-RCL" secondAttribute="trailing" id="PBV-HX-zTF"/>
                             <constraint firstItem="6w4-fj-RCL" firstAttribute="leading" secondItem="cGg-5A-kap" secondAttribute="leading" id="WI4-g7-FOq"/>
                             <constraint firstItem="0bD-f6-2T1" firstAttribute="top" secondItem="6w4-fj-RCL" secondAttribute="bottom" id="koG-Dt-wtf"/>
+                            <constraint firstAttribute="trailing" secondItem="6w4-fj-RCL" secondAttribute="trailing" id="tAK-Xu-7QO"/>
+                            <constraint firstItem="0bD-f6-2T1" firstAttribute="top" secondItem="6w4-fj-RCL" secondAttribute="bottom" id="w95-nS-nGG"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="FZI-FP-D6l"/>
