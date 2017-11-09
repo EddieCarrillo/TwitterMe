@@ -78,6 +78,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		05254BCE1FB3EC6000E803CD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0542E1C31FB29BE4006DE1EC /* FeedViewTableViewCell.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		1BA7FD2B7F1AF0D96CCDF67D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -110,6 +118,7 @@
 		1F5A58F61FA8F03B0065A8C5 /* TwitterMe */ = {
 			isa = PBXGroup;
 			children = (
+				05254BCE1FB3EC6000E803CD /* Views */,
 				1F5A59211FAA33690065A8C5 /* View Controllers */,
 				1F5A59201FAA335F0065A8C5 /* Models */,
 				1F5A59171FA8F10A0065A8C5 /* Networking */,
@@ -154,7 +163,6 @@
 			children = (
 				1F5A591E1FA8F6B10065A8C5 /* LoginViewController.swift */,
 				1FC71B361FB16F2B00D94696 /* FeedViewController.swift */,
-				0542E1C31FB29BE4006DE1EC /* FeedViewTableViewCell.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
