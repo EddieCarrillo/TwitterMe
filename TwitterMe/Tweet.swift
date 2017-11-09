@@ -12,8 +12,53 @@ class Tweet: NSObject {
     
     var text: String?
     var timeStamp: NSDate?
+    var owner: User?
     var retweetCount: Int = 0
     var favoritesCount: Int = 0
+    
+    var ownerName: String? {
+        get{
+            guard let owner = self.owner else {
+                 print("Something weird happened")
+                return nil
+            }
+            
+            return owner.name
+            
+        }
+    }
+    
+    var handle: String? {
+        get{
+            guard let owner = self.owner else {
+                print("Something weird happened")
+                return nil
+            }
+            
+            return owner.screenname
+            
+        }
+    }
+    
+    var dateText: String? {
+    
+        get{
+            
+            guard let createdAt = timeStamp else  {
+                print("Could not get date created")
+               return nil
+            }
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MM/dd/yyyy" //Month/day/YEAR format
+            
+            return dateFormatter.string(from: createdAt)
+            
+        }
+    
+    }
+    
+   
     
     
     
@@ -28,6 +73,12 @@ class Tweet: NSObject {
             formatter.dateFormat = "EEE MMM d HH:mm:ss Z y"
             
            self.timeStamp = formatter.date(from: timestampString) as NSDate?
+        }
+        
+        if let owner = dictionary as? NSDictionary{
+            self.owner = User(dictionary: owner)
+        }else{
+           print("Something weird happened.")
         }
       
         
