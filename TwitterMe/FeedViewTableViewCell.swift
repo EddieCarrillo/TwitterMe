@@ -37,6 +37,7 @@ class FeedViewTableViewCell: UITableViewCell {
     
     
     
+   
     
     var tweet: Tweet?{
         
@@ -50,12 +51,12 @@ class FeedViewTableViewCell: UITableViewCell {
             
             //Update the UI.
           //  self.profilePictureImageView =
-            self.nameLabel = tweet.ownerName
-            self.handleLabel = tweet.handle
-            self.dateLabel = tweet.dateText
-            self.tweetTextLabel = tweet.text
-            self.favoriteNumberLabel = "\(tweet.favoritesCount)"
-            self.retweetNumberLabel = "\(tweet.retweetCount)"
+            self.nameLabel.text = tweet.ownerName
+            self.handleLabel.text = tweet.handle
+            self.dateLabel.text = tweet.dateText
+            self.tweetTextLabel.text = tweet.text
+            self.favoriteNumberLabel.text = "\(tweet.favoritesCount)"
+            self.retweetNumberLabel.text = "\(tweet.retweetCount)"
             
             
            
