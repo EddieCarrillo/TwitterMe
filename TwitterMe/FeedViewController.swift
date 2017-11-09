@@ -8,13 +8,24 @@
 
 import UIKit
 
-class FeedViewController: UIViewController {
+class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
    
+    @IBOutlet weak var tableView: UITableView!
+    
+    let feedViewCellReuseId = "FeedViewTableViewCell"
     let tweets: [Tweet] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+        self.tableView.estimatedRowHeight = 100
+        //Add autolayout
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        
+        
 
         // Do any additional setup after loading the view.
     }
@@ -22,6 +33,25 @@ class FeedViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: FeedViewTableViewCell.reuseId) as!FeedViewTableViewCell
+        
+        let tweet = tweets[indexPath.row]
+        
+        cell.tweet = tweet
+        
+        
+        return cell
+
+        
+    }
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tweets.count
     }
     
 
