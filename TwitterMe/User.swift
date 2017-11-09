@@ -18,6 +18,26 @@ class User: NSObject {
     var tagline: String?
     var dictionary: NSDictionary?
     
+    
+     var _profilePicture: UIImage? // This helps keep track to see if image was previously loaded...
+    
+    var profilePicture: UIImage? {
+        get{
+            if (_profilePicture == nil){
+                //Load picture from API
+            }else {
+                return _profilePicture
+            }
+         
+        }
+        
+        set(image){
+            self._profilePicture = image
+        
+        }
+    
+    }
+    
     init(dictionary: NSDictionary){
         
         //Deserialization code

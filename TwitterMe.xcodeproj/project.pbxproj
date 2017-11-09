@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05254BD01FB3FC0800E803CD /* Bugs.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 05254BCF1FB3FC0800E803CD /* Bugs.pdf */; };
 		0542E1C41FB29BE4006DE1EC /* FeedViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0542E1C31FB29BE4006DE1EC /* FeedViewTableViewCell.swift */; };
 		1F5A58F81FA8F03B0065A8C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5A58F71FA8F03B0065A8C5 /* AppDelegate.swift */; };
 		1F5A58FD1FA8F03B0065A8C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F5A58FB1FA8F03B0065A8C5 /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		05254BCF1FB3FC0800E803CD /* Bugs.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = Bugs.pdf; path = ../Bugs.pdf; sourceTree = "<group>"; };
 		0542E1C31FB29BE4006DE1EC /* FeedViewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewTableViewCell.swift; sourceTree = "<group>"; };
 		1F5A58F41FA8F03B0065A8C5 /* TwitterMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F5A58F71FA8F03B0065A8C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 		1F5A58EB1FA8F03A0065A8C5 = {
 			isa = PBXGroup;
 			children = (
+				05254BCF1FB3FC0800E803CD /* Bugs.pdf */,
 				1F5A58F61FA8F03B0065A8C5 /* TwitterMe */,
 				1F5A590B1FA8F03D0065A8C5 /* TwitterMeTests */,
 				1F5A58F51FA8F03B0065A8C5 /* Products */,
@@ -267,6 +270,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05254BD01FB3FC0800E803CD /* Bugs.pdf in Resources */,
 				1F5A59021FA8F03C0065A8C5 /* LaunchScreen.storyboard in Resources */,
 				1F5A58FF1FA8F03B0065A8C5 /* Assets.xcassets in Resources */,
 				1F5A591D1FA8F45D0065A8C5 /* Podfile in Resources */,

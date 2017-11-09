@@ -88,6 +88,14 @@ class TwitterClient: BDBOAuth1SessionManager{
     }
     
     
+    func loadPicture(url: URL){
+    
+    
+    
+    
+    }
+    
+    
     func login(success: @escaping () -> (), failure: @escaping (Error)->()){
         //Make sure to logout first....
         
