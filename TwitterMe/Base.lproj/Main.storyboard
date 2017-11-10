@@ -137,20 +137,20 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="favor-icon" translatesAutoresizingMaskIntoConstraints="NO" id="d8m-bO-Icf">
-                                                    <rect key="frame" x="250" y="139" width="20" height="20"/>
+                                                    <rect key="frame" x="274" y="139" width="20" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="20" id="l0b-aG-fyb"/>
                                                         <constraint firstAttribute="height" constant="20" id="lwL-T0-OJu"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cia-th-1oP">
-                                                    <rect key="frame" x="278" y="138" width="42" height="21"/>
+                                                    <rect key="frame" x="302" y="138" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="message-icon" translatesAutoresizingMaskIntoConstraints="NO" id="bL6-Kc-F6r">
-                                                    <rect key="frame" x="352" y="139" width="20" height="20"/>
+                                                    <rect key="frame" x="376" y="139" width="20" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="MuJ-d0-Loq"/>
                                                         <constraint firstAttribute="width" constant="20" id="riY-Cj-gtT"/>
@@ -182,7 +182,7 @@
                                                 <constraint firstItem="1Yy-fb-Bn7" firstAttribute="leading" secondItem="qFu-9c-ipk" secondAttribute="trailing" constant="8" id="dUn-ax-QDh"/>
                                                 <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="bL6-Kc-F6r" secondAttribute="trailing" constant="8" id="gB3-Sj-1XY"/>
                                                 <constraint firstItem="KHf-6o-DWS" firstAttribute="top" secondItem="TMa-WZ-kr5" secondAttribute="topMargin" constant="4" id="hGc-zU-AMp"/>
-                                                <constraint firstItem="d8m-bO-Icf" firstAttribute="leading" secondItem="OQi-As-qX5" secondAttribute="trailing" constant="8" id="iEW-3O-eSn"/>
+                                                <constraint firstItem="d8m-bO-Icf" firstAttribute="leading" secondItem="OQi-As-qX5" secondAttribute="trailing" constant="32" id="iEW-3O-eSn"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="yfY-r9-orc" secondAttribute="bottom" constant="8" id="jqL-df-OmZ"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="bL6-Kc-F6r" secondAttribute="bottom" constant="8" id="lf2-us-MgZ"/>
                                                 <constraint firstItem="yfY-r9-orc" firstAttribute="leading" secondItem="2kO-68-0H2" secondAttribute="trailing" constant="8" id="lw3-sn-IRx"/>
