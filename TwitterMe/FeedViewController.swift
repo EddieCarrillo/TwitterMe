@@ -16,6 +16,13 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     let feedViewCellReuseId = "FeedViewTableViewCell"
     var tweets: [Tweet] = []
 
+    @IBAction func didTapProfilePicture(_ sender: Any) {
+        print("Go to user profile")
+        
+    }
+    @IBAction func didTapName(_ sender: Any) {
+        print("Go to user profile")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
