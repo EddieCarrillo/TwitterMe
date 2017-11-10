@@ -14,7 +14,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var tableView: UITableView!
     
     let feedViewCellReuseId = "FeedViewTableViewCell"
-    let tweets: [Tweet] = []
+    var tweets: [Tweet] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +25,14 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         //Add autolayout
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
+        let twitterClient = TwitterClient.sharedInstance
+        
+        twitterClient?.homeTimeline(success: { (tweets: [Tweet]) in
+            self.tweets = tweets
+            self.tableView.reloadData()
+        }, failure: { (error: Error) in
+            print("[ERROR] \(error)")
+        })
         
 
         // Do any additional setup after loading the view.
