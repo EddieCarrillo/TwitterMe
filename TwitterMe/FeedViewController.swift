@@ -38,11 +38,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.tweets = tweets
             self.tableView.reloadData()
             
-            
-            for tweet in tweets {
-                 
-            
-            }
         }, failure: { (error: Error) in
             print("[ERROR] \(error)")
         })

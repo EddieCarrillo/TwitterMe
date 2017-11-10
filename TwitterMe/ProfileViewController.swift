@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import BDBOAuth1Manager
 
 class ProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -30,6 +31,15 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         self.tableview.estimatedRowHeight = 100
         //Add autolayout
         self.tableview.rowHeight = UITableViewAutomaticDimension
+        let twitterClient = TwitterClient.sharedInstance
+        twitterClient?.loadTweets(for: user, success: { (tweets: [Tweet]) in
+            self.userTweets = tweets
+            self.tableview.reloadData()
+        }, failure: { (error: Error) in
+            print("[ERROR]: \(error)")
+        })
+        
+        
         
 
         // Do any additional setup after loading the view.
