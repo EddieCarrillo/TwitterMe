@@ -51,7 +51,9 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
   
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+         return userTweets.count
+    }
     
     
     // Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
@@ -60,9 +62,10 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: feedViewCellReuseId ) as! FeedViewTableViewCell
         
-        cell.tweet
+        cell.tweet = userTweets[indexPath.row]
         
-    
+        
+        return cell
     }
     
 
