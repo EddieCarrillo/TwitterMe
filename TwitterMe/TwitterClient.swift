@@ -34,6 +34,8 @@ class TwitterClient: BDBOAuth1SessionManager{
             
             let tweets = Tweet.tweetsWithArray(dictionaries: dictionaries)
             
+          
+            
             success(tweets)
             
         }, failure: { (task: URLSessionDataTask?, error: Error) in
@@ -88,12 +90,12 @@ class TwitterClient: BDBOAuth1SessionManager{
     }
     
     
-    func loadPicture(url: URL){
-    
-    
-    
-    
-    }
+//    func loadPicture(url: URL){
+//        
+//    
+//    
+//    
+//    }
     
     
     func login(success: @escaping () -> (), failure: @escaping (Error)->()){

@@ -58,6 +58,18 @@ class FeedViewTableViewCell: UITableViewCell {
             self.favoriteNumberLabel.text = "\(tweet.favoritesCount)"
             self.retweetNumberLabel.text = "\(tweet.retweetCount)"
             
+            if let owner = tweet.owner {
+                if let profilePictureUrl = owner.profileUrl {
+                    print("Profile picture successfully set.")
+                    self.profilePictureImageView.setImageWith(profilePictureUrl)
+                }else {
+                    print("Could not load user url")
+                }
+            }else {
+                print("Could not tweet owner")
+            }
+           
+            
             
            
         }

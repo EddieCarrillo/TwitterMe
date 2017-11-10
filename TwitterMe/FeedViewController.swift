@@ -30,9 +30,18 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         twitterClient?.homeTimeline(success: { (tweets: [Tweet]) in
             self.tweets = tweets
             self.tableView.reloadData()
+            
+            
+            for tweet in tweets {
+                 
+            
+            }
         }, failure: { (error: Error) in
             print("[ERROR] \(error)")
         })
+        
+        
+        
         
 
         // Do any additional setup after loading the view.

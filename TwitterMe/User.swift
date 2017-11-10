@@ -41,6 +41,8 @@ class User: NSObject {
     
     init(dictionary: NSDictionary){
         
+        
+        print("[DICTIONARY] \(dictionary)")
         //Deserialization code
         self.name = dictionary["name"] as? String
         
@@ -48,9 +50,12 @@ class User: NSObject {
         
         self.screenname = dictionary["screen_name"] as? String
         
-        if   let profileUrlString = dictionary["profile_image_url_https"] as? String {
+        if let profileUrlString = dictionary["profile_image_url_https"] as? String {
+           
             self.profileUrl = URL(string: profileUrlString)
         }
+        
+        print("profileUrl string: \(dictionary["profile_image_url"])")
         
         
         self.tagline = dictionary["description"] as? String

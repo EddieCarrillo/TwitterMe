@@ -75,7 +75,7 @@ class Tweet: NSObject {
            self.timeStamp = formatter.date(from: timestampString) as Date?
         }
         
-        if let owner = dictionary as? NSDictionary{
+        if let owner = dictionary["user"] as? NSDictionary{ // BUG FIX
             self.owner = User(dictionary: owner)
         }else{
            print("Something weird happened.")
