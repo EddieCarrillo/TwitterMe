@@ -73,7 +73,7 @@
                                 <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FeedViewTableViewCell" rowHeight="175" id="vT3-y3-cRw" customClass="FeedViewTableViewCell" customModule="TwitterMe" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FeedViewTableViewCell" rowHeight="175" id="vT3-y3-cRw" customClass="FeedViewTableViewCell" customModule="TwitterMe" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="175"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vT3-y3-cRw" id="TMa-WZ-kr5">
@@ -91,7 +91,7 @@
                                                         <outletCollection property="gestureRecognizers" destination="Doi-UW-SYu" appends="YES" id="1Bi-XP-ZhM"/>
                                                     </connections>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Yy-fb-Bn7">
+                                                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Yy-fb-Bn7">
                                                     <rect key="frame" x="70" y="12" width="47" height="21"/>
                                                     <gestureRecognizers/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
@@ -253,7 +253,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1754" y="55"/>
+            <point key="canvasLocation" x="1636" y="121"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="6Pn-Ai-cm6">
@@ -380,7 +380,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ba6-lo-nBx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2579.7101449275365" y="82.33695652173914"/>
+            <point key="canvasLocation" x="2339" y="121"/>
         </scene>
     </scenes>
     <resources>
