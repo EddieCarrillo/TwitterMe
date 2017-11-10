@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -19,7 +19,7 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A4k-x6-saN">
@@ -65,18 +65,18 @@
                         <viewControllerLayoutGuide type="bottom" id="0bD-f6-2T1"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="cGg-5A-kap">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="175" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6w4-fj-RCL">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FeedViewTableViewCell" rowHeight="175" id="vT3-y3-cRw" customClass="FeedViewTableViewCell" customModule="TwitterMe" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="175"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="175"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vT3-y3-cRw" id="TMa-WZ-kr5">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="175"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="175"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qFu-9c-ipk">
@@ -150,7 +150,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="message-icon" translatesAutoresizingMaskIntoConstraints="NO" id="bL6-Kc-F6r">
-                                                    <rect key="frame" x="339" y="139" width="20" height="20"/>
+                                                    <rect key="frame" x="336" y="139" width="20" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="MuJ-d0-Loq"/>
                                                         <constraint firstAttribute="width" constant="20" id="riY-Cj-gtT"/>
@@ -185,8 +185,8 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="yfY-r9-orc" secondAttribute="bottom" constant="8" id="jqL-df-OmZ"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="bL6-Kc-F6r" secondAttribute="bottom" constant="8" id="lf2-us-MgZ"/>
                                                 <constraint firstItem="yfY-r9-orc" firstAttribute="leading" secondItem="2kO-68-0H2" secondAttribute="trailing" constant="8" id="lw3-sn-IRx"/>
-                                                <constraint firstAttribute="trailing" secondItem="bL6-Kc-F6r" secondAttribute="trailing" constant="16" id="q7r-Mf-gw8"/>
                                                 <constraint firstItem="KHf-6o-DWS" firstAttribute="leading" secondItem="ILg-Lw-3UZ" secondAttribute="trailing" constant="8" id="ukw-04-s9t"/>
+                                                <constraint firstItem="bL6-Kc-F6r" firstAttribute="leading" secondItem="Cia-th-1oP" secondAttribute="trailing" constant="16" id="vYo-Au-tGQ"/>
                                                 <constraint firstItem="elb-wT-EfH" firstAttribute="leading" secondItem="yfY-r9-orc" secondAttribute="trailing" constant="32" id="w8j-gv-wCv"/>
                                                 <constraint firstItem="DHM-rA-1s6" firstAttribute="leading" secondItem="qFu-9c-ipk" secondAttribute="trailing" constant="8" id="x3v-G4-XuP"/>
                                                 <constraint firstItem="OQi-As-qX5" firstAttribute="leading" secondItem="elb-wT-EfH" secondAttribute="trailing" constant="8" id="xsn-Yf-UjE"/>
