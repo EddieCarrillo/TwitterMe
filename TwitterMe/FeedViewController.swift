@@ -14,14 +14,22 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var tableView: UITableView!
     
     let feedViewCellReuseId = "FeedViewTableViewCell"
+    let profileSegue = "ProfileSegue"
     var tweets: [Tweet] = []
+    
+    var lastPressedCell: FeedViewTableViewCell?
 
-    @IBAction func didTapProfilePicture(_ sender: Any) {
+    @IBAction func didTapProfilePicture(_ sender: UIImageView) {
         print("Go to user profile")
+        lastPressedCell = sender.superview?.superview
+        self.performSegue(withIdentifier: feedViewCellReuseId, sender: nil)
         
     }
     @IBAction func didTapName(_ sender: Any) {
         print("Go to user profile")
+        lastPressedCell = sender.superview?.superview
+
+          self.performSegue(withIdentifier: feedViewCellReuseId, sender: nil)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,14 +82,19 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
 
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == profileSegue {
+            if let profileViewController = segue.destination as? ProfileViewController{
+                profileViewController.user = lastPressedCell?.tweet?.owner
+            }
+        }
     }
-    */
+    
 
 }

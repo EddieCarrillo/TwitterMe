@@ -238,6 +238,7 @@
                     <navigationItem key="navigationItem" id="FZI-FP-D6l"/>
                     <connections>
                         <outlet property="tableView" destination="6w4-fj-RCL" id="WdZ-W0-s1N"/>
+                        <segue destination="dFr-k5-bIh" kind="show" identifier="ProfileSegue" id="Hxb-gJ-IKf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oak-Rb-0M7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -252,7 +253,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1717.5999999999999" y="121.88905547226388"/>
+            <point key="canvasLocation" x="1754" y="55"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="6Pn-Ai-cm6">
