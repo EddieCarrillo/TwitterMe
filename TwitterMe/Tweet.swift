@@ -45,7 +45,7 @@ class Tweet: NSObject {
         get{
             
             guard let createdAt = timeStamp else  {
-                print("Could not get date created")
+               // print("Could not get date created")
                return nil
             }
             

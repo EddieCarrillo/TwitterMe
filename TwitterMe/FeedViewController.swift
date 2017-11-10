@@ -21,13 +21,13 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     @IBAction func didTapProfilePicture(_ sender: UIImageView) {
         print("Go to user profile")
-        lastPressedCell = sender.superview?.superview
+        lastPressedCell = sender.superview?.superview as! FeedViewTableViewCell?
         self.performSegue(withIdentifier: feedViewCellReuseId, sender: nil)
         
     }
-    @IBAction func didTapName(_ sender: Any) {
+    @IBAction func didTapName(_ sender: UILabel) {
         print("Go to user profile")
-        lastPressedCell = sender.superview?.superview
+        lastPressedCell = sender.superview?.superview as! FeedViewTableViewCell?
 
           self.performSegue(withIdentifier: feedViewCellReuseId, sender: nil)
     }
