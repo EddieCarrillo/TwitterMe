@@ -22,7 +22,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func didTapProfilePicture(_ sender: UITapGestureRecognizer) {
         print("Go to user profile")
         lastPressedCell = sender.view.superview?.superview as! FeedViewTableViewCell?
-        self.performSegue(withIdentifier: feedViewCellReuseId, sender: nil)
+        self.performSegue(withIdentifier: profileSegue, sender: nil)
         
     }
     @IBAction func didTapName(_ sender: UITapGestureRecognizer) {
@@ -31,7 +31,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         lastPressedCell = sender.view.superview?.superview as! FeedViewTableViewCell?
         
 
-          self.performSegue(withIdentifier: feedViewCellReuseId, sender: nil)
+          self.performSegue(withIdentifier: profileSegue, sender: nil)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
