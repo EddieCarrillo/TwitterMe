@@ -28,6 +28,10 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func didTapName(_ sender: UILabel) {
         print("Go to user profile")
         lastPressedCell = sender.superview?.superview as! FeedViewTableViewCell?
+        
+        let superView = sender.superview
+        let superduperView = superView?.superview
+        
 
           self.performSegue(withIdentifier: feedViewCellReuseId, sender: nil)
     }
@@ -39,6 +43,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.tableView.estimatedRowHeight = 100
         //Add autolayout
         self.tableView.rowHeight = UITableViewAutomaticDimension
+        
         
         let twitterClient = TwitterClient.sharedInstance
         
