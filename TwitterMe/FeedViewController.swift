@@ -25,9 +25,10 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.performSegue(withIdentifier: feedViewCellReuseId, sender: nil)
         
     }
-    @IBAction func didTapName(_ sender: UILabel) {
+    @IBAction func didTapName(_ sender: Any) {
         print("Go to user profile")
         lastPressedCell = sender.superview?.superview as! FeedViewTableViewCell?
+        
         
         let superView = sender.superview
         let superduperView = superView?.superview
