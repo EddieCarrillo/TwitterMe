@@ -513,6 +513,7 @@
                     <connections>
                         <outlet property="backgroundProfileImageView" destination="vc5-yy-jU8" id="P9O-fs-Njk"/>
                         <outlet property="profilePictureImageView" destination="XlN-Ab-Msi" id="78d-me-rND"/>
+                        <outlet property="tableview" destination="3hX-8R-ATn" id="6wL-XY-aMI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ba6-lo-nBx" userLabel="First Responder" sceneMemberID="firstResponder"/>
