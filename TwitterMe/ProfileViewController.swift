@@ -22,7 +22,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var tableview: UITableView!
     
     let feedViewCellReuseId = "FeedViewTableViewCell"
-
+    let profileFeedCellReuseId = "ProfileFeedTableViewCell"
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +61,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     // Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: feedViewCellReuseId ) as! FeedViewTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: profileFeedCellReuseId ) as! FeedViewTableViewCell
         
         cell.tweet = userTweets[indexPath.row]
         
