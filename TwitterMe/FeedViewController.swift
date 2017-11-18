@@ -20,13 +20,13 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     var lastPressedCell: FeedViewTableViewCell?
 
     @IBAction func didTapProfilePicture(_ sender: UITapGestureRecognizer) {
-        print("Go to user profile")
+        print("Profile picture tapped.")
         lastPressedCell = sender.view?.superview?.superview as! FeedViewTableViewCell?
         self.performSegue(withIdentifier: profileSegue, sender: nil)
         
     }
     @IBAction func didTapName(_ sender: UITapGestureRecognizer) {
-        print("Go to user profile")
+        print("Profile name tapped")
         
         lastPressedCell = sender.view?.superview?.superview as! FeedViewTableViewCell?
         
@@ -94,7 +94,9 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Pass the selected object to the new view controller.
         if segue.identifier == profileSegue {
             if let profileViewController = segue.destination as? ProfileViewController{
-                profileViewController.user = lastPressedCell?.tweet?.owner
+                let lastPresed = lastPressedCell
+                
+                profileViewController.user = lastPresed?.tweet?.owner
             }
         }
     }
