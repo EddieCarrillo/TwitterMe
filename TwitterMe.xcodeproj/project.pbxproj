@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		05254BD01FB3FC0800E803CD /* Bugs.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 05254BCF1FB3FC0800E803CD /* Bugs.pdf */; };
 		0542E1C41FB29BE4006DE1EC /* FeedViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0542E1C31FB29BE4006DE1EC /* FeedViewTableViewCell.swift */; };
+		056A62741FC3CC5600A73C2F /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056A62731FC3CC5600A73C2F /* ProfileView.swift */; };
 		0572AEED1FB54D60007ED4AA /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0572AEEC1FB54D60007ED4AA /* ProfileViewController.swift */; };
 		1F5A58F81FA8F03B0065A8C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5A58F71FA8F03B0065A8C5 /* AppDelegate.swift */; };
 		1F5A58FD1FA8F03B0065A8C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F5A58FB1FA8F03B0065A8C5 /* Main.storyboard */; };
@@ -38,6 +39,7 @@
 /* Begin PBXFileReference section */
 		05254BCF1FB3FC0800E803CD /* Bugs.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = Bugs.pdf; path = ../Bugs.pdf; sourceTree = "<group>"; };
 		0542E1C31FB29BE4006DE1EC /* FeedViewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewTableViewCell.swift; sourceTree = "<group>"; };
+		056A62731FC3CC5600A73C2F /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		0572AEEC1FB54D60007ED4AA /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		1F5A58F41FA8F03B0065A8C5 /* TwitterMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F5A58F71FA8F03B0065A8C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				0542E1C31FB29BE4006DE1EC /* FeedViewTableViewCell.swift */,
+				056A62731FC3CC5600A73C2F /* ProfileView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F5A591F1FA8F6B10065A8C5 /* LoginViewController.swift in Sources */,
+				056A62741FC3CC5600A73C2F /* ProfileView.swift in Sources */,
 				0542E1C41FB29BE4006DE1EC /* FeedViewTableViewCell.swift in Sources */,
 				1F5A591B1FA8F3DD0065A8C5 /* TwitterClient.swift in Sources */,
 				1F5A59251FAA33B30065A8C5 /* Tweet.swift in Sources */,

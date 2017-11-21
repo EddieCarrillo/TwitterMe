@@ -21,6 +21,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     
     @IBOutlet weak var tableview: UITableView!
     
+    @IBOutlet var profileView: ProfileView!
+    
     let feedViewCellReuseId = "FeedViewTableViewCell"
     let profileFeedCellReuseId = "ProfileFeedTableViewCell"
     
@@ -32,6 +34,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         self.tableview.estimatedRowHeight = 100
         //Add autolayout
         self.tableview.rowHeight = UITableViewAutomaticDimension
+        //Update the GUI (For the top half of the screen.)
+        profileView.user = user
         let twitterClient = TwitterClient.sharedInstance
         twitterClient?.loadTweets(user: user, sucess: { (tweets: [Tweet]) in
             self.userTweets = tweets
