@@ -15,6 +15,8 @@ class User: NSObject {
     var name: String?
     var screenname: String?
     var profileUrl: URL?
+    var backgroundProfileUrl: URL?
+    
     var tagline: String?
     var followersCount: Int?
     var followingCount: Int?
@@ -55,7 +57,11 @@ class User: NSObject {
            
             self.profileUrl = URL(string: profileUrlString)
         }
-                
+        
+        
+        if let backgroundProfileUrlString = dictionary["profile_background_image_url_https"] as? String {
+            self.backgroundProfileUrl = URL(string: backgroundProfileUrlString)
+        }
         
         self.tagline = dictionary["description"] as? String
         
