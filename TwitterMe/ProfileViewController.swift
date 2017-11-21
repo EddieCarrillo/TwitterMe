@@ -33,7 +33,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         //Add autolayout
         self.tableview.rowHeight = UITableViewAutomaticDimension
         let twitterClient = TwitterClient.sharedInstance
-        twitterClient?.loadTweets(for: user, success: { (tweets: [Tweet]) in
+        twitterClient?.loadTweets(user: user, sucess: { (tweets: [Tweet]) in
             self.userTweets = tweets
             self.tableview.reloadData()
         }, failure: { (error: Error) in

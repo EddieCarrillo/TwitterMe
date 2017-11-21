@@ -46,29 +46,44 @@ class TwitterClient: BDBOAuth1SessionManager{
     
     
     
-    func loadTweets(for user: User, success: @escaping([Tweet]) -> (), failure: @escaping(Error) -> ()){
-        
-        var queryParams: [String: Any] = [:]
-        queryParams["screen_name"]  = user.name!
-        queryParams["user_id"] = user.dictionary?["id"] 
-        
-        
-       
-        get("1.1/statuses/user_timeline.json", parameters: queryParams, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
-            print("RESPONSE: \(response) \n\n\n\n\n\n\n")
+    func loadTweets(user: User, sucess: @escaping (([Tweet]) -> ()), failure : @escaping (Error) -> ()){
+        let twitterClient = TwitterClient.sharedInstance
+        twitterClient?.get("/1.1/statuses/user_timeline.json?screen_name=\(user.screenname!)", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) -> () in
+            let dictionary = response as! [NSDictionary]
+            let tweets = Tweet.tweetsWithArray(dictionaries: dictionary)
             
-            guard let tweetDictionaries = response as? [NSDictionary] else {
-                 print("Could not extract dictionaries from data.")
-                return
-            }
-            let tweets = Tweet.tweetsWithArray(dictionaries: tweetDictionaries)
-            success(tweets)
-        }) { (task : URLSessionDataTask?, error: Error) in
-            print("An error has occurred. \(error)")
-            failure(error)
-        }
-    
+            sucess(tweets)
+            
+        }, failure: { (task: URLSessionDataTask?, error:Error) in
+            failure (error)
+        })
+        
     }
+    
+    
+//    func loadTweets(for user: User, success: @escaping([Tweet]) -> (), failure: @escaping(Error) -> ()){
+//        
+//        var queryParams: [String: Any] = [:]
+//        queryParams["screen_name"]  = user.name!
+//        queryParams["user_id"] = user.dictionary?["id"] 
+//        
+//        
+//       
+//        get("1.1/statuses/user_timeline.json", parameters: queryParams, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
+//            print("RESPONSE: \(response) \n\n\n\n\n\n\n")
+//            
+//            guard let tweetDictionaries = response as? [NSDictionary] else {
+//                 print("Could not extract dictionaries from data.")
+//                return
+//            }
+//            let tweets = Tweet.tweetsWithArray(dictionaries: tweetDictionaries)
+//            success(tweets)
+//        }) { (task : URLSessionDataTask?, error: Error) in
+//            print("An error has occurred. \(error)")
+//            failure(error)
+//        }
+//    
+//    }
     
     
     func currentAccount( success: @escaping (User) -> (), failure: @escaping (Error) -> ()){
