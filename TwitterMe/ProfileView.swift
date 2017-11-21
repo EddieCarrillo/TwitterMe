@@ -50,7 +50,18 @@ class ProfileView: UIView {
                 let followersNumberText  = "\(followersNumber)"
                 self.followingNumberLabel.text = followersNumberText
             }
+//            
+            if let profileUrl = user.profileUrl {
+                self.profilePictureImageView.setImageWith(profileUrl)
+            }
             
+            if let backgroundPictureUrl  = user.backgroundProfileUrl {
+                self.profilePictureImageView.setImageWith(backgroundPictureUrl)
+                print("[BACKGROUND_PICTURE_URL] SUCCESS")
+
+            }else {
+               print("[BACKGROUND_PICTURE_URL] could not set image with url")
+            }
             
         }
     
