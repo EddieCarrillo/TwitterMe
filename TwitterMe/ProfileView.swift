@@ -30,15 +30,15 @@ class ProfileView: UIView {
             }
             
             if let profileName = user.name {
-                self.profileNameLabel = profileName
+                self.profileNameLabel.text = profileName
             }
             
             if let profileHandle = user.screenname {
-                self.profileHandleLabel = profileHandle
+                self.profileHandleLabel.text = profileHandle
             }
             
             if let bio = user.tagline {
-                 self.bioLabel = bio
+                 self.bioLabel.text = bio
             }
             
             if let followingNumber = user.followingCount {
