@@ -30,8 +30,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        transparentBar()
-        self.navigationController?.navigationBar.isHidden = true
+        transparentBar()
+       // self.navigationController?.navigationBar.isHidden = false
         
         self.tableview.dataSource = self
         self.tableview.delegate = self
@@ -61,17 +61,9 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     
     
     func transparentBar() {
-        let transparentPixel = UIImage(named: "TransparentPixel")
-        
-        let navigationBar = self.navigationController?.navigationBar
-        
-        navigationBar?.setBackgroundImage(transparentPixel, for: UIBarMetrics.default)
-        
-        navigationBar?.shadowImage = transparentPixel
-        
-        navigationBar?.backgroundColor  = UIColor.clear
-     //   navigationBar.
-        navigationBar?.isTranslucent  = true
+       self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
     
     }
     

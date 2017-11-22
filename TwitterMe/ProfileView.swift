@@ -34,7 +34,7 @@ class ProfileView: UIView {
             }
             
             if let profileHandle = user.screenname {
-                self.profileHandleLabel.text =  "@\(profileHandle3)"
+                self.profileHandleLabel.text =  "@\(profileHandle)"
             }
             
             if let bio = user.tagline {
