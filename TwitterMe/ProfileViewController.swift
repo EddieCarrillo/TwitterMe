@@ -30,7 +30,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        transparentBar()
+//        transparentBar()
         
         self.tableview.dataSource = self
         self.tableview.delegate = self
