@@ -29,6 +29,9 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        transparentBar()
+        
         self.tableview.dataSource = self
         self.tableview.delegate = self
         self.tableview.estimatedRowHeight = 100
@@ -53,6 +56,21 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    func transparentBar() {
+        let transparentPixel = UIImage(named: "TransparentPixel")
+        
+        let navigationBar = self.navigationController?.navigationBar
+        
+        navigationBar?.setBackgroundImage(transparentPixel, for: UIBarMetrics.default)
+        
+        navigationBar?.shadowImage = transparentPixel
+        
+        navigationBar?.backgroundColor  = UIColor.clear
+        navigationBar?.isTranslucent  = true
+    
     }
     
   

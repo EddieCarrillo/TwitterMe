@@ -42,6 +42,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         //Add autolayout
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
+        transparentBar()
         
         let twitterClient = TwitterClient.sharedInstance
         
@@ -59,6 +60,21 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
 
         // Do any additional setup after loading the view.
     }
+    
+    func transparentBar() {
+        let transparentPixel = UIImage(named: "TransparentPixel")
+        
+        let navigationBar = self.navigationController?.navigationBar
+        
+        navigationBar?.setBackgroundImage(transparentPixel, for: UIBarMetrics.default)
+        
+        navigationBar?.shadowImage = transparentPixel
+        
+        navigationBar?.backgroundColor  = UIColor.clear
+        navigationBar?.isTranslucent  = true
+        
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

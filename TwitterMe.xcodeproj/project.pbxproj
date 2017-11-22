@@ -132,7 +132,6 @@
 				1F5A59171FA8F10A0065A8C5 /* Networking */,
 				1F5A58F71FA8F03B0065A8C5 /* AppDelegate.swift */,
 				1F5A58FB1FA8F03B0065A8C5 /* Main.storyboard */,
-				0572AEEC1FB54D60007ED4AA /* ProfileViewController.swift */,
 				1F5A58FE1FA8F03B0065A8C5 /* Assets.xcassets */,
 				1F5A59001FA8F03C0065A8C5 /* LaunchScreen.storyboard */,
 				1F5A59031FA8F03C0065A8C5 /* Info.plist */,
@@ -170,6 +169,7 @@
 		1F5A59211FAA33690065A8C5 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0572AEEC1FB54D60007ED4AA /* ProfileViewController.swift */,
 				1F5A591E1FA8F6B10065A8C5 /* LoginViewController.swift */,
 				1FC71B361FB16F2B00D94696 /* FeedViewController.swift */,
 			);
