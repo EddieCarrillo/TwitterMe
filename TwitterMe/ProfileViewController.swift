@@ -31,6 +31,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         super.viewDidLoad()
         
 //        transparentBar()
+        self.navigationController?.navigationBar.isHidden = true
         
         self.tableview.dataSource = self
         self.tableview.delegate = self
