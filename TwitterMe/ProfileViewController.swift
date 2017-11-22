@@ -69,6 +69,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         navigationBar?.shadowImage = transparentPixel
         
         navigationBar?.backgroundColor  = UIColor.clear
+     //   navigationBar.
         navigationBar?.isTranslucent  = true
     
     }
