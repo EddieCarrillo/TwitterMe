@@ -71,6 +71,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         navigationBar?.shadowImage = transparentPixel
         
         navigationBar?.backgroundColor  = UIColor.clear
+        
         navigationBar?.isTranslucent  = true
         
     }
@@ -86,6 +87,13 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: feedViewCellReuseId) as!FeedViewTableViewCell
         
         let tweet = tweets[indexPath.row]
+        
+        let tapGestureNameLabel = UITapGestureRecognizer(target: self, action: #selector(FeedViewController.didTapName(_:)))
+        cell.nameLabel.addGestureRecognizer(tapGestureNameLabel)
+        
+        let tapGestureProfilePicture = UITapGestureRecognizer(target: self, action: #selector (FeedViewController.didTapName(_:)))
+        cell.profilePictureImageView.addGestureRecognizer(tapGestureProfilePicture)
+        
         
         cell.tweet = tweet
         
