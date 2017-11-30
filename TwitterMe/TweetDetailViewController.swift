@@ -27,43 +27,16 @@ class TweetDetailViewController: UIViewController {
     
     @IBOutlet weak var favoritesNumberLabel: UILabel! //Done
     
+
     
-    var tweet: Tweet? {
-        didSet{
-            guard let tweet = self.tweet else {
-               print("User assigned tweet as nil value. [WEIRD BUG]")
-                return
-            }
-            
-            if let tweetOwner = tweet.owner {
-                if let profilePictureUrl = tweetOwner.profileUrl {
-                    self.profilePictureImageView.setImageWith(profilePictureUrl)
-                }else {
-                    print("ERROR USING URL")
-                }
-               
-            }else {
-               print("ERROR LOADING USER!")
-            }
-            
-             self.profileNameLabel.text = tweet.ownerName
-             self.tweetTextLabel.text = tweet.text
-            
-            self.createdAtLabel.text = getFormattedDateString(tweet: tweet)
-            
-             self.retweetNumberLabel.text =  "\(tweet.retweetCount)"
-             self.favoritesNumberLabel.text = "\(tweet.favoritesCount)"
-            self.handleNameLabel.text = "\(tweet.owner?.screenname)"
-  
-        }
-        
-        
     
-    }
+    var tweet: Tweet?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        updateGUI()
 
         // Do any additional setup after loading the view.
     }
@@ -93,6 +66,40 @@ class TweetDetailViewController: UIViewController {
         return "\(timeString) · \(dateString)"
     
     
+    }
+    
+    
+    
+    func updateGUI(){
+        guard let tweet = self.tweet else {
+            print("User assigned tweet as nil value. [WEIRD BUG]")
+            return
+        }
+        
+        if let tweetOwner = tweet.owner {
+            if let profilePictureUrl = tweetOwner.profileUrl {
+                self.profilePictureImageView.setImageWith(profilePictureUrl)
+            }else {
+                print("ERROR USING URL")
+            }
+            
+            if let screenName = tweetOwner.screenname {
+                self.handleNameLabel.text = "@\(screenName)"
+            }
+
+        }else {
+            print("ERROR LOADING USER!")
+        }
+        
+        self.profileNameLabel.text = tweet.ownerName
+        self.tweetTextLabel.text = tweet.text
+        
+        self.createdAtLabel.text = getFormattedDateString(tweet: tweet)
+        
+        self.retweetNumberLabel.text =  "\(tweet.retweetCount)"
+        self.favoritesNumberLabel.text = "\(tweet.favoritesCount)"
+    
+        
     }
     
 
