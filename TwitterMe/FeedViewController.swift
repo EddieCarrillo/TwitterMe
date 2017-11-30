@@ -109,6 +109,16 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         return tweets.count
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        self.lastPressedCell = cell as! FeedViewTableViewCell
+        
+        
+        self.performSegue(withIdentifier: tweetDetailSegue, sender: nil)
+        
+        
+    }
+    
 
 
     // MARK: - Navigation

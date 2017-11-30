@@ -32,7 +32,7 @@ class TweetDetailViewController: UIViewController {
         didSet{
             guard let tweet = self.tweet else {
                print("User assigned tweet as nil value. [WEIRD BUG]")
-            
+                return
             }
             
             if let tweetOwner = tweet.owner {
@@ -47,13 +47,13 @@ class TweetDetailViewController: UIViewController {
             }
             
              self.profileNameLabel.text = tweet.ownerName
-             self.tweetTextLabel = tweet.text
+             self.tweetTextLabel.text = tweet.text
             
-            self.createdAtLabel = getFormattedDateString()
+            self.createdAtLabel.text = getFormattedDateString(tweet: tweet)
             
              self.retweetNumberLabel.text =  "\(tweet.retweetCount)"
-             self.favoritesNumberLabel.text = "\(tweet.favortiesCount)"
-            self.handleNameLabel.text = "\(tweet.owner.screenname)"
+             self.favoritesNumberLabel.text = "\(tweet.favoritesCount)"
+            self.handleNameLabel.text = "\(tweet.owner?.screenname)"
   
         }
         
@@ -84,10 +84,10 @@ class TweetDetailViewController: UIViewController {
         
       let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "h:mm a"
-        let timeString = dateFormatter.string(from: tweet.timeStamp)
+        let timeString = dateFormatter.string(from: date)
         
         dateFormatter.dateFormat = "dd MMM YY"
-        let dateString = dateFormatter.string(from: tweet.timeStamp)
+        let dateString = dateFormatter.string(from: date)
         
         
         return "\(timeString) · \(dateString)"
