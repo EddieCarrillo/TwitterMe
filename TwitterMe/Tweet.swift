@@ -65,7 +65,7 @@ class Tweet: NSObject {
     init(dictionary: NSDictionary){
         self.text = dictionary["text"] as? String
         self.retweetCount = (dictionary["retweet_count"] as? Int) ?? 0
-        self.favoritesCount = (dictionary["favorites_count"] as? Int) ?? 0
+        self.favoritesCount = (dictionary["favorite_count"] as? Int) ?? 0
         
         if  let timestampString = dictionary["time_stamp"] as? String{
             let formatter = DateFormatter()

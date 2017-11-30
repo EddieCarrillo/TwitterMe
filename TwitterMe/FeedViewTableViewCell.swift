@@ -52,7 +52,11 @@ class FeedViewTableViewCell: UITableViewCell {
             //Update the UI.
           //  self.profilePictureImageView =
             self.nameLabel.text = tweet.ownerName
-            self.handleLabel.text = tweet.handle
+            
+            if let handle = tweet.handle {
+                self.handleLabel.text = "@\(handle)"
+
+            }
             self.dateLabel.text = tweet.dateText
             self.tweetTextLabel.text = tweet.text
             self.favoriteNumberLabel.text = "\(tweet.favoritesCount)"
