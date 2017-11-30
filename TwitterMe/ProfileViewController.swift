@@ -12,7 +12,7 @@ import BDBOAuth1Manager
 class ProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     
-    var user: User!
+    var user: User?
     var userTweets: [Tweet] = []
 
     @IBOutlet weak var backgroundProfileImageView: UIImageView!
@@ -30,6 +30,15 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if user == nil {
+            self.user = User.currentUser
+        }
+        
+        guard let currentUser = self.user else  {
+            print("Trouble loading user.")
+            return
+        }
+        
         transparentBar()
        // self.navigationController?.navigationBar.isHidden = false
         
@@ -39,9 +48,9 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         //Add autolayout
         self.tableview.rowHeight = UITableViewAutomaticDimension
         //Update the GUI (For the top half of the screen.)
-        profileView.user = user
+        profileView.user = currentUser
         let twitterClient = TwitterClient.sharedInstance
-        twitterClient?.loadTweets(user: user, sucess: { (tweets: [Tweet]) in
+        twitterClient?.loadTweets(user: currentUser, sucess: { (tweets: [Tweet]) in
             self.userTweets = tweets
             self.tableview.reloadData()
         }, failure: { (error: Error) in
