@@ -51,14 +51,32 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="7mT-8q-15o" kind="relationship" relationship="rootViewController" id="evG-B0-wTm"/>
+                        <segue destination="j0p-9G-Nwe" kind="relationship" relationship="rootViewController" id="ftB-AB-DXt"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mpv-GY-fg7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="902" y="122"/>
+            <point key="canvasLocation" x="701" y="426"/>
         </scene>
-        <!--Feed View Controller-->
+        <!--Tab Bar Controller-->
+        <scene sceneID="YeP-HT-kat">
+            <objects>
+                <tabBarController id="j0p-9G-Nwe" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="4sh-DA-YsB"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="1yg-1i-993">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="7mT-8q-15o" kind="relationship" relationship="viewControllers" id="JIU-8e-fmb"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3I8-u3-W61" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1477" y="426"/>
+        </scene>
+        <!--Item-->
         <scene sceneID="SdH-rc-LEH">
             <objects>
                 <viewController id="7mT-8q-15o" customClass="FeedViewController" customModule="TwitterMe" customModuleProvider="target" sceneMemberID="viewController">
@@ -71,7 +89,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="175" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6w4-fj-RCL">
-                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FeedViewTableViewCell" rowHeight="175" id="vT3-y3-cRw" customClass="FeedViewTableViewCell" customModule="TwitterMe" customModuleProvider="target">
@@ -236,6 +254,7 @@
                             <constraint firstItem="0bD-f6-2T1" firstAttribute="top" secondItem="6w4-fj-RCL" secondAttribute="bottom" id="w95-nS-nGG"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="euD-Z7-Bzl"/>
                     <navigationItem key="navigationItem" id="FZI-FP-D6l"/>
                     <connections>
                         <outlet property="tableView" destination="6w4-fj-RCL" id="WdZ-W0-s1N"/>
@@ -255,7 +274,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1761" y="895"/>
+            <point key="canvasLocation" x="2336" y="373"/>
         </scene>
         <!--Tweet Detail View Controller-->
         <scene sceneID="mTY-yJ-Rtr">
@@ -429,7 +448,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zlp-N1-PNp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2856.521739130435" y="893.47826086956525"/>
+            <point key="canvasLocation" x="3170" y="496"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="6Pn-Ai-cm6">
@@ -711,7 +730,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ba6-lo-nBx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2624.6376811594205" y="63.586956521739133"/>
+            <point key="canvasLocation" x="3036" y="-335"/>
         </scene>
     </scenes>
     <resources>
