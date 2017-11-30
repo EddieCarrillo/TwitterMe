@@ -54,7 +54,7 @@ class FeedViewTableViewCell: UITableViewCell {
             self.nameLabel.text = tweet.ownerName
             
             if let handle = tweet.handle {
-                self.handleLabel.text = "@\(handle)"
+                self.handleLabel.text = "@\(tweet.handle)"
 
             }
             self.dateLabel.text = tweet.dateText
