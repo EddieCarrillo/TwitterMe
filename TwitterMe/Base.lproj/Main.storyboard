@@ -255,7 +255,7 @@
                             <constraint firstItem="0bD-f6-2T1" firstAttribute="top" secondItem="6w4-fj-RCL" secondAttribute="bottom" id="w95-nS-nGG"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" selectedImage="home-icon" id="euD-Z7-Bzl"/>
+                    <tabBarItem key="tabBarItem" title="" image="home-icon" id="euD-Z7-Bzl"/>
                     <navigationItem key="navigationItem" id="FZI-FP-D6l"/>
                     <connections>
                         <outlet property="tableView" destination="6w4-fj-RCL" id="WdZ-W0-s1N"/>
@@ -724,7 +724,7 @@
                             <outlet property="profilePictureImageView" destination="XlN-Ab-Msi" id="xPX-hx-rfh"/>
                         </connections>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" selectedImage="profile-Icon" id="LFP-Zd-dTs"/>
+                    <tabBarItem key="tabBarItem" title="" image="profile-Icon" id="LFP-Zd-dTs"/>
                     <connections>
                         <outlet property="profileView" destination="vwJ-Zc-JPw" id="6lW-3Q-XMe"/>
                         <outlet property="tableview" destination="3hX-8R-ATn" id="6wL-XY-aMI"/>
