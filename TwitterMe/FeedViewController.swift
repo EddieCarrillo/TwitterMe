@@ -15,6 +15,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     let feedViewCellReuseId = "FeedViewTableViewCell"
     let profileSegue = "ProfileSegue"
+    let tweetDetailSegue = "TweetDetailSegue"
     var tweets: [Tweet] = []
     
     var lastPressedCell: FeedViewTableViewCell?
@@ -121,6 +122,11 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                 let lastPresed = lastPressedCell
                 
                 profileViewController.user = lastPresed?.tweet?.owner
+            }
+        }else if segue.identifier == tweetDetailSegue {
+            if let  tweetDetailViewController = segue.destination as? TweetDetailViewController{
+                let lastPressed = lastPressedCell
+                tweetDetailViewController.tweet = lastPressed?.tweet
             }
         }
     }
