@@ -355,7 +355,7 @@
                                     <constraint firstAttribute="height" constant="1" id="Rc4-1i-u6G"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iP1-XI-dO9">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iP1-XI-dO9">
                                 <rect key="frame" x="0.0" y="433" width="414" height="1"/>
                                 <color key="backgroundColor" red="0.90382124350000004" green="0.90382124350000004" blue="0.90382124350000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -400,6 +400,7 @@
                             <constraint firstItem="pqY-sE-i4h" firstAttribute="trailing" secondItem="nHo-L8-dRe" secondAttribute="trailingMargin" constant="2" id="g51-FF-SZ4"/>
                             <constraint firstItem="y1l-xc-wZU" firstAttribute="top" secondItem="pqY-sE-i4h" secondAttribute="bottom" constant="16" id="gLq-fv-69g"/>
                             <constraint firstItem="Lbj-GN-2je" firstAttribute="leading" secondItem="Yaa-uz-QCQ" secondAttribute="trailing" constant="16" id="gXb-S4-NJg"/>
+                            <constraint firstItem="iP1-XI-dO9" firstAttribute="top" secondItem="Lbj-GN-2je" secondAttribute="bottom" constant="16" id="i40-Je-FCC"/>
                             <constraint firstItem="qlj-mp-UAF" firstAttribute="top" secondItem="WRx-w1-YvU" secondAttribute="bottom" constant="8" id="igp-lk-kxc"/>
                             <constraint firstItem="wse-gu-Woe" firstAttribute="leading" secondItem="i7d-LQ-HUu" secondAttribute="trailing" constant="8" id="jdx-uf-HBY"/>
                             <constraint firstItem="i7d-LQ-HUu" firstAttribute="top" secondItem="XS0-CS-eMs" secondAttribute="bottom" constant="16" id="kTn-ww-ZAw"/>
@@ -414,6 +415,16 @@
                             <constraint firstItem="5Yw-Tk-6gD" firstAttribute="leading" secondItem="WRx-w1-YvU" secondAttribute="trailing" constant="8" id="uxB-68-EqY"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="createdAtLabel" destination="I7q-aQ-kOg" id="Bjd-4V-c5b"/>
+                        <outlet property="favoritesNumberLabel" destination="wse-gu-Woe" id="mVb-on-iF7"/>
+                        <outlet property="handleNameLabel" destination="G5j-T4-owj" id="2mP-5k-sUV"/>
+                        <outlet property="mediaView" destination="C5s-DA-qL8" id="i8a-K4-GzL"/>
+                        <outlet property="profileNameLabel" destination="5Yw-Tk-6gD" id="H5c-Xk-YCd"/>
+                        <outlet property="profilePictureImageView" destination="WRx-w1-YvU" id="qDf-ZZ-hsl"/>
+                        <outlet property="retweetNumberLabel" destination="6aJ-O9-TnG" id="dkW-wS-VkI"/>
+                        <outlet property="tweetTextLabel" destination="qlj-mp-UAF" id="H7P-D1-EOD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zlp-N1-PNp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
