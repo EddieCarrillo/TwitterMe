@@ -240,6 +240,7 @@
                     <connections>
                         <outlet property="tableView" destination="6w4-fj-RCL" id="WdZ-W0-s1N"/>
                         <segue destination="dFr-k5-bIh" kind="show" identifier="ProfileSegue" id="Hxb-gJ-IKf"/>
+                        <segue destination="Ela-f2-imf" kind="show" identifier="TweetDetailSegue" id="ziH-5B-KzQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oak-Rb-0M7" userLabel="First Responder" sceneMemberID="firstResponder"/>
