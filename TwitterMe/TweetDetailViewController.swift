@@ -74,39 +74,23 @@ class TweetDetailViewController: UIViewController {
     }
     
     
-    func getFormattedDateString() -> String {
-        let dateStringUnformatted = tweet.dateText
-        let dateStringFormatUnformatted =  "EEE MMM d HH:mm:ss Z y"
-        //Weekday Month day Hour(Military) +0000 Year
+    func getFormattedDateString(tweet: Tweet) -> String {
         
-        let dateFormatterUnformatted = DateFormatter()
-        dateFormatterUnformatted.dateFormat = dateStringFormatUnformatted
-        
-        let date = dateFormatterUnformatted.date(from: dateStringUnformatted)
-        
-        let dateFormatter = DateFormatter()
-        //Formatter string text for time
-        let timeFormatterString = "h:mm a"
-        
-        timeFormatterString.amSymbol = "AM"
-        timeFormatterString.pmSymbol = "PM"
-        
-        dateFormatter.dateFormat = dateFormatterString
-        //Actual time string formatted correctly
-        let timeDateString = dateFormatter.string(from: date)
+        guard let date = tweet.timeStamp else {
+            print("Could not get the timestamp")
+            return ""
+        }
         
         
-        //Formatter string text for date created
-        let dateFormatterString = "dd MMM YY"
+      let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "h:mm a"
+        let timeString = dateFormatter.string(from: tweet.timeStamp)
         
-        dateFormatter.dateFormat = dateFormatterString
+        dateFormatter.dateFormat = "dd MMM YY"
+        let dateString = dateFormatter.string(from: tweet.timeStamp)
         
-        let dateString = dateFormatter.string(from: date)
         
-        let completeDateString = "\(timeDateString) · \(dateString)"
-    
-        
-        return completeDateString
+        return "\(timeString) · \(dateString)"
     
     
     }
