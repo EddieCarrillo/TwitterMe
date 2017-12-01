@@ -38,7 +38,13 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             print("Trouble loading user.")
             return
         }
+        //We don't want title appearing for profile screen.
+        if let tabBarController = self.parent{ // If this is true this means that it is nested in tab bar
+           tabBarController.navigationItem.title = ""
+        }
         
+        
+        //self.navigationItem.title = "Profile"
         transparentBar()
        // self.navigationController?.navigationBar.isHidden = false
         

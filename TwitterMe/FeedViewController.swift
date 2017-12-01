@@ -43,7 +43,12 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         //Add autolayout
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
-        transparentBar()
+        
+        //Have to access parent view controller (tab bar controller) because this view controller is nested in
+        self.parent?.title = "Home"
+        
+        
+       // transparentBar()
         
         let twitterClient = TwitterClient.sharedInstance
         
