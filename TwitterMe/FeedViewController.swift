@@ -37,6 +37,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.estimatedRowHeight = 100
@@ -60,11 +61,46 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             print("[ERROR] \(error)")
         })
         
+        setupNavigationBar()
         
         
         
 
         // Do any additional setup after loading the view.
+    }
+    
+    func setupNavigationBar(){
+        
+        
+        
+        //Set up left button
+        var profileImage: UIImage = UIImage(named: "profile-Icon")! //Use default image
+        let imageView = UIImageView(image: profileImage)
+        
+        
+        
+        if let currentUser = User.currentUser {
+            imageView.setImageWith(currentUser.profileUrl!)
+        }
+        imageView.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
+        
+        //Set up right button
+        
+        let composeTweetButton = UIButton(type: .system)
+        
+        composeTweetButton.setImage(UIImage(named: "edit-icon"), for: .normal)
+        
+        //We don't want title appearing for profile screen.
+        if let tabBarController = self.parent{ // If this is true this means that it is nested in tab bar
+            tabBarController.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: imageView)
+            tabBarController.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: composeTweetButton)
+        }
+        
+        
+        
+        
+        
+        
     }
     
     func transparentBar() {
@@ -123,6 +159,8 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         
     }
+    
+    
     
 
 
