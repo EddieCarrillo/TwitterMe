@@ -16,6 +16,7 @@ class MenuBarContainerViewController: UIViewController {
     
     @IBOutlet weak var blurOverlayView: UIView!
     
+    @IBOutlet var blurTapGestureRecognizer: UITapGestureRecognizer!
     
     var isMenuShowing: Bool = false
     
@@ -24,6 +25,7 @@ class MenuBarContainerViewController: UIViewController {
         
         //Get access to navigation controller and detect event when user tapped profile button on navbar
         let controlNavigationController = childViewControllers[0] as! CentralNavigationController
+        
         
         
         
@@ -38,6 +40,10 @@ class MenuBarContainerViewController: UIViewController {
     
     func setupBlurOverlay(){
        self.blurOverlayView.translatesAutoresizingMaskIntoConstraints = false
+        //Detect user tapped.
+        self.blurOverlayView.isUserInteractionEnabled = true
+        
+        self.blurTapGestureRecognizer.addTarget(self, action: #selector(tappedOverlay))
         
         self.blurOverlayView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
         
@@ -67,6 +73,10 @@ class MenuBarContainerViewController: UIViewController {
         blurOverlayView.isHidden = !blurOverlayView.isHidden
         isMenuShowing = !isMenuShowing
         
+    }
+    
+    func tappedOverlay(){
+        self.toggleMenu()
     }
 
     override func didReceiveMemoryWarning() {

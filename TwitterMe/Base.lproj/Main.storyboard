@@ -259,6 +259,10 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f1l-f3-tKe">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="VVC-ET-g2f" appends="YES" id="FqW-42-p6k"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -279,11 +283,13 @@
                     </view>
                     <connections>
                         <outlet property="blurOverlayView" destination="f1l-f3-tKe" id="6My-AI-tSX"/>
+                        <outlet property="blurTapGestureRecognizer" destination="VVC-ET-g2f" id="pFG-Ok-mD5"/>
                         <outlet property="menuBarLeadingConstraint" destination="Wgz-QA-NsH" id="q8b-2l-3zc"/>
                         <outlet property="menuBarView" destination="wth-Kf-GD2" id="pa4-Wz-Mvs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KDj-iW-dLI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="VVC-ET-g2f"/>
             </objects>
             <point key="canvasLocation" x="505.79710144927537" y="20.380434782608699"/>
         </scene>
