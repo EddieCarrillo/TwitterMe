@@ -16,9 +16,11 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     let feedViewCellReuseId = "FeedViewTableViewCell"
     let profileSegue = "ProfileSegue"
     let tweetDetailSegue = "TweetDetailSegue"
+    let composeTweetSegue = "ComposeTweetSegue"
     var tweets: [Tweet] = []
     
     var lastPressedCell: FeedViewTableViewCell?
+    
 
     @IBAction func didTapProfilePicture(_ sender: UITapGestureRecognizer) {
         print("Profile picture tapped.")
@@ -26,6 +28,8 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.performSegue(withIdentifier: profileSegue, sender: nil)
         
     }
+    
+    
     @IBAction func didTapName(_ sender: UITapGestureRecognizer) {
         print("Profile name tapped")
         
@@ -44,6 +48,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         //Add autolayout
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
+        self.navigationController?.navigationBar.barTintColor = UIColor.white
         
         //Have to access parent view controller (tab bar controller) because this view controller is nested in
         self.parent?.title = "Home"
@@ -69,20 +74,28 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Do any additional setup after loading the view.
     }
     
+   override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.setupNavigationBar()
+        
+    }
+    
     func setupNavigationBar(){
         
         
         
         //Set up left button
-        var profileImage: UIImage = UIImage(named: "profile-Icon")! //Use default image
-        let imageView = UIImageView(image: profileImage)
+        let defaultProfileImage: UIImage = UIImage(named: "profile-Icon")! //Use default image
+        let profileButton = UIButton(type: .custom)
         
         
         
         if let currentUser = User.currentUser {
-            imageView.setImageWith(currentUser.profileUrl!)
+           profileButton.setImageFor(.normal, with: currentUser.profileUrl!, placeholderImage: defaultProfileImage)
+            
         }
-        imageView.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
+        
+        profileButton.addTarget(self, action: #selector(didTapProfileBar), for: .touchUpInside)
         
         //Set up right button
         
@@ -92,15 +105,32 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         //We don't want title appearing for profile screen.
         if let tabBarController = self.parent{ // If this is true this means that it is nested in tab bar
-            tabBarController.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: imageView)
+            tabBarController.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: profileButton)
             tabBarController.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: composeTweetButton)
+            tabBarController.navigationItem.title = "Home"
         }
         
+        composeTweetButton.addTarget(self, action: #selector(FeedViewController.onComposeTweetButtonTapped), for: UIControlEvents.touchUpInside)
         
         
         
         
+    }
+    
+    func didTapProfileBar(){
+        guard let centralNavigationController = self.parent?.parent as? CentralNavigationController else {
+            print("Could not get the central navigationc controller")
+            return
+        }
         
+        centralNavigationController.navBarButtonTapped?()
+        
+        
+    }
+    
+    func onComposeTweetButtonTapped(){
+        print("Compose tweet button tapped")
+        self.performSegue(withIdentifier: self.composeTweetSegue, sender: nil)
     }
     
     func transparentBar() {
@@ -181,6 +211,11 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                 let lastPressed = lastPressedCell
                 tweetDetailViewController.tweet = lastPressed?.tweet
             }
+        }else if segue.identifier == composeTweetSegue {
+            if let composeTweetViewController  = segue.destination as? ComposeTweetViewController{
+                composeTweetViewController.user = User.currentUser!
+            }
+            
         }
     }
     

@@ -14,6 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     let navigationControllerId: String = "TweetsNavigationController"
+    let containerViewControllerId : String = "MenuBarContainerController"
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -22,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if User.currentUser != nil {
              print("There is a current user")
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "TweetsNavigationController")
+            let vc = storyboard.instantiateViewController(withIdentifier: containerViewControllerId)
             
             window?.rootViewController = vc
             

@@ -45,6 +45,23 @@ class TwitterClient: BDBOAuth1SessionManager{
     }
     
     
+    func saveTweet(user: User, tweetText: String, success: @escaping()->(), failure: @escaping (Error)->()){
+        
+        var queryParameters: [String: Any] = [:]
+        queryParameters["status"]  = tweetText
+        
+        post("/1.1/statuses/update.json", parameters: queryParameters, progress: { (progess: Progress) in
+            
+        }, success: { (task: URLSessionDataTask, response: Any?) in
+            success()
+            
+        }) { (task: URLSessionDataTask?, error: Error) in
+            print("[ERROR] \(error)")
+            failure(error)
+        }
+        
+    }
+    
     
     func loadTweets(user: User, sucess: @escaping (([Tweet]) -> ()), failure : @escaping (Error) -> ()){
         let twitterClient = TwitterClient.sharedInstance
