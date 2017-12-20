@@ -26,6 +26,8 @@
 		2C0135241FE6F1F0008722D6 /* ComposeTweetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0135231FE6F1F0008722D6 /* ComposeTweetViewController.swift */; };
 		2C0135601FE82DFB008722D6 /* MenuBarContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C01355F1FE82DFB008722D6 /* MenuBarContainerViewController.swift */; };
 		2C050B531FE858E100853E49 /* CentralNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C050B521FE858E100853E49 /* CentralNavigationController.swift */; };
+		2C050B551FE8823100853E49 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C050B541FE8823100853E49 /* UIViewExtensions.swift */; };
+		2C050B591FE8875200853E49 /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C050B581FE8875200853E49 /* MenuBarView.swift */; };
 		70ED9160BFF98A95290346FE /* Pods_TwitterMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE3ECA5CC556FB72B277487 /* Pods_TwitterMe.framework */; };
 		77E4FB53E0A6507B8848DD8E /* Pods_TwitterMeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D69F8652BE34972786CAAEB8 /* Pods_TwitterMeTests.framework */; };
 /* End PBXBuildFile section */
@@ -64,6 +66,8 @@
 		2C0135231FE6F1F0008722D6 /* ComposeTweetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeTweetViewController.swift; sourceTree = "<group>"; };
 		2C01355F1FE82DFB008722D6 /* MenuBarContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarContainerViewController.swift; sourceTree = "<group>"; };
 		2C050B521FE858E100853E49 /* CentralNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CentralNavigationController.swift; sourceTree = "<group>"; };
+		2C050B541FE8823100853E49 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		2C050B581FE8875200853E49 /* MenuBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBarView.swift; sourceTree = "<group>"; };
 		62A684CEEC05121F3C215A5F /* Pods-TwitterMeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterMeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TwitterMeTests/Pods-TwitterMeTests.release.xcconfig"; sourceTree = "<group>"; };
 		86CD151E145461D47B12A8BF /* Pods-TwitterMeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterMeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TwitterMeTests/Pods-TwitterMeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D69F8652BE34972786CAAEB8 /* Pods_TwitterMeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TwitterMeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,6 +99,7 @@
 		05254BCE1FB3EC6000E803CD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2C050B581FE8875200853E49 /* MenuBarView.swift */,
 				0542E1C31FB29BE4006DE1EC /* FeedViewTableViewCell.swift */,
 				056A62731FC3CC5600A73C2F /* ProfileView.swift */,
 			);
@@ -143,6 +148,7 @@
 				1F5A58FE1FA8F03B0065A8C5 /* Assets.xcassets */,
 				1F5A59001FA8F03C0065A8C5 /* LaunchScreen.storyboard */,
 				1F5A59031FA8F03C0065A8C5 /* Info.plist */,
+				2C050B541FE8823100853E49 /* UIViewExtensions.swift */,
 			);
 			path = TwitterMe;
 			sourceTree = "<group>";
@@ -411,6 +417,8 @@
 				1F5A59251FAA33B30065A8C5 /* Tweet.swift in Sources */,
 				1F5A59231FAA33A30065A8C5 /* User.swift in Sources */,
 				1FC71B371FB16F2B00D94696 /* FeedViewController.swift in Sources */,
+				2C050B551FE8823100853E49 /* UIViewExtensions.swift in Sources */,
+				2C050B591FE8875200853E49 /* MenuBarView.swift in Sources */,
 				0572AEED1FB54D60007ED4AA /* ProfileViewController.swift in Sources */,
 				2C050B531FE858E100853E49 /* CentralNavigationController.swift in Sources */,
 				1F5A58F81FA8F03B0065A8C5 /* AppDelegate.swift in Sources */,

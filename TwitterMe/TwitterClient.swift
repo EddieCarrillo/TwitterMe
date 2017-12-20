@@ -15,8 +15,8 @@ import BDBOAuth1Manager
 class TwitterClient: BDBOAuth1SessionManager{
     
     
-    static let consumerKey = "hVQQ9kHseRNEOhVOsOqPeTXfY"
-    static let consumerSecret = "6oHbCoKAZsz64CGSisAwZyQShq4TXomNupeBh3wk0jQMWXP1EW"
+    static let consumerKey = "mzSyEAqq9ZXq2YY1oPqp9w3Sl"
+    static let consumerSecret = "bAXVji8LnO7DTrG3Ut8XEJtTkEPl3hF6YhseVB1kUbNyUZlKmG"
    
     static let sharedInstance =  TwitterClient(baseURL: URL(string: "https://api.twitter.com"), consumerKey: consumerKey, consumerSecret: consumerSecret)
     
@@ -49,9 +49,10 @@ class TwitterClient: BDBOAuth1SessionManager{
         
         var queryParameters: [String: Any] = [:]
         queryParameters["status"]  = tweetText
+        let twitterClient = TwitterClient.sharedInstance
         
-        post("/1.1/statuses/update.json", parameters: queryParameters, progress: { (progess: Progress) in
-            
+        twitterClient?.post("/1.1/statuses/update.json", parameters: queryParameters, progress: { (progess: Progress) in
+            print("progress: \(progess.completedUnitCount)")
         }, success: { (task: URLSessionDataTask, response: Any?) in
             success()
             

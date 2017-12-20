@@ -62,6 +62,7 @@ class FeedViewTableViewCell: UITableViewCell {
             self.favoriteNumberLabel.text = "\(tweet.favoritesCount)"
             self.retweetNumberLabel.text = "\(tweet.retweetCount)"
             self.profilePictureImageView.isUserInteractionEnabled = true
+            self.profilePictureImageView.setRounded()
             self.nameLabel.isUserInteractionEnabled = true
             if let owner = tweet.owner {
                 if let profilePictureUrl = owner.profileUrl {
