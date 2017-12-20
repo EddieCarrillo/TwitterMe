@@ -15,6 +15,10 @@ class Tweet: NSObject {
     var owner: User?
     var retweetCount: Int = 0
     var favoritesCount: Int = 0
+    var replyCount: Int = 0
+    var favorited: Bool = false
+    var retweeted: Bool = false
+    var id: Int = 0
     
     var ownerName: String? {
         get{
@@ -66,6 +70,12 @@ class Tweet: NSObject {
         self.text = dictionary["text"] as? String
         self.retweetCount = (dictionary["retweet_count"] as? Int) ?? 0
         self.favoritesCount = (dictionary["favorite_count"] as? Int) ?? 0
+        self.replyCount = (dictionary["reply_count"] as? Int) ?? 0
+        
+        self.favorited = (dictionary["favorited"] as? Bool) ?? false
+        self.retweeted = (dictionary["retweeted"] as? Bool) ?? false
+        self.id = (dictionary["id"] as? Int) ?? 0
+        
         
         if  let timestampString = dictionary["time_stamp"] as? String{
             let formatter = DateFormatter()
@@ -83,6 +93,56 @@ class Tweet: NSObject {
       
         
     }
+    
+    
+    func toggleRetweet(){
+        let api = TwitterClient.sharedInstance
+        
+        //Update the retweeted status on server level
+        
+        
+        if retweeted {
+            api?.unRetweet(tweet: self, success: {
+                print("Successfully retweeted tweet")
+            }, failure: { (error: Error ) in
+                print("[ERROR] \(error)")
+            })
+        }else {
+            api?.retweet(tweet: self, success: {
+                print("Successfully retweeted tweet.")
+            }, failure: { (error: Error) in
+                print("[ERROR] Could not successfully retweet \n\(error)")
+            })
+        }
+        
+        
+        //Update the retweeted status locally
+        retweeted = !retweeted
+        
+    }
+    
+    func toggleFavorite(){
+        let api = TwitterClient.sharedInstance
+        
+        if favorited { // If favortited then unfavorite and vice versa
+            api?.unFavoriteTweet(tweet: self ,success: {
+                print("Successfully unfavorited tweet")
+            }, failure: { (error: Error) in
+                print("[ERROR] \(error)")
+            })
+            
+        }else {
+            api?.favoriteTweet(tweet: self, success: {
+                print("Syccessfully favorited tweet")
+            }, failure: { (error: Error) in
+                print("[ERROR]: \(error)")
+            })
+        }
+        //Update the tweet locally
+        favorited = !favorited
+        
+    }
+    
     
     
     class func tweetsWithArray(dictionaries: [NSDictionary]) -> [Tweet] {

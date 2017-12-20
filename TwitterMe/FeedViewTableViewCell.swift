@@ -21,23 +21,67 @@ class FeedViewTableViewCell: UITableViewCell {
     
     @IBOutlet weak var tweetTextLabel: UILabel!
     
-    @IBOutlet weak var replyImageView: UIImageView!
+    
+    @IBOutlet weak var replyButton: UIButton!
     
     @IBOutlet weak var replyNumberLabel: UILabel!
     
-    @IBOutlet weak var retweetImageView: UIImageView!
+    
+    @IBOutlet weak var retweetButton: UIButton!
     
     @IBOutlet weak var retweetNumberLabel: UILabel!
     
-    @IBOutlet weak var favoriteImageView: UIImageView!
     
+    
+    @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var favoriteNumberLabel: UILabel!
     
     @IBOutlet weak var privateMessageImageView: UIImageView!
     
     
     
-   
+    @IBAction func onReplyTapped(_ sender: Any) {
+        //TODO: This makes no sense.
+        self.replyButton.isSelected = !self.replyButton.isSelected
+        
+        
+        
+    }
+    
+    
+    @IBAction func onRetweetTapped(_ sender: Any) {
+        
+        guard let tweet = self.tweet else{
+            print("Could not load tweet for some reason")
+            return
+            
+        }
+        //Updates tweet locally and at the server level
+        tweet.toggleRetweet()
+        
+        //Update the UI
+        self.retweetButton.isSelected = tweet.retweeted
+    }
+    
+    
+    @IBAction func onLikeTapped(_ sender: Any) {
+        guard let tweet = self.tweet else {
+            print("Could not access the tweet")
+            return
+        }
+        
+        //Updates tweet locally and at the server level
+        tweet.toggleFavorite()
+        
+        //Update the UI
+        self.favoriteButton.isSelected = tweet.favorited
+        
+        
+        
+    }
+    
+    
+    
     
     var tweet: Tweet?{
         
@@ -47,8 +91,6 @@ class FeedViewTableViewCell: UITableViewCell {
                 return;
             }
             
-            
-            
             //Update the UI.
           //  self.profilePictureImageView =
             self.nameLabel.text = tweet.ownerName
@@ -57,13 +99,19 @@ class FeedViewTableViewCell: UITableViewCell {
                 self.handleLabel.text = "@\(handle)"
 
             }
+            
+            
+            initButtons()
             self.dateLabel.text = tweet.dateText
             self.tweetTextLabel.text = tweet.text
             self.favoriteNumberLabel.text = "\(tweet.favoritesCount)"
             self.retweetNumberLabel.text = "\(tweet.retweetCount)"
+            self.replyNumberLabel.text = "\(tweet.replyCount)"
             self.profilePictureImageView.isUserInteractionEnabled = true
             self.profilePictureImageView.setRounded()
             self.nameLabel.isUserInteractionEnabled = true
+            
+            
             if let owner = tweet.owner {
                 if let profilePictureUrl = owner.profileUrl {
                     print("Profile picture successfully set.")
@@ -80,6 +128,25 @@ class FeedViewTableViewCell: UITableViewCell {
            
         }
     
+    }
+    
+    func initButtons(){
+        let favoritedButtonImage = UIImage(named: "favor-icon-red")
+        let unfavoritedButtonImage = UIImage(named: "favor-icon")
+        
+        let retweetedIconImage = UIImage(named: "retweet-icon-green")
+        let unretweetedIconImage = UIImage(named: "retweet-icon")
+        
+        self.favoriteButton.setImage(unfavoritedButtonImage, for: UIControlState.normal)
+        self.favoriteButton.setImage(favoritedButtonImage, for: .selected)
+        
+        self.retweetButton.setImage(unretweetedIconImage, for: .normal)
+        self.retweetButton.setImage(retweetedIconImage, for: .selected)
+        
+        self.retweetButton.isSelected = (tweet?.retweeted) ?? false
+        self.favoriteButton.isSelected = (tweet?.favorited) ?? false
+        
+        
     }
 
     override func awakeFromNib() {

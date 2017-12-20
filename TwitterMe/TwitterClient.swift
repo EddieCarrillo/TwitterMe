@@ -27,6 +27,11 @@ class TwitterClient: BDBOAuth1SessionManager{
     let userTimelineEndpoint = "/1.1/statuses/user_timeline.json"
     let loginVerifyEndpoint = "1.1/account/verify_credentials.json"
     let oauthTokenEndpoint = "oauth/request_token"
+    let retweetEndpoint = "1.1/statuses/retweet"
+    let unretweetEndpoint = "1.1/statuses/unretweet"
+    let favoriteEndpoint = "1.1/favorites/create"
+    let unfavoriteEndpoint = "1.1/favorites/destroy"
+    
    // let oauthAccessTokenEndpoint = ""
     
     
@@ -74,7 +79,7 @@ class TwitterClient: BDBOAuth1SessionManager{
     
     
     func loadTweets(user: User, sucess: @escaping (([Tweet]) -> ()), failure : @escaping (Error) -> ()){
-        //TODO: Make sure works, possible 
+        //TODO: Make sure works, possible
         let twitterClient = TwitterClient.sharedInstance
         var queryParams : [String: Any] = [:]
         queryParams["screen_name"] = (user.screenname)!
@@ -161,13 +166,53 @@ class TwitterClient: BDBOAuth1SessionManager{
     
     }
     
+    func favoriteTweet(tweet: Tweet, success: @escaping()->(), failure: @escaping(Error) -> ()){
+        let tweetId: Int = tweet.id
+        var queryParams: [String: Any] = [:]
+        queryParams["id"] = tweetId
+        
+        self.post("\(favoriteEndpoint).json", parameters: queryParams, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
+                success()
+        }) { (task: URLSessionDataTask?, error: Error) in
+            failure(error)
+        }
+        
+    }
     
-//    func loadPicture(url: URL){
-//        
-//    
-//    
-//    
-//    }
+    func unFavoriteTweet(tweet: Tweet, success: @escaping()->(), failure: @escaping(Error) -> ()){
+        let tweetId: Int = tweet.id
+        var queryParams: [String: Any] = [:]
+        queryParams["id"] = tweetId
+        
+        self.post("\(unfavoriteEndpoint).json", parameters: queryParams, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
+            success()
+        }) { (task: URLSessionDataTask?, error: Error) in
+            failure(error)
+        }
+        
+    }
+    
+    func retweet(tweet: Tweet, success: @escaping()->(), failure: @escaping(Error) -> ()){
+        let tweetId: Int = tweet.id
+        
+        self.post("\(retweetEndpoint)/\(tweetId).json", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
+            success()
+        }) { (task: URLSessionDataTask?, error: Error) in
+            failure(error)
+        }
+        
+    }
+    
+    func unRetweet(tweet: Tweet, success: @escaping()->(), failure: @escaping(Error) -> ()){
+        let tweetId: Int = tweet.id
+        
+        self.post("\(unretweetEndpoint)/\(tweetId).json", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
+            success()
+        }) { (task: URLSessionDataTask?, error: Error) in
+            failure(error)
+        }
+        
+    }
     
     
     func login(success: @escaping () -> (), failure: @escaping (Error)->()){
