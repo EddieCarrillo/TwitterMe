@@ -20,6 +20,49 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     var tweets: [Tweet] = []
     
     var lastPressedCell: FeedViewTableViewCell?
+    var refreshControl: UIRefreshControl?
+    
+    
+    
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        //Init UIRefreshControl
+        let refreshControl = UIRefreshControl()
+        
+        //Bind action to the refresh control
+        refreshControl.addTarget(self, action: #selector(refreshTimeline(_:)
+            ), for: UIControlEvents.valueChanged)
+        
+        //add refresh to table view
+        self.tableView.insertSubview(refreshControl, at: 0)
+        
+        //Add initial data to feed
+        self.refreshData(success: {}, failureBlock: {})
+        
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+        self.tableView.estimatedRowHeight = 100
+        //Add autolayout
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        
+        self.navigationController?.navigationBar.barTintColor = UIColor.white
+        
+        //Have to access parent view controller (tab bar controller) because this view controller is nested in
+        self.parent?.title = "Home"
+        // transparentBar()
+        
+        setupNavigationBar()
+        // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.setupNavigationBar()
+        
+    }
     
 
     @IBAction func didTapProfilePicture(_ sender: UITapGestureRecognizer) {
@@ -38,45 +81,43 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
 
           self.performSegue(withIdentifier: profileSegue, sender: nil)
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    
+    
+    
+    
+    func refreshTimeline(_ refreshControl: UIRefreshControl){
+        let twitterClient = TwitterClient.sharedInstance
+        
+        let successBlock: () -> () = {
+            refreshControl.endRefreshing()
+        }
+        
+        let failure: ()->() = {
+            refreshControl.endRefreshing()
+            
+        }
+        refreshControl.beginRefreshing()
+        
+        refreshData(success: successBlock, failureBlock: failure)
         
         
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
-        self.tableView.estimatedRowHeight = 100
-        //Add autolayout
-        self.tableView.rowHeight = UITableViewAutomaticDimension
-        
-        self.navigationController?.navigationBar.barTintColor = UIColor.white
-        
-        //Have to access parent view controller (tab bar controller) because this view controller is nested in
-        self.parent?.title = "Home"
-        
-        
-       // transparentBar()
-        
+    }
+    
+    func refreshData(success: @escaping()->(), failureBlock: @escaping () -> ()){
         let twitterClient = TwitterClient.sharedInstance
         
         twitterClient?.homeTimeline(success: { (tweets: [Tweet]) in
-            self.tweets = tweets
-            self.tableView.reloadData()
-            
+            //Default behavior
+                self.tweets = tweets
+                self.tableView.reloadData()
+            //Injectable behavior
+            success()
+                
         }, failure: { (error: Error) in
-            print("[ERROR] \(error)")
+            print("[ERROR]: \(error)")
+            //Injectible behavior
+            failureBlock()
         })
-        
-        setupNavigationBar()
-        
-        
-        
-
-        // Do any additional setup after loading the view.
-    }
-    
-   override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.setupNavigationBar()
         
     }
     
