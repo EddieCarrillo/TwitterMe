@@ -21,13 +21,22 @@ class TwitterClient: BDBOAuth1SessionManager{
     static let sharedInstance =  TwitterClient(baseURL: URL(string: "https://api.twitter.com"), consumerKey: consumerKey, consumerSecret: consumerSecret)
     
     
+    /*URLS*/
+    let homeTimelineEndpoint = "1.1/statuses/home_timeline.json"
+    let saveTweetEndpoint = "/1.1/statuses/update.json"
+    let userTimelineEndpoint = "/1.1/statuses/user_timeline.json"
+    let loginVerifyEndpoint = "1.1/account/verify_credentials.json"
+    let oauthTokenEndpoint = "oauth/request_token"
+   // let oauthAccessTokenEndpoint = ""
+    
+    
     var loginSucess: (()->())?
     var failure:  ((Error) -> ())?
 
     
     func homeTimeline(success: @escaping ([Tweet]) -> (), failure: @escaping (Error) -> ()){
     
-        get("1.1/statuses/home_timeline.json", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
+        get(homeTimelineEndpoint, parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
             
             
             let dictionaries = response as! [NSDictionary]
@@ -51,7 +60,7 @@ class TwitterClient: BDBOAuth1SessionManager{
         queryParameters["status"]  = tweetText
         let twitterClient = TwitterClient.sharedInstance
         
-        twitterClient?.post("/1.1/statuses/update.json", parameters: queryParameters, progress: { (progess: Progress) in
+        twitterClient?.post(saveTweetEndpoint, parameters: queryParameters, progress: { (progess: Progress) in
             print("progress: \(progess.completedUnitCount)")
         }, success: { (task: URLSessionDataTask, response: Any?) in
             success()
@@ -65,8 +74,12 @@ class TwitterClient: BDBOAuth1SessionManager{
     
     
     func loadTweets(user: User, sucess: @escaping (([Tweet]) -> ()), failure : @escaping (Error) -> ()){
+        //TODO: Make sure works, possible 
         let twitterClient = TwitterClient.sharedInstance
-        twitterClient?.get("/1.1/statuses/user_timeline.json?screen_name=\(user.screenname!)", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) -> () in
+        var queryParams : [String: Any] = [:]
+        queryParams["screen_name"] = (user.screenname)!
+        
+        twitterClient?.get(userTimelineEndpoint, parameters: queryParams, progress: nil, success: { (task: URLSessionDataTask, response: Any?) -> () in
             let dictionary = response as! [NSDictionary]
             let tweets = Tweet.tweetsWithArray(dictionaries: dictionary)
             
@@ -105,7 +118,7 @@ class TwitterClient: BDBOAuth1SessionManager{
     
     
     func currentAccount( success: @escaping (User) -> (), failure: @escaping (Error) -> ()){
-        get("1.1/account/verify_credentials.json", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
+        get(loginVerifyEndpoint, parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
             //  print("response: \(response)")
             
             
@@ -167,7 +180,7 @@ class TwitterClient: BDBOAuth1SessionManager{
         
         
         //Now we need a request token so we can show twitter that we are the actual app not some random 3rd party app or loser who lives with his mom
-        fetchRequestToken(withPath: "oauth/request_token", method: "GET", callbackURL: URL(string: "twitterdemo://oauth"), scope: nil
+        fetchRequestToken(withPath: oauthTokenEndpoint, method: "GET", callbackURL: URL(string: "twitterdemo://oauth"), scope: nil
             , success: { (reqToken: BDBOAuth1Credential?) in
                 guard let requestToken = reqToken?.token else {
                     print("No token received ::")
