@@ -56,6 +56,8 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         setupNavigationBar()
         // Do any additional setup after loading the view.
+        
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {

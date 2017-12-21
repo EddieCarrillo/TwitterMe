@@ -44,8 +44,10 @@ class MenuBarContainerViewController: UIViewController {
     @IBOutlet weak var followingCountLabel: UILabel!
     
     
+    @IBOutlet var profileTabGestureRecognizer: UITapGestureRecognizer!
     
     
+    @IBOutlet weak var profileTabView: UIView!
     
     
     var isMenuShowing: Bool = false
@@ -53,18 +55,22 @@ class MenuBarContainerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        initTabs()
+        
         self.user = User.currentUser
         
         //Get access to navigation controller and detect event when user tapped profile button on navbar
         let controlNavigationController = childViewControllers[0] as! CentralNavigationController
         
+        profileTabGestureRecognizer.addTarget(self, action: #selector(onProfileTabTapped))
         
         
-        
+    
         //If the user taps the nav bar button then toggle the menu...
                 controlNavigationController.navBarButtonTapped = {
             self.toggleMenu()
         }
+        
         
         setupBlurOverlay()
         
@@ -109,6 +115,21 @@ class MenuBarContainerViewController: UIViewController {
     
     func tappedOverlay(){
         self.toggleMenu()
+    }
+    
+    func initTabs(){
+        
+        profileTabGestureRecognizer.addTarget(self, action: #selector(onProfileTabTapped))
+        
+        
+    }
+    
+    func onProfileTabTapped(){
+        let controlNavigationController = childViewControllers[0] as! CentralNavigationController
+        controlNavigationController.profileTabTapped?()
+        //Close the menu after clicking the profile tab
+        self.toggleMenu()
+        
     }
     
     func updateGui(){

@@ -28,6 +28,7 @@
 		2C050B531FE858E100853E49 /* CentralNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C050B521FE858E100853E49 /* CentralNavigationController.swift */; };
 		2C050B551FE8823100853E49 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C050B541FE8823100853E49 /* UIViewExtensions.swift */; };
 		2C050B591FE8875200853E49 /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C050B581FE8875200853E49 /* MenuBarView.swift */; };
+		2C050B5D1FEB121700853E49 /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C050B5C1FEB121700853E49 /* HomeTabBarController.swift */; };
 		70ED9160BFF98A95290346FE /* Pods_TwitterMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE3ECA5CC556FB72B277487 /* Pods_TwitterMe.framework */; };
 		77E4FB53E0A6507B8848DD8E /* Pods_TwitterMeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D69F8652BE34972786CAAEB8 /* Pods_TwitterMeTests.framework */; };
 /* End PBXBuildFile section */
@@ -68,6 +69,7 @@
 		2C050B521FE858E100853E49 /* CentralNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CentralNavigationController.swift; sourceTree = "<group>"; };
 		2C050B541FE8823100853E49 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		2C050B581FE8875200853E49 /* MenuBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBarView.swift; sourceTree = "<group>"; };
+		2C050B5C1FEB121700853E49 /* HomeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
 		62A684CEEC05121F3C215A5F /* Pods-TwitterMeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterMeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TwitterMeTests/Pods-TwitterMeTests.release.xcconfig"; sourceTree = "<group>"; };
 		86CD151E145461D47B12A8BF /* Pods-TwitterMeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterMeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TwitterMeTests/Pods-TwitterMeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D69F8652BE34972786CAAEB8 /* Pods_TwitterMeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TwitterMeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -190,6 +192,7 @@
 				0566FBA61FCF7E5D0048AE6A /* TweetDetailViewController.swift */,
 				2C0135231FE6F1F0008722D6 /* ComposeTweetViewController.swift */,
 				2C01355F1FE82DFB008722D6 /* MenuBarContainerViewController.swift */,
+				2C050B5C1FEB121700853E49 /* HomeTabBarController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -423,6 +426,7 @@
 				2C050B531FE858E100853E49 /* CentralNavigationController.swift in Sources */,
 				1F5A58F81FA8F03B0065A8C5 /* AppDelegate.swift in Sources */,
 				2C0135241FE6F1F0008722D6 /* ComposeTweetViewController.swift in Sources */,
+				2C050B5D1FEB121700853E49 /* HomeTabBarController.swift in Sources */,
 				0566FBA71FCF7E5D0048AE6A /* TweetDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
