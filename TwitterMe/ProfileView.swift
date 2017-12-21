@@ -58,7 +58,6 @@ class ProfileView: UIView {
             
             if let backgroundPictureUrl  = user.backgroundProfileUrl {
                 self.backgroundPictureImageView.setImageWith(backgroundPictureUrl)
-               self.backgroundPictureImageView.setRounded()
 //                self.profilePictureImageView.setImageWith(backgroundPictureUrl)
                 print("[BACKGROUND_PICTURE_URL] SUCCESS")
 
