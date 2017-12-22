@@ -154,13 +154,19 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         //Set up right button
         
         let composeTweetButton = UIButton(type: .system)
+        let composeTweetImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
         
-        composeTweetButton.setImage(UIImage(named: "edit-icon"), for: .normal)
+        composeTweetImageView.image = UIImage(named: "edit-icon")
+        //Add Action
+        composeTweetImageView.gestureRecognizers = []
+        composeTweetImageView.gestureRecognizers?.append(UITapGestureRecognizer(target: self, action: #selector(onComposeTweetButtonTapped)))
+        
+       
         
         //We don't want title appearing for profile screen.
         if let tabBarController = self.parent{ // If this is true this means that it is nested in tab bar
             tabBarController.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: profileImageView)
-            tabBarController.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: composeTweetButton)
+            tabBarController.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: composeTweetImageView)
             tabBarController.navigationItem.title = "Home"
         }
         
