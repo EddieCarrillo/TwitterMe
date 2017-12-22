@@ -13,6 +13,7 @@ class CentralNavigationController: UINavigationController {
     
     var navBarButtonTapped: ((Void) -> (Void))?
     var profileTabTapped: ((Void) -> (Void))?
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,8 @@ class CentralNavigationController: UINavigationController {
         
         
     }
+    
+    
     
     
 

@@ -81,7 +81,11 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         lastPressedCell = sender.view?.superview?.superview as! FeedViewTableViewCell?
         
 
-          self.performSegue(withIdentifier: profileSegue, sender: nil)
+         let tabBarController = self.parent as! HomeTabBarController
+        
+        tabBarController.profilePictureTapped?((lastPressedCell?.tweet?.owner)!)
+        
+        
     }
     
     

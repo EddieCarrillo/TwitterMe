@@ -13,6 +13,7 @@ class HomeTabBarController: UITabBarController {
     static let profileSegue = "ProfileSegue"
     
     var profileTabPressed: (()->())?
+    var profilePictureTapped: ((User)->())?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +21,11 @@ class HomeTabBarController: UITabBarController {
         profileTabPressed = {
             self.performSegue(withIdentifier: HomeTabBarController.profileSegue, sender: nil)
         }
-
+        
+        profilePictureTapped = { (user: User) in
+           self.performSegue(withIdentifier: HomeTabBarController.profileSegue, sender: user)
+        
+        }
     }
 
     
@@ -32,7 +37,12 @@ class HomeTabBarController: UITabBarController {
         // Pass the selected object to the new view controller.
         if segue.identifier == HomeTabBarController.profileSegue {
             let profileViewController = segue.destination as! ProfileViewController
-            profileViewController.user = User.currentUser!
+            if let user = sender as? User { // Only a sender when not using sidebar
+                profileViewController.user = user
+            }else {
+                profileViewController.user = User.currentUser
+            }
+            
         }
         
     }
