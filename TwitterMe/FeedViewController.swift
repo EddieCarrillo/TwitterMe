@@ -129,16 +129,27 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         //Set up left button
         let defaultProfileImage: UIImage = UIImage(named: "profile-Icon")! //Use default image
-        let profileButton = UIButton(type: .custom)
+//        let profileButton = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+//        profileButton.titleLabel?.text = nil
         
-        
+        let profileImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
         
         if let currentUser = User.currentUser {
-           profileButton.setImageFor(.normal, with: currentUser.profileUrl!, placeholderImage: defaultProfileImage)
+//            profileButton.setImageFor(.normal, with: currentUser.profileUrl!, placeholderImage: defaultProfileImage)
+//            profileButton.imageView?.contentMode = UIViewContentMode.scaleAspectFit
+//            
+            profileImageView.setImageWith(currentUser.profileUrl!, placeholderImage: defaultProfileImage)
+            profileImageView.contentMode = UIViewContentMode.scaleAspectFit
             
         }
         
-        profileButton.addTarget(self, action: #selector(didTapProfileBar), for: .touchUpInside)
+        profileImageView.gestureRecognizers = []
+        
+        profileImageView.gestureRecognizers?.append(UITapGestureRecognizer(target: self, action: #selector(didTapProfileBar)))
+        
+        profileImageView.isUserInteractionEnabled = true
+        
+//        profileButton.addTarget(self, action: #selector(didTapProfileBar), for: .touchUpInside)
         
         //Set up right button
         
@@ -148,7 +159,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         //We don't want title appearing for profile screen.
         if let tabBarController = self.parent{ // If this is true this means that it is nested in tab bar
-            tabBarController.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: profileButton)
+            tabBarController.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: profileImageView)
             tabBarController.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: composeTweetButton)
             tabBarController.navigationItem.title = "Home"
         }

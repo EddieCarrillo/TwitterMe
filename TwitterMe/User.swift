@@ -82,9 +82,11 @@ class User: NSObject {
                 let jsonUserData =  defaults.object(forKey: "currentUser") as? Data
                 
                 if let jsonUserData = jsonUserData{
-                    let dictionary = try! JSONSerialization.jsonObject(with: jsonUserData, options: []) as! NSDictionary
-                    
-                    _currentUser = User(dictionary: dictionary)
+                    let dictionary = try? JSONSerialization.jsonObject(with: jsonUserData, options: []) as! NSDictionary
+                    if let userDict = dictionary {
+                        _currentUser = User(dictionary: userDict)
+
+                    }
                 }
                 
             }
