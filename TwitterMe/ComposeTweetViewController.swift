@@ -38,10 +38,24 @@ class ComposeTweetViewController: UIViewController {
     
     func initNavBar(){
         
-        let saveTweetButton = UIButton(type: .system)
+       let saveTweetButton = UIButton(type: .system)
+    
+//        let saveTweetLabel = UILabel()
+//        saveTweetLabel.text = "Tweet"
+//        saveTweetLabel.gestureRecognizers = []
+//        saveTweetLabel.frame =  CGRect(x: 0, y: 0, width: 50, height: 100)
+//        saveTweetLabel.textColor = UIColor(red: (0.0), green: 122.0/255, blue: (255.0/255), alpha: 1.0)
+//        saveTweetLabel.isUserInteractionEnabled = true
+        
+//        
+//        saveTweetLabel.gestureRecognizers?.append(UITapGestureRecognizer(target: self, action: #selector(didTapTweetButton)))
+        
+
         
         saveTweetButton.setTitle("Tweet", for: .normal)
+        saveTweetButton.frame = CGRect(x: 0, y: 0, width: 50, height: 100)
         
+            
         saveTweetButton.addTarget(self, action: #selector(ComposeTweetViewController.didTapTweetButton), for: UIControlEvents.touchUpInside)
         
         let barItem = UIBarButtonItem(customView: saveTweetButton)
