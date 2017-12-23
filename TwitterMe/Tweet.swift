@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DateToolsSwift
 
 class Tweet: NSObject {
     
@@ -56,7 +57,9 @@ class Tweet: NSObject {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MM/dd/yyyy" //Month/day/YEAR format
             
-            return dateFormatter.string(from: createdAt)
+            
+            
+            return "· \(createdAt.shortTimeAgoSinceNow)" 
             
         }
     
@@ -77,7 +80,7 @@ class Tweet: NSObject {
         self.id = (dictionary["id"] as? Int) ?? 0
         
         
-        if  let timestampString = dictionary["time_stamp"] as? String{
+        if  let timestampString = dictionary["created_at"] as? String{
             let formatter = DateFormatter()
             
             formatter.dateFormat = "EEE MMM d HH:mm:ss Z y"
