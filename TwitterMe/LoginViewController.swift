@@ -12,6 +12,8 @@ import BDBOAuth1Manager
 class LoginViewController: UIViewController {
     
     
+    static let storyboardIdString = "LoginViewController"
+    
     let feedSegueIdentifier: String = "FeedSegue"
    
     
@@ -38,7 +40,6 @@ class LoginViewController: UIViewController {
             print("I am logged in!")
             
             self.performSegue(withIdentifier: self.feedSegueIdentifier, sender: nil)
-            
             
         }) { (error: Error) in
             print("[ERROR]: \(error)")

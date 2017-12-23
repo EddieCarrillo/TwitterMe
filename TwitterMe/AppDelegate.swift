@@ -33,6 +33,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }else {
            print("There is not a current user.")
         }
+        
+        //Notification observing logout sequence
+        NotificationCenter.default.addObserver(forName: NSNotification.Name("didLogout"), object: nil, queue: OperationQueue.main) { (notification: Notification) in
+            print("Notification receiveds")
+            //Load and show the login view controller
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            
+            let loginViewController = storyboard.instantiateViewController(withIdentifier: LoginViewController.storyboardIdString)
+            
+            self.window?.rootViewController = loginViewController
+        }
         return true
     }
 
