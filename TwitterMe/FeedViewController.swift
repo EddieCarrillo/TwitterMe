@@ -278,10 +278,14 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         }else if segue.identifier == composeTweetSegue {
             if let composeTweetViewController  = segue.destination as? ComposeTweetViewController{
                 composeTweetViewController.user = User.currentUser!
+                composeTweetViewController.finished = {
+                        self.navigationController?.popViewController(animated: true)
+                      }
+                }
             }
             
         }
     }
     
 
-}
+

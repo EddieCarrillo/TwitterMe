@@ -72,6 +72,18 @@ class User: NSObject {
     }
     
     
+    static func logout(){
+        //Clear the current user
+        User.currentUser = nil
+        
+        ///Deauthorize OAuth tokens
+        TwitterClient.sharedInstance?.deauthorize()
+        
+        //Post logout notification
+        NotificationCenter.default.post(name: NSNotification.Name("didLogout"), object: nil)
+    }
+    
+    
     static var _currentUser: User?
     
     class var currentUser: User?{

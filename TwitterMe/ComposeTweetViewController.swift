@@ -19,6 +19,8 @@ class ComposeTweetViewController: UIViewController {
     
     @IBOutlet weak var tweetTextField: UITextField!
     
+    var finished: (()->())?
+    
     
     
     
@@ -79,9 +81,14 @@ class ComposeTweetViewController: UIViewController {
         //Not safe code...
         networkAPI?.saveTweet(user: self.user, tweetText: tweetText!
             , success: {
-                print("Successfully saved tweet.")
+                self.finished?()
+                
         }, failure: { (error: Error) in
             print("Failure")
+            let alertViewController = UIAlertController(title: "Internet Connection", message: "Please check connection and try again.", preferredStyle: UIAlertControllerStyle.alert)
+            alertViewController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction) in
+                     print("Dismissed alert view controller.")
+            }))
         })
         
         
