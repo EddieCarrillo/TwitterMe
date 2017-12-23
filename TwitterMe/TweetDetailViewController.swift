@@ -36,6 +36,8 @@ class TweetDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.profilePictureImageView.setRounded()
+        
         updateGUI()
 
         // Do any additional setup after loading the view.
