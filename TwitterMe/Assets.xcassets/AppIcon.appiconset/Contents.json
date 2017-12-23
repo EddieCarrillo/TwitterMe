@@ -3,8 +3,20 @@
     {
       "size" : "20x20",
       "idiom" : "iphone",
+      "filename" : "twiiter-logo-20@2x-1.png",
+      "scale" : "2x"
+    },
+    {
+      "size" : "20x20",
+      "idiom" : "iphone",
       "filename" : "twiiter-logo-20@2x.png",
       "scale" : "2x"
+    },
+    {
+      "size" : "20x20",
+      "idiom" : "iphone",
+      "filename" : "twiiter-logo-20@3x-1.png",
+      "scale" : "3x"
     },
     {
       "size" : "20x20",
@@ -15,8 +27,20 @@
     {
       "size" : "29x29",
       "idiom" : "iphone",
+      "filename" : "twiiter-logo-29@2x-1.png",
+      "scale" : "2x"
+    },
+    {
+      "size" : "29x29",
+      "idiom" : "iphone",
       "filename" : "twiiter-logo-29@2x.png",
       "scale" : "2x"
+    },
+    {
+      "size" : "29x29",
+      "idiom" : "iphone",
+      "filename" : "twiiter-logo-29@3x-1.png",
+      "scale" : "3x"
     },
     {
       "size" : "29x29",
@@ -27,8 +51,20 @@
     {
       "size" : "40x40",
       "idiom" : "iphone",
+      "filename" : "twiiter-logo-40@2x-1.png",
+      "scale" : "2x"
+    },
+    {
+      "size" : "40x40",
+      "idiom" : "iphone",
       "filename" : "twiiter-logo-40@2x.png",
       "scale" : "2x"
+    },
+    {
+      "size" : "40x40",
+      "idiom" : "iphone",
+      "filename" : "twiiter-logo-40@3x-1.png",
+      "scale" : "3x"
     },
     {
       "size" : "40x40",
@@ -39,8 +75,20 @@
     {
       "size" : "60x60",
       "idiom" : "iphone",
+      "filename" : "twiiter-logo-60@2x-1.png",
+      "scale" : "2x"
+    },
+    {
+      "size" : "60x60",
+      "idiom" : "iphone",
       "filename" : "twiiter-logo-60@2x.png",
       "scale" : "2x"
+    },
+    {
+      "size" : "60x60",
+      "idiom" : "iphone",
+      "filename" : "twiiter-logo-60@3x-1.png",
+      "scale" : "3x"
     },
     {
       "size" : "60x60",

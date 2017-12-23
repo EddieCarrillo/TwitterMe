@@ -61,6 +61,8 @@ class FeedViewTableViewCell: UITableViewCell {
         
         //Update the UI
         self.retweetButton.isSelected = tweet.retweeted
+        self.updateStats()
+
     }
     
     
@@ -75,6 +77,8 @@ class FeedViewTableViewCell: UITableViewCell {
         
         //Update the UI
         self.favoriteButton.isSelected = tweet.favorited
+        
+        self.updateStats()
         
         
         
@@ -104,9 +108,7 @@ class FeedViewTableViewCell: UITableViewCell {
             initButtons()
             self.dateLabel.text = tweet.dateText
             self.tweetTextLabel.text = tweet.text
-            self.favoriteNumberLabel.text = "\(tweet.favoritesCount)"
-            self.retweetNumberLabel.text = "\(tweet.retweetCount)"
-            self.replyNumberLabel.text = "\(tweet.replyCount)"
+            updateStats()
             self.profilePictureImageView.isUserInteractionEnabled = true
             self.profilePictureImageView.setRounded()
             self.nameLabel.isUserInteractionEnabled = true
@@ -128,6 +130,16 @@ class FeedViewTableViewCell: UITableViewCell {
            
         }
     
+    }
+    
+    func updateStats(){
+        
+        guard let tweet = self.tweet else {
+            return
+        }
+        self.favoriteNumberLabel.text = "\(tweet.favoritesCount)"
+        self.retweetNumberLabel.text = "\(tweet.retweetCount)"
+        self.replyNumberLabel.text = "\(tweet.replyCount)"
     }
     
     func initButtons(){

@@ -23,6 +23,8 @@
 		1F5A59231FAA33A30065A8C5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5A59221FAA33A30065A8C5 /* User.swift */; };
 		1F5A59251FAA33B30065A8C5 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5A59241FAA33B30065A8C5 /* Tweet.swift */; };
 		1FC71B371FB16F2B00D94696 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC71B361FB16F2B00D94696 /* FeedViewController.swift */; };
+		1FE8E5CD1FEE052A00B6432B /* AccountChooserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE8E5CC1FEE052A00B6432B /* AccountChooserViewController.swift */; };
+		1FE8E5CF1FEE204200B6432B /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE8E5CE1FEE204200B6432B /* LogoutViewController.swift */; };
 		2C0135241FE6F1F0008722D6 /* ComposeTweetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0135231FE6F1F0008722D6 /* ComposeTweetViewController.swift */; };
 		2C0135601FE82DFB008722D6 /* MenuBarContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C01355F1FE82DFB008722D6 /* MenuBarContainerViewController.swift */; };
 		2C050B531FE858E100853E49 /* CentralNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C050B521FE858E100853E49 /* CentralNavigationController.swift */; };
@@ -64,6 +66,8 @@
 		1F5A59221FAA33A30065A8C5 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1F5A59241FAA33B30065A8C5 /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		1FC71B361FB16F2B00D94696 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		1FE8E5CC1FEE052A00B6432B /* AccountChooserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountChooserViewController.swift; sourceTree = "<group>"; };
+		1FE8E5CE1FEE204200B6432B /* LogoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
 		2C0135231FE6F1F0008722D6 /* ComposeTweetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeTweetViewController.swift; sourceTree = "<group>"; };
 		2C01355F1FE82DFB008722D6 /* MenuBarContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarContainerViewController.swift; sourceTree = "<group>"; };
 		2C050B521FE858E100853E49 /* CentralNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CentralNavigationController.swift; sourceTree = "<group>"; };
@@ -193,6 +197,8 @@
 				2C0135231FE6F1F0008722D6 /* ComposeTweetViewController.swift */,
 				2C01355F1FE82DFB008722D6 /* MenuBarContainerViewController.swift */,
 				2C050B5C1FEB121700853E49 /* HomeTabBarController.swift */,
+				1FE8E5CC1FEE052A00B6432B /* AccountChooserViewController.swift */,
+				1FE8E5CE1FEE204200B6432B /* LogoutViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -413,6 +419,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F5A591F1FA8F6B10065A8C5 /* LoginViewController.swift in Sources */,
+				1FE8E5CD1FEE052A00B6432B /* AccountChooserViewController.swift in Sources */,
 				056A62741FC3CC5600A73C2F /* ProfileView.swift in Sources */,
 				0542E1C41FB29BE4006DE1EC /* FeedViewTableViewCell.swift in Sources */,
 				2C0135601FE82DFB008722D6 /* MenuBarContainerViewController.swift in Sources */,
@@ -427,6 +434,7 @@
 				1F5A58F81FA8F03B0065A8C5 /* AppDelegate.swift in Sources */,
 				2C0135241FE6F1F0008722D6 /* ComposeTweetViewController.swift in Sources */,
 				2C050B5D1FEB121700853E49 /* HomeTabBarController.swift in Sources */,
+				1FE8E5CF1FEE204200B6432B /* LogoutViewController.swift in Sources */,
 				0566FBA71FCF7E5D0048AE6A /* TweetDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -102,12 +102,16 @@ class Tweet: NSObject {
         
         
         if retweeted {
+            
+            self.retweetCount = self.retweetCount - 1
             api?.unRetweet(tweet: self, success: {
                 print("Successfully retweeted tweet")
             }, failure: { (error: Error ) in
                 print("[ERROR] \(error)")
             })
         }else {
+            self.retweetCount = self.retweetCount + 1
+
             api?.retweet(tweet: self, success: {
                 print("Successfully retweeted tweet.")
             }, failure: { (error: Error) in
@@ -125,6 +129,7 @@ class Tweet: NSObject {
         let api = TwitterClient.sharedInstance
         
         if favorited { // If favortited then unfavorite and vice versa
+            self.favoritesCount = self.favoritesCount - 1
             api?.unFavoriteTweet(tweet: self ,success: {
                 print("Successfully unfavorited tweet")
             }, failure: { (error: Error) in
@@ -132,6 +137,7 @@ class Tweet: NSObject {
             })
             
         }else {
+            self.favoritesCount = self.favoritesCount + 1
             api?.favoriteTweet(tweet: self, success: {
                 print("Syccessfully favorited tweet")
             }, failure: { (error: Error) in
