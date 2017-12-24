@@ -104,6 +104,13 @@ class TweetDetailViewController: UIViewController {
         
     }
     
+    
+    
+    
+    func setupTweetImage(){
+        
+    }
+    
 
     /*
     // MARK: - Navigation

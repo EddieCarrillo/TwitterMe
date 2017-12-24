@@ -20,6 +20,7 @@ class Tweet: NSObject {
     var favorited: Bool = false
     var retweeted: Bool = false
     var id: Int = 0
+    var entities: Entities?
     
     var ownerName: String? {
         get{
@@ -92,6 +93,11 @@ class Tweet: NSObject {
             self.owner = User(dictionary: owner)
         }else{
            print("Something weird happened.")
+        }
+        
+        
+        if let entities = dictionary["entities"] as? NSDictionary {
+            self.entities = Entities(dictionary: entities)
         }
       
         
