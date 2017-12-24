@@ -22,6 +22,14 @@
 		1F5A591F1FA8F6B10065A8C5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5A591E1FA8F6B10065A8C5 /* LoginViewController.swift */; };
 		1F5A59231FAA33A30065A8C5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5A59221FAA33A30065A8C5 /* User.swift */; };
 		1F5A59251FAA33B30065A8C5 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5A59241FAA33B30065A8C5 /* Tweet.swift */; };
+		1F97FA0C1FEF2BEF00852A6F /* Entities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F97FA0B1FEF2BEF00852A6F /* Entities.swift */; };
+		1F97FA0E1FEF2F4A00852A6F /* Hashtag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F97FA0D1FEF2F4A00852A6F /* Hashtag.swift */; };
+		1F97FA101FEF2FBB00852A6F /* TURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F97FA0F1FEF2FBB00852A6F /* TURL.swift */; };
+		1F97FA121FEF2FEF00852A6F /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F97FA111FEF2FEF00852A6F /* Media.swift */; };
+		1F97FA141FEF304B00852A6F /* UserMention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F97FA131FEF304B00852A6F /* UserMention.swift */; };
+		1F97FA161FEF309C00852A6F /* Symbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F97FA151FEF309C00852A6F /* Symbol.swift */; };
+		1F97FA181FEF30BC00852A6F /* Poll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F97FA171FEF30BC00852A6F /* Poll.swift */; };
+		1F97FA1A1FEF335600852A6F /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F97FA191FEF335600852A6F /* Size.swift */; };
 		1FC71B371FB16F2B00D94696 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC71B361FB16F2B00D94696 /* FeedViewController.swift */; };
 		1FE8E5CD1FEE052A00B6432B /* AccountChooserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE8E5CC1FEE052A00B6432B /* AccountChooserViewController.swift */; };
 		1FE8E5CF1FEE204200B6432B /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE8E5CE1FEE204200B6432B /* LogoutViewController.swift */; };
@@ -65,6 +73,14 @@
 		1F5A591E1FA8F6B10065A8C5 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1F5A59221FAA33A30065A8C5 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1F5A59241FAA33B30065A8C5 /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
+		1F97FA0B1FEF2BEF00852A6F /* Entities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entities.swift; sourceTree = "<group>"; };
+		1F97FA0D1FEF2F4A00852A6F /* Hashtag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hashtag.swift; sourceTree = "<group>"; };
+		1F97FA0F1FEF2FBB00852A6F /* TURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TURL.swift; sourceTree = "<group>"; };
+		1F97FA111FEF2FEF00852A6F /* Media.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
+		1F97FA131FEF304B00852A6F /* UserMention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMention.swift; sourceTree = "<group>"; };
+		1F97FA151FEF309C00852A6F /* Symbol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Symbol.swift; sourceTree = "<group>"; };
+		1F97FA171FEF30BC00852A6F /* Poll.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Poll.swift; sourceTree = "<group>"; };
+		1F97FA191FEF335600852A6F /* Size.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
 		1FC71B361FB16F2B00D94696 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		1FE8E5CC1FEE052A00B6432B /* AccountChooserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountChooserViewController.swift; sourceTree = "<group>"; };
 		1FE8E5CE1FEE204200B6432B /* LogoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
@@ -180,6 +196,7 @@
 		1F5A59201FAA335F0065A8C5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1F97FA0A1FEF2B0100852A6F /* Entities */,
 				1F5A59221FAA33A30065A8C5 /* User.swift */,
 				1F5A59241FAA33B30065A8C5 /* Tweet.swift */,
 			);
@@ -201,6 +218,21 @@
 				1FE8E5CE1FEE204200B6432B /* LogoutViewController.swift */,
 			);
 			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		1F97FA0A1FEF2B0100852A6F /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				1F97FA0B1FEF2BEF00852A6F /* Entities.swift */,
+				1F97FA0D1FEF2F4A00852A6F /* Hashtag.swift */,
+				1F97FA0F1FEF2FBB00852A6F /* TURL.swift */,
+				1F97FA111FEF2FEF00852A6F /* Media.swift */,
+				1F97FA131FEF304B00852A6F /* UserMention.swift */,
+				1F97FA151FEF309C00852A6F /* Symbol.swift */,
+				1F97FA171FEF30BC00852A6F /* Poll.swift */,
+				1F97FA191FEF335600852A6F /* Size.swift */,
+			);
+			name = Entities;
 			sourceTree = "<group>";
 		};
 		FD84AE32BEF27AD75741540B /* Pods */ = {
@@ -418,13 +450,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F97FA181FEF30BC00852A6F /* Poll.swift in Sources */,
+				1F97FA121FEF2FEF00852A6F /* Media.swift in Sources */,
 				1F5A591F1FA8F6B10065A8C5 /* LoginViewController.swift in Sources */,
 				1FE8E5CD1FEE052A00B6432B /* AccountChooserViewController.swift in Sources */,
 				056A62741FC3CC5600A73C2F /* ProfileView.swift in Sources */,
 				0542E1C41FB29BE4006DE1EC /* FeedViewTableViewCell.swift in Sources */,
+				1F97FA161FEF309C00852A6F /* Symbol.swift in Sources */,
 				2C0135601FE82DFB008722D6 /* MenuBarContainerViewController.swift in Sources */,
 				1F5A591B1FA8F3DD0065A8C5 /* TwitterClient.swift in Sources */,
+				1F97FA141FEF304B00852A6F /* UserMention.swift in Sources */,
 				1F5A59251FAA33B30065A8C5 /* Tweet.swift in Sources */,
+				1F97FA0C1FEF2BEF00852A6F /* Entities.swift in Sources */,
+				1F97FA1A1FEF335600852A6F /* Size.swift in Sources */,
+				1F97FA101FEF2FBB00852A6F /* TURL.swift in Sources */,
+				1F97FA0E1FEF2F4A00852A6F /* Hashtag.swift in Sources */,
 				1F5A59231FAA33A30065A8C5 /* User.swift in Sources */,
 				1FC71B371FB16F2B00D94696 /* FeedViewController.swift in Sources */,
 				2C050B551FE8823100853E49 /* UIViewExtensions.swift in Sources */,
