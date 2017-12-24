@@ -10,6 +10,13 @@ import Foundation
 
 class Media {
     
+    
+    
+    
+    static let photoType = "photo"
+    static let videoType = "video"
+    static let animatedGIFType = "animated_gif"
+    
     //URL of the media to display to clients. Example: 
     //"display_url":"pic.twitter.com/rJC5Pxsu"
     
@@ -85,7 +92,29 @@ class Media {
             self.idStr = idString
         }
         
-      //  if let indices =
+        if let indices = dictionary[indicesKey] as? [Int]{
+            self.indices = indices
+        }
+        
+        if let mediaUrl = dictionary[mediaUrlKey] as? String {
+            self.mediaUrl = mediaUrl
+        }
+        
+        if let mediaUrlHttps = dictionary[mediaUrlHttpsKey] as? String {
+             self.mediaUrlHttps = mediaUrlHttps
+        }
+        
+        if let sizesDictionary = dictionary[sizesKey] as? NSDictionary {
+            self.sizes = Size(dictionary: sizesDictionary)
+        }
+        
+        if let sourceStatusId = dictionary[sourceStatusIdKey] as? Int {
+            self.sourceStatusId = sourceStatusId
+        }
+        
+        if let type = dictionary[typeId] as? String {
+            self.type = type
+        }
         
         
     }
