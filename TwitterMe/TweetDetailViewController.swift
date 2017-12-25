@@ -123,7 +123,8 @@ class TweetDetailViewController: UIViewController {
         guard let medias = entity.media else {
              print("Could not load the tweet media")
             //Hide the media view
-          //  self.mediaView.isHidden = true
+            self.mediaView.isHidden = true
+            self.mediaViewHeightConstraint.constant = 0
             return
         }
         
@@ -156,7 +157,8 @@ class TweetDetailViewController: UIViewController {
             print("mediaUrl: \(mediaUrl)")
         }else {
               print("Could not get the url ")
-             // self.mediaView.isHidden = true
+              self.mediaView.isHidden = true
+              self.mediaViewHeightConstraint.constant = 0
             return
         }
         
