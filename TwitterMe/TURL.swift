@@ -53,7 +53,7 @@ class TURL {
         }
         
         if let expUrl = dictionary[expandedUrlKey] as? String{
-            self.expandedUrlKey = expUrl
+            self.expandedUrl = expUrl
         }
         
         if let indices = dictionary[indicesKey] as? [Int]{
@@ -64,7 +64,7 @@ class TURL {
             self.url = url
         }
         
-        if let status = dictionary[statusKey] as? String {
+        if let status = dictionary[statusKey] as? Int {
             self.status = status
         }
         
@@ -81,11 +81,14 @@ class TURL {
     
     class func toUrlArray(urlDictionaries: [NSDictionary]) -> [TURL] {
         
-        let urls: [TURL] = []
+        var urls: [TURL] = []
         
         for urlDictionary in urlDictionaries {
              urls.append(TURL(dictionary: urlDictionary))
         }
+        
+        
+        return urls
     }
     
     

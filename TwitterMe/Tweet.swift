@@ -21,6 +21,8 @@ class Tweet: NSObject {
     var retweeted: Bool = false
     var id: Int = 0
     var entities: Entities?
+  static let entitiesKey = "entities"
+   static let extendedEntitiesKey = "extended_entities"
     
     var ownerName: String? {
         get{
@@ -96,9 +98,7 @@ class Tweet: NSObject {
         }
         
         
-        if let entities = dictionary["entities"] as? NSDictionary {
-            self.entities = Entities(dictionary: entities)
-        }
+        self.entities = Entities(rootDictionary: dictionary)
       
         
     }

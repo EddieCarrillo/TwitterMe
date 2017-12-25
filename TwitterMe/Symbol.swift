@@ -35,7 +35,7 @@ class Symbol {
     
     
     class func toSymbolArray(from symbolDictionaries: [NSDictionary]) -> [Symbol] {
-        let symbols: [Symbol] = []
+        var symbols: [Symbol] = []
         
         for symbolDictionary in symbolDictionaries {
              symbols.append(Symbol(dictionary: symbolDictionary))

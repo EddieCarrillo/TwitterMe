@@ -10,6 +10,7 @@ import Foundation
 
 
 class Entities: NSObject {
+    
 
     var hashtags: [Hashtag]?
     let hashtagsKey = "hashtags"
@@ -23,10 +24,22 @@ class Entities: NSObject {
     var symbols: [Symbol]?
     let symbolsKey = "symbols"
     
+    var media: [Media]?
+    let mediaKey = "media"
+    
+    
+    
+    
    // var polls: [Poll]?
     
     
-    init(dictionary: NSDictionary){
+    init(rootDictionary: NSDictionary){
+        
+        guard let dictionary = rootDictionary[Tweet.entitiesKey] as? NSDictionary else {
+            print("Could not extract entity dictionary")
+            return
+        }
+        
         if let htags = dictionary[hashtagsKey] as? [NSDictionary] {
             self.hashtags = Hashtag.toHashTagArray(hashtagDictionaries: htags)
         }
@@ -36,8 +49,16 @@ class Entities: NSObject {
         }
         
         if let symbols = dictionary[symbolsKey] as? [NSDictionary] {
-            self.symbols = symbols
+            self.symbols = Symbol.toSymbolArray(from: symbols)
         }
+        
+        
+        if let extendedEntities = rootDictionary[Tweet.extendedEntitiesKey] as? NSDictionary {
+            if let medias = extendedEntities[mediaKey] as? [NSDictionary] {
+                self.media = Media.toMediaArray(from: medias)
+            }
+        }
+        
         
         
     }

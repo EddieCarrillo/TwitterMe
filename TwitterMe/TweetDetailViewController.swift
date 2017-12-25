@@ -29,6 +29,7 @@ class TweetDetailViewController: UIViewController {
     
 
     
+    @IBOutlet weak var mediaViewHeightConstraint: NSLayoutConstraint!
     
     var tweet: Tweet?
     
@@ -37,6 +38,7 @@ class TweetDetailViewController: UIViewController {
         super.viewDidLoad()
         
         self.profilePictureImageView.setRounded()
+        setupTweetImage()
         
         updateGUI()
 
@@ -108,6 +110,68 @@ class TweetDetailViewController: UIViewController {
     
     
     func setupTweetImage(){
+        guard let tweet = self.tweet else {
+             print("Could load the tweet")
+            return
+        }
+        
+        guard let entity = tweet.entities else {
+            print("Could not load tweet entitites")
+            return
+        }
+        
+        guard let medias = entity.media else {
+             print("Could not load the tweet media")
+            //Hide the media view
+          //  self.mediaView.isHidden = true
+            return
+        }
+        
+        let media = medias[0]
+        print("media type: \(media.type)")
+        print("medias count: \(medias.count)")
+        
+        
+        var mediaImageView = UIImageView()
+        
+        
+        
+        var imageHeight = 0
+        var imageWidth = 0
+        var scaling = Size.scalingFit
+        
+        if let photoSizes = media.sizes {
+            if let largeSize = photoSizes.large {
+                imageHeight = largeSize[Size.heightKey] as! Int
+                imageWidth = largeSize[Size.widthKey] as! Int
+                scaling = largeSize[Size.scalingKey] as! String
+            }
+        }
+        
+        self.mediaViewHeightConstraint.constant = (self.mediaView.frame.size.width * CGFloat.init(imageHeight)) / CGFloat.init(imageWidth)
+        
+        
+        if let mediaUrl = media.mediaUrlHttps {
+            mediaImageView.setImageWith(URL(string: mediaUrl)!)
+            print("mediaUrl: \(mediaUrl)")
+        }else {
+              print("Could not get the url ")
+             // self.mediaView.isHidden = true
+            return
+        }
+        
+    //    mediaView = mediaImageView
+        mediaImageView.frame = CGRect(x: 0, y: 0, width: mediaView.frame.width, height: mediaView.frame.height)
+        
+        if scaling == Size.scalingFit {
+            mediaImageView.contentMode = .scaleAspectFit
+        }else {
+            mediaImageView.contentMode = .scaleToFill
+        }
+        
+        mediaView.addSubview(mediaImageView)
+        print("[SUBVIEW WAS ADDDE]")
+        
         
     }
     

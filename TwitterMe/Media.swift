@@ -75,7 +75,7 @@ class Media {
     
     
     
-    init(dictionay: NSDictionary){
+    init(dictionary: NSDictionary){
         if let displayUrl = dictionary[displayUrlKey] as? String {
              self.displayUrl = displayUrl
         }
@@ -117,6 +117,17 @@ class Media {
         }
         
         
+    }
+    
+    
+    class func toMediaArray(from mediaDictionaries: [NSDictionary]) -> [Media] {
+        var medias: [Media] = []
+        
+        for mediaDictionary in mediaDictionaries {
+             medias.append(Media(dictionary: mediaDictionary))
+        }
+        
+        return medias
     }
 
 }
