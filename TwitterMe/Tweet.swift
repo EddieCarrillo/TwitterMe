@@ -12,14 +12,34 @@ import DateToolsSwift
 class Tweet: NSObject {
     
     var text: String?
+   static let textKey = "text"
+    
     var timeStamp: Date?
+    static let timeStampKey = "created_at"
+    
+    
     var owner: User?
+    static let userKey = "user"
+    
     var retweetCount: Int = 0
+    static let retweetCountKey = "retweet_count"
+    
     var favoritesCount: Int = 0
+    static let favoritesCountKey = "favorite_count"
+    
     var replyCount: Int = 0
+    static let replyCountKey = "reply_count"
+    
+    
     var favorited: Bool = false
+    static let favoritedKey = "favorited"
+    
     var retweeted: Bool = false
+    static let retweetKey = "retweeted"
+    
     var id: Int = 0
+    static let idKey = "id"
+    
     var entities: Entities?
   static let entitiesKey = "entities"
    static let extendedEntitiesKey = "extended_entities"
@@ -73,17 +93,17 @@ class Tweet: NSObject {
     
     
     init(dictionary: NSDictionary){
-        self.text = dictionary["text"] as? String
-        self.retweetCount = (dictionary["retweet_count"] as? Int) ?? 0
-        self.favoritesCount = (dictionary["favorite_count"] as? Int) ?? 0
-        self.replyCount = (dictionary["reply_count"] as? Int) ?? 0
+        self.text = dictionary[Tweet.textKey] as? String
+        self.retweetCount = (dictionary[Tweet.retweetCountKey] as? Int) ?? 0
+        self.favoritesCount = (dictionary[Tweet.favoritesCountKey] as? Int) ?? 0
+        self.replyCount = (dictionary[Tweet.replyCountKey] as? Int) ?? 0
         
-        self.favorited = (dictionary["favorited"] as? Bool) ?? false
-        self.retweeted = (dictionary["retweeted"] as? Bool) ?? false
-        self.id = (dictionary["id"] as? Int) ?? 0
+        self.favorited = (dictionary[Tweet.favoritedKey] as? Bool) ?? false
+        self.retweeted = (dictionary[Tweet.retweetKey] as? Bool) ?? false
+        self.id = (dictionary[Tweet.idKey] as? Int) ?? 0
         
         
-        if  let timestampString = dictionary["created_at"] as? String{
+        if  let timestampString = dictionary[Tweet.timeStampKey] as? String{
             let formatter = DateFormatter()
             
             formatter.dateFormat = "EEE MMM d HH:mm:ss Z y"
@@ -91,7 +111,7 @@ class Tweet: NSObject {
            self.timeStamp = formatter.date(from: timestampString) as Date?
         }
         
-        if let owner = dictionary["user"] as? NSDictionary{ // BUG FIX
+        if let owner = dictionary[Tweet.userKey] as? NSDictionary{ // BUG FIX
             self.owner = User(dictionary: owner)
         }else{
            print("Something weird happened.")
