@@ -73,6 +73,11 @@ class Media {
     var type: String?
     let typeId = "type"
     
+    var videoInfo: VideoInfo?
+    let videoInfoKey = "video_info"
+    
+    
+    
     
     
     init(dictionary: NSDictionary){
@@ -116,6 +121,9 @@ class Media {
             self.type = type
         }
         
+        if let videoInfoDictionary = dictionary[videoInfoKey] as? NSDictionary {
+            self.videoInfo = VideoInfo(dictionary: videoInfoDictionary)
+        }
         
     }
     

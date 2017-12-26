@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVKit
 
 class TweetDetailViewController: UIViewController {
 
@@ -33,12 +34,18 @@ class TweetDetailViewController: UIViewController {
     
     var tweet: Tweet?
     
+    var player: AVPlayer?
+    
+    var playerController: AVPlayerViewController?
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.profilePictureImageView.setRounded()
-        setupTweetImage()
+        setupTweetMedia()
         
         updateGUI()
 
@@ -109,7 +116,7 @@ class TweetDetailViewController: UIViewController {
     
     
     
-    func setupTweetImage(){
+    func setupTweetMedia(){
         guard let tweet = self.tweet else {
              print("Could load the tweet")
             return
@@ -127,8 +134,16 @@ class TweetDetailViewController: UIViewController {
             self.mediaViewHeightConstraint.constant = 0
             return
         }
-        
+        //If the medias is not nil then we are guaranteed the first element is not nil
         let media = medias[0]
+        
+        
+        if let mediaType = media.type {
+            if mediaType == Media.videoType{
+                setupTweetVideo(media: media)
+            }
+        }
+        
         print("media type: \(media.type)")
         print("medias count: \(medias.count)")
         
@@ -174,6 +189,65 @@ class TweetDetailViewController: UIViewController {
         mediaView.addSubview(mediaImageView)
         print("[SUBVIEW WAS ADDDE]")
         
+        
+    }
+    
+    
+    func setupTweetVideo(media: Media){
+        print("Play video triggered!")
+        
+        guard let videoInfo = media.videoInfo else {
+            print("Could not retrieve video info!")
+            return
+        }
+        
+        guard let variants: [[String: Any]] = videoInfo.variants else {
+            print("variants was not extracted ")
+            return
+        }
+        
+        //Choose first version of the video
+        guard let firstVideoType = variants.first else {
+            print("There is no video type")
+            return
+        }
+        
+        guard let urlString = firstVideoType[VideoInfo.urlKey] as? String else {
+            print("Could not find url string.")
+            return
+        }
+        
+        guard let url = URL(string: urlString) else {
+            print("Could not get URL")
+            return
+        }
+        
+        
+        
+        //Create a new player, passing it an HTTP Live Streaming Url
+        self.player = AVPlayer(url: url)
+        
+        //Create a new AVPlayerViewController and pass a reference to the player.
+        self.playerController = AVPlayerViewController()
+
+        playerController?.player = player
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(TweetDetailViewController.playVideo))
+        self.mediaView.gestureRecognizers = []
+        self.mediaView.gestureRecognizers?.append(tapGesture)
+        
+    }
+    
+    func playVideo(){
+        guard let vc = self.playerController, let videoPlayer = self.player else {
+            print("Player controller")
+            return
+        }
+        
+        //Modally present the view controller and call the player's play() method when complete.
+        self.present(vc, animated: true) {
+            videoPlayer.play()
+        }
         
     }
     

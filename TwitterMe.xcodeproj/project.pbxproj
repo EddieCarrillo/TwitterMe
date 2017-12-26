@@ -41,6 +41,7 @@
 		2C050B5D1FEB121700853E49 /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C050B5C1FEB121700853E49 /* HomeTabBarController.swift */; };
 		70ED9160BFF98A95290346FE /* Pods_TwitterMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE3ECA5CC556FB72B277487 /* Pods_TwitterMe.framework */; };
 		77E4FB53E0A6507B8848DD8E /* Pods_TwitterMeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D69F8652BE34972786CAAEB8 /* Pods_TwitterMeTests.framework */; };
+		F7F7C7F01FF19AFC002286B1 /* VideoInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F7C7EF1FF19AFC002286B1 /* VideoInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,7 @@
 		F51A6F330E245DE42C969203 /* Pods-TwitterMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterMe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TwitterMe/Pods-TwitterMe.debug.xcconfig"; sourceTree = "<group>"; };
 		F7F37E9C1FF16791001F36E6 /* BDBOAuth1Manager */ = {isa = PBXFileReference; lastKnownFileType = folder; name = BDBOAuth1Manager; path = Pods/BDBOAuth1Manager/BDBOAuth1Manager; sourceTree = "<group>"; };
 		F7F37E9E1FF167DC001F36E6 /* BDBOAuth1Manager */ = {isa = PBXFileReference; lastKnownFileType = folder; name = BDBOAuth1Manager; path = Pods/BDBOAuth1Manager; sourceTree = "<group>"; };
+		F7F7C7EF1FF19AFC002286B1 /* VideoInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,6 +237,7 @@
 				1F97FA151FEF309C00852A6F /* Symbol.swift */,
 				1F97FA171FEF30BC00852A6F /* Poll.swift */,
 				1F97FA191FEF335600852A6F /* Size.swift */,
+				F7F7C7EF1FF19AFC002286B1 /* VideoInfo.swift */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -488,6 +491,7 @@
 				2C050B591FE8875200853E49 /* MenuBarView.swift in Sources */,
 				0572AEED1FB54D60007ED4AA /* ProfileViewController.swift in Sources */,
 				2C050B531FE858E100853E49 /* CentralNavigationController.swift in Sources */,
+				F7F7C7F01FF19AFC002286B1 /* VideoInfo.swift in Sources */,
 				1F5A58F81FA8F03B0065A8C5 /* AppDelegate.swift in Sources */,
 				2C0135241FE6F1F0008722D6 /* ComposeTweetViewController.swift in Sources */,
 				2C050B5D1FEB121700853E49 /* HomeTabBarController.swift in Sources */,
