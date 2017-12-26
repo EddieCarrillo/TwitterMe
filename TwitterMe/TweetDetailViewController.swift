@@ -241,6 +241,8 @@ class TweetDetailViewController: UIViewController {
         //Keep aspect ratio
         playerLayer.videoGravity = AVLayerVideoGravityResizeAspect
         
+        
+        //TODO: Investigate this bug. (Can't just assign frame of media view to playerLayer frame)
         playerLayer.frame = CGRect(x: 0, y: 0, width: self.mediaView.frame.width, height: self.mediaView.frame.height)
 //        //Resize player layer dimensions to media view dimensions
 //            playerLayer.frame = self.mediaView.frame
@@ -308,6 +310,8 @@ class TweetDetailViewController: UIViewController {
         self.mediaView.gestureRecognizers = []
         self.mediaView.gestureRecognizers?.append(tapGesture)
         
+        addVideoPreviewPicture(media: media)
+        
     }
     
     func playVideo(){
@@ -323,6 +327,10 @@ class TweetDetailViewController: UIViewController {
         
     }
     
+    
+    func addVideoPreviewPicture(media: Media){
+        setupImage(media: media)
+    }
 
     /*
     // MARK: - Navigation
