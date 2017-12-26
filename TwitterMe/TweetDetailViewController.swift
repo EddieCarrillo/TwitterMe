@@ -146,11 +146,19 @@ class TweetDetailViewController: UIViewController {
                 setupTweetVideo(media: media)
             }else if mediaType == Media.animatedGIFType {
                 setupAnimatedGIF(media: media)
+            }else {
+                setupImage(media: media)
             }
         }
         
-        print("media type: \(media.type)")
-        print("medias count: \(medias.count)")
+        print("[MEDIATYPE] :\(media.type!)")
+        
+        
+        
+    }
+    
+    
+    func setupImage(media: Media){
         
         
         var mediaImageView = UIImageView()
@@ -176,13 +184,13 @@ class TweetDetailViewController: UIViewController {
             mediaImageView.setImageWith(URL(string: mediaUrl)!)
             print("mediaUrl: \(mediaUrl)")
         }else {
-              print("Could not get the url ")
-              self.mediaView.isHidden = true
-              self.mediaViewHeightConstraint.constant = 0
+            print("Could not get the url ")
+            self.mediaView.isHidden = true
+            self.mediaViewHeightConstraint.constant = 0
             return
         }
         
-    //    mediaView = mediaImageView
+        //    mediaView = mediaImageView
         mediaImageView.frame = CGRect(x: 0, y: 0, width: mediaView.frame.width, height: mediaView.frame.height)
         
         if scaling == Size.scalingFit {
@@ -192,7 +200,8 @@ class TweetDetailViewController: UIViewController {
         }
         
         mediaView.addSubview(mediaImageView)
-        print("[SUBVIEW WAS ADDDE]")
+        print("[SUBVIEW WAS ADDDED]")
+        
         
         
     }
@@ -231,14 +240,17 @@ class TweetDetailViewController: UIViewController {
         let playerLayer = AVPlayerLayer(player: player)
         //Keep aspect ratio
         playerLayer.videoGravity = AVLayerVideoGravityResizeAspect
-        //Resize player layer dimensions to media view dimensions
-        playerLayer.frame = self.mediaView.frame
+        
+        playerLayer.frame = CGRect(x: 0, y: 0, width: self.mediaView.frame.width, height: self.mediaView.frame.height)
+//        //Resize player layer dimensions to media view dimensions
+//            playerLayer.frame = self.mediaView.frame
         
         //Don't mess with the video at the end.
         player?.actionAtItemEnd = AVPlayerActionAtItemEnd.none
         
         //Start the animated_gif
         player?.play()
+        
         
         //Insert the player into the view
         self.mediaView.layer.insertSublayer(playerLayer, at: 0)
