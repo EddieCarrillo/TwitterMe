@@ -38,6 +38,8 @@ class TweetDetailViewController: UIViewController {
     
     var playerController: AVPlayerViewController?
     
+    var playerLayer: AVPlayerLayer?
+    
     
     
     
@@ -46,6 +48,7 @@ class TweetDetailViewController: UIViewController {
         
         self.profilePictureImageView.setRounded()
         setupTweetMedia()
+        
         
         updateGUI()
 
@@ -141,6 +144,8 @@ class TweetDetailViewController: UIViewController {
         if let mediaType = media.type {
             if mediaType == Media.videoType{
                 setupTweetVideo(media: media)
+            }else if mediaType == Media.animatedGIFType {
+                setupAnimatedGIF(media: media)
             }
         }
         
@@ -192,6 +197,61 @@ class TweetDetailViewController: UIViewController {
         
     }
     
+    func setupAnimatedGIF(media: Media){
+        guard let videoInfo = media.videoInfo else {
+            print("Could not retrieve the video info!")
+            return
+        }
+        
+        guard let variants: [[String: Any]] = videoInfo.variants else {
+            print("Variants could not be extracted correctly")
+            return
+        }
+        
+        guard let firstVideoType = variants.first else {
+            print("There is no animated GIF video type")
+            return
+        }
+        
+        guard let urlString = firstVideoType[VideoInfo.urlKey] as? String else {
+            print("Could not extract url string")
+            return
+        }
+        
+        guard let mediaUrl = URL(string: urlString) else {
+            print("Could not load the URL correctly")
+            return
+        }
+        
+        
+        //Create a new player
+        self.player = AVPlayer(url: mediaUrl)
+        
+        //Create a player layer
+        let playerLayer = AVPlayerLayer(player: player)
+        //Keep aspect ratio
+        playerLayer.videoGravity = AVLayerVideoGravityResizeAspect
+        //Resize player layer dimensions to media view dimensions
+        playerLayer.frame = self.mediaView.frame
+        
+        //Don't mess with the video at the end.
+        player?.actionAtItemEnd = AVPlayerActionAtItemEnd.none
+        
+        //Start the animated_gif
+        player?.play()
+        
+        //Insert the player into the view
+        self.mediaView.layer.insertSublayer(playerLayer, at: 0)
+        
+        //Create a callback for the event so that when the video stops it replays again.
+        NotificationCenter.default.addObserver(self, selector: #selector(TweetDetailViewController.playerItemReachedEnd(notification:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: player?.currentItem)
+    }
+    
+    
+    func playerItemReachedEnd(notification: NSNotification){
+        //reset the gif to 0
+        player?.seek(to: kCMTimeZero)
+    }
     
     func setupTweetVideo(media: Media){
         print("Play video triggered!")
