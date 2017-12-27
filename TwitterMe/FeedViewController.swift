@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVKit
 
 class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -63,6 +64,8 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.setupNavigationBar()
+        self.refreshData(success: {}, failureBlock: {})
+        
         
     }
     
@@ -221,6 +224,17 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: feedViewCellReuseId) as!FeedViewTableViewCell
+        
+        cell.videoPlayTriggered = { (playerViewController: AVPlayerViewController, videoPlayer: AVPlayer) in
+            //Modally present the view controller and call the player's play() method when complete.
+            self.present(playerViewController, animated: true) {
+                videoPlayer.play()
+            }
+            
+        }
+        
+        //Duct tape bug fix.
+        cell.mediaView.frame = CGRect(x: cell.mediaView.frame.origin.x, y: cell.mediaView.frame.origin.y, width: cell.mediaView.frame.width, height: CGFloat(cell.defaultMediaViewHeight))
         
         let tweet = tweets[indexPath.row]
         
