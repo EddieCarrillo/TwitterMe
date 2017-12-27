@@ -134,8 +134,6 @@ class Tweet: NSObject {
         }
         
         if let retweetStatusDictionary = dictionary[Tweet.retweetedStatusKey] as? NSDictionary {
-            
-                print("tweetDictionary: \(retweetStatusDictionary)")
                 self.retweetedStatus = Tweet(dictionary: retweetStatusDictionary)
                 print("[THIS IS A RETWEETED TWEET]")
             

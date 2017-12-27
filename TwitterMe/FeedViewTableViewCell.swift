@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+//TODO: Add retweet view.
 class FeedViewTableViewCell: UITableViewCell {
     
     
@@ -38,6 +38,14 @@ class FeedViewTableViewCell: UITableViewCell {
     
     @IBOutlet weak var privateMessageImageView: UIImageView!
     
+    @IBOutlet weak var retweetOwnerLabel: UILabel!
+    
+    @IBOutlet weak var retweetedView: UIView!
+    
+    @IBOutlet weak var mediaView: UIView!
+    
+    
+    var displayedTweet: Tweet?
     
     
     @IBAction func onReplyTapped(_ sender: Any) {
@@ -51,7 +59,7 @@ class FeedViewTableViewCell: UITableViewCell {
     
     @IBAction func onRetweetTapped(_ sender: Any) {
         
-        guard let tweet = self.tweet else{
+        guard let tweet = self.displayedTweet else{
             print("Could not load tweet for some reason")
             return
             
@@ -67,7 +75,7 @@ class FeedViewTableViewCell: UITableViewCell {
     
     
     @IBAction func onLikeTapped(_ sender: Any) {
-        guard let tweet = self.tweet else {
+        guard let tweet = self.displayedTweet else {
             print("Could not access the tweet")
             return
         }
@@ -95,42 +103,107 @@ class FeedViewTableViewCell: UITableViewCell {
                 return;
             }
             
-            //Update the UI.
-          //  self.profilePictureImageView =
-            self.nameLabel.text = tweet.ownerName
+            checkForRetweet()
+            updateUI()
             
-            if let handle = tweet.handle {
-                self.handleLabel.text = "@\(handle)"
-
-            }
-            
-            
-            initButtons()
-            self.dateLabel.text = tweet.dateText
-            self.tweetTextLabel.text = tweet.text
-            updateStats()
-            self.profilePictureImageView.isUserInteractionEnabled = true
-            self.profilePictureImageView.setRounded()
-            self.nameLabel.isUserInteractionEnabled = true
-            
-            
-            if let owner = tweet.owner {
-                if let profilePictureUrl = owner.profileUrl {
-                    print("Profile picture successfully set.")
-                    self.profilePictureImageView.setImageWith(profilePictureUrl)
-                }else {
-                    print("Could not load user url")
-                }
-            }else {
-                print("Could not tweet owner")
-            }
-           
             
             
            
-        }
     
     }
+    
+  
+        
+    }
+    
+    
+    func updateUI(){
+        
+        guard let tweet = self.displayedTweet else {
+            print("Could not load display tweet.")
+            return
+        }
+        
+        
+        
+        //Update the UI.
+        //  self.profilePictureImageView =
+        self.nameLabel.text = tweet.ownerName
+        
+        if let handle = tweet.handle {
+            self.handleLabel.text = "@\(handle)"
+            
+        }
+        
+        
+        initButtons()
+        self.dateLabel.text = tweet.dateText
+        self.tweetTextLabel.text = tweet.text
+        updateStats()
+        self.profilePictureImageView.isUserInteractionEnabled = true
+        self.profilePictureImageView.setRounded()
+        self.nameLabel.isUserInteractionEnabled = true
+        
+        
+        if let owner = tweet.owner {
+            if let profilePictureUrl = owner.profileUrl {
+                print("Profile picture successfully set.")
+                self.profilePictureImageView.setImageWith(profilePictureUrl)
+            }else {
+                print("Could not load user url")
+            }
+        }else {
+            print("Could not tweet owner")
+        }
+        
+    }
+    
+    func checkForRetweet(){
+        guard let tweet = self.tweet else {
+            print("Could not load tweet!")
+            return
+        }
+        
+        if !tweet.isRetweet {
+            self.retweetedView.isHidden = true
+            self.displayedTweet = self.tweet
+        }else {
+            //We need to display retweeted tweet not intermediary tweet
+            self.displayedTweet = tweet.retweetedStatus
+            setupRetweetView()
+            
+        }
+        
+    }
+    
+    
+    //Function assumes that tweet is a retweet
+    func setupRetweetView(){
+
+        self.retweetedView.isHidden = false
+
+        guard let tweet = self.tweet else {
+            print("Could not load the tweet!")
+            return
+        }
+
+        guard let owner = tweet.owner else {
+            print("Could not load the owner!")
+            return
+        }
+
+        guard let ownerName = owner.name else {
+            print("Could not load ther owner name.")
+            return
+        }
+
+        self.retweetOwnerLabel.text = "\(ownerName) retweeted"
+
+
+    }
+    
+    
+    
     
     func updateStats(){
         
