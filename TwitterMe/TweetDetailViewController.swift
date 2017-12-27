@@ -28,11 +28,15 @@ class TweetDetailViewController: UIViewController {
     
     @IBOutlet weak var favoritesNumberLabel: UILabel! //Done
     
-
+    @IBOutlet weak var retweetedView: UIView!
+    
+    @IBOutlet weak var retweetOwnerLabel: UILabel!
     
     @IBOutlet weak var mediaViewHeightConstraint: NSLayoutConstraint!
     
     var tweet: Tweet?
+    
+    var displayedTweet: Tweet?
     
     var player: AVPlayer?
     
@@ -45,8 +49,10 @@ class TweetDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //Make profile picture into a circle
         self.profilePictureImageView.setRounded()
+        
+        checkForRetweet()
         setupTweetMedia()
         
         
@@ -85,7 +91,8 @@ class TweetDetailViewController: UIViewController {
     
     
     func updateGUI(){
-        guard let tweet = self.tweet else {
+        
+        guard let tweet = self.displayedTweet else {
             print("User assigned tweet as nil value. [WEIRD BUG]")
             return
         }
@@ -120,7 +127,7 @@ class TweetDetailViewController: UIViewController {
     
     
     func setupTweetMedia(){
-        guard let tweet = self.tweet else {
+        guard let tweet = self.displayedTweet else {
              print("Could load the tweet")
             return
         }
@@ -324,6 +331,49 @@ class TweetDetailViewController: UIViewController {
         self.present(vc, animated: true) {
             videoPlayer.play()
         }
+        
+    }
+    
+    func checkForRetweet(){
+        guard let tweet = self.tweet else {
+            print("Could not load tweet!")
+            return
+        }
+        
+        if !tweet.isRetweet {
+           self.retweetedView.isHidden = true
+            self.displayedTweet = self.tweet
+        }else {
+            //We need to display retweeted tweet not intermediary tweet
+            self.displayedTweet = tweet.retweetedStatus
+            setupRetweetView()
+            
+        }
+       
+    }
+    
+    //Function assumes that tweet is a retweet
+    func setupRetweetView(){
+        
+        self.retweetedView.isHidden = false
+
+        guard let tweet = self.tweet else {
+            print("Could not load the tweet!")
+            return
+        }
+        
+        guard let owner = tweet.owner else {
+            print("Could not load the owner!")
+            return
+        }
+        
+        guard let ownerName = owner.name else {
+            print("Could not load ther owner name.")
+            return
+        }
+        
+        self.retweetOwnerLabel.text = "\(ownerName) retweeted"
+        
         
     }
     

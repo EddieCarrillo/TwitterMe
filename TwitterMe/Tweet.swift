@@ -40,6 +40,22 @@ class Tweet: NSObject {
     var id: Int = 0
     static let idKey = "id"
     
+    var retweetedStatus: Tweet?
+    static let retweetedStatusKey = "retweeted_status"
+    static let tweetKey = "tweet"
+    
+    
+    var isRetweet: Bool{
+        get{
+            if retweetedStatus == nil {
+                return false
+            }else {
+                return true
+            }
+        }
+        
+    }
+    
     var entities: Entities?
   static let entitiesKey = "entities"
    static let extendedEntitiesKey = "extended_entities"
@@ -115,6 +131,14 @@ class Tweet: NSObject {
             self.owner = User(dictionary: owner)
         }else{
            print("Something weird happened.")
+        }
+        
+        if let retweetStatusDictionary = dictionary[Tweet.retweetedStatusKey] as? NSDictionary {
+            
+                print("tweetDictionary: \(retweetStatusDictionary)")
+                self.retweetedStatus = Tweet(dictionary: retweetStatusDictionary)
+                print("[THIS IS A RETWEETED TWEET]")
+            
         }
         
         
