@@ -34,6 +34,14 @@ class TweetDetailViewController: UIViewController {
     
     @IBOutlet weak var mediaViewHeightConstraint: NSLayoutConstraint!
     
+    
+    @IBOutlet weak var favoritesButton: UIButton!
+    
+    @IBOutlet weak var retweetButton: UIButton!
+    
+    
+    
+    
     var tweet: Tweet?
     
     var displayedTweet: Tweet?
@@ -54,6 +62,7 @@ class TweetDetailViewController: UIViewController {
         
         checkForRetweet()
         setupTweetMedia()
+        setupInteractionButtons()
         
         
         updateGUI()
@@ -65,6 +74,40 @@ class TweetDetailViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func onFavoriteTapped(_ sender: Any) {
+        
+        //Animate button
+        self.favoritesButton.isSelected = !self.favoritesButton.isSelected
+        
+        
+        guard let displayTweet = self.displayedTweet else {
+            print("Could not load the tweet.")
+            return
+        }
+        //Update tweet favorite locally and server
+        displayTweet.toggleFavorite()
+        //Update the GUI
+        self.favoritesNumberLabel.text = "\(displayTweet.favoritesCount)"
+        
+    }
+    
+    
+    @IBAction func onRetweetTapped(_ sender: Any) {
+        //Animate the button
+        self.retweetButton.isSelected = !self.retweetButton.isSelected
+        
+        guard let displayTweet = self.displayedTweet else {
+            print("Could not load the tweet.")
+            return
+        }
+        //Update retweet locally and server
+        displayTweet.toggleRetweet()
+        //Update the GUI
+        self.retweetNumberLabel.text = "\(displayTweet.retweetCount)"
+        
+    }
+    
     
     
     func getFormattedDateString(tweet: Tweet) -> String {
@@ -374,6 +417,36 @@ class TweetDetailViewController: UIViewController {
         
         self.retweetOwnerLabel.text = "\(ownerName) retweeted"
         
+        
+    }
+    
+    func setupInteractionButtons(){
+       setupFavoriteButton()
+    }
+    
+    func setupRetweetButtons(){
+        
+        guard let displayTweet = self.displayedTweet else {
+            print("Could not load the tweet.")
+            return
+        }
+        self.retweetButton.setImage(UIImage(named: "retweet-icon"), for: UIControlState.normal)
+        self.retweetButton.setImage(UIImage(named: "retweet-icon-green"), for: UIControlState.selected)
+        //Set the initial state of the retweet button
+        self.retweetButton.isSelected = displayTweet.retweeted
+        
+    }
+    
+    func setupFavoriteButton(){
+        
+        guard let displayTweet = self.displayedTweet else {
+            print("Could not load the tweet.")
+            return
+        }
+        self.favoritesButton.setImage(UIImage(named: "favor-icon" ), for: UIControlState.normal)
+        self.favoritesButton.setImage(UIImage(named: "favor-icon-red"), for: UIControlState.selected)
+        //Set the initial state of the favorites button.
+        self.favoritesButton.isSelected = displayTweet.favorited
         
     }
     
