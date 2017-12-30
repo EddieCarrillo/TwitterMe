@@ -48,6 +48,10 @@ class FeedViewTableViewCell: UITableViewCell {
     @IBOutlet weak var mediaViewHeightConstraint: NSLayoutConstraint!
     
     
+    @IBOutlet weak var retweetViewTopConstraint: NSLayoutConstraint!
+    
+    
+    
     
     var videoPlayTriggered: ((AVPlayerViewController,AVPlayer)->())?
     
@@ -176,6 +180,7 @@ class FeedViewTableViewCell: UITableViewCell {
         
         if !tweet.isRetweet {
             self.retweetedView.isHidden = true
+            hideRetweetView()
             self.displayedTweet = self.tweet
         }else {
             //We need to display retweeted tweet not intermediary tweet
@@ -478,7 +483,7 @@ class FeedViewTableViewCell: UITableViewCell {
         //Remove tap gestures
         self.mediaView.gestureRecognizers = []
         
-        
+        self.retweetViewTopConstraint.constant = 2
         
         //Reset the media view size
         self.mediaViewHeightConstraint.constant = CGFloat.init(self.defaultMediaViewHeight)
@@ -491,6 +496,10 @@ class FeedViewTableViewCell: UITableViewCell {
         }
         //self.mediaView.layoutSubviews()
        
+    }
+    
+    func hideRetweetView(){
+        self.retweetViewTopConstraint.constant = -34
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

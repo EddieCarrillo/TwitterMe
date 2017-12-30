@@ -24,6 +24,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     var refreshControl: UIRefreshControl?
     
     
+    @IBOutlet weak var retweetViewTopConstraint: NSLayoutConstraint!
     
     
     
@@ -64,7 +65,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.setupNavigationBar()
-        self.refreshData(success: {}, failureBlock: {})
+        //self.refreshData(success: {}, failureBlock: {})
         
         
     }
@@ -85,8 +86,8 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
 
          let tabBarController = self.parent as! HomeTabBarController
-        
-        tabBarController.profilePictureTapped?((lastPressedCell?.tweet?.owner)!)
+        //Bug fix open retweeted tweet's owner's profile
+        tabBarController.profilePictureTapped?((lastPressedCell?.displayedTweet?.owner)!)
         
         
     }
@@ -264,6 +265,12 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         
         self.performSegue(withIdentifier: tweetDetailSegue, sender: nil)
+        
+        
+    }
+    
+    
+    func makeRetweetViewDisappear() {
         
         
     }
