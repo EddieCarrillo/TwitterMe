@@ -29,6 +29,7 @@ class ProfileView: UIView {
                  return
             }
             
+            
             if let profileName = user.name {
                 self.profileNameLabel.text = profileName
             }

@@ -8,6 +8,8 @@
 
 import UIKit
 import AVKit
+import ActiveLabel
+
 //TODO: Add retweet view.
 class FeedViewTableViewCell: UITableViewCell {
     
@@ -20,8 +22,7 @@ class FeedViewTableViewCell: UITableViewCell {
     
     @IBOutlet weak var dateLabel: UILabel!
     
-    @IBOutlet weak var tweetTextLabel: UILabel!
-    
+    @IBOutlet weak var tweetTextLabel: ActiveLabel!
     
     @IBOutlet weak var replyButton: UIButton!
     
@@ -49,8 +50,6 @@ class FeedViewTableViewCell: UITableViewCell {
     
     
     @IBOutlet weak var retweetViewTopConstraint: NSLayoutConstraint!
-    
-    
     
     
     var videoPlayTriggered: ((AVPlayerViewController,AVPlayer)->())?
@@ -152,7 +151,15 @@ class FeedViewTableViewCell: UITableViewCell {
         
         initButtons()
         self.dateLabel.text = tweet.dateText
-        self.tweetTextLabel.text = tweet.text
+        
+        print("isActive \(tweetTextLabel is ActiveLabel)")
+    
+        self.tweetTextLabel.handleHashtagTap { (hashtag: String) in
+            print("hashtag character tapped: \(hashtag)")
+        }
+        
+        
+       self.tweetTextLabel.text = tweet.text
         updateStats()
         self.profilePictureImageView.isUserInteractionEnabled = true
         self.profilePictureImageView.setRounded()
