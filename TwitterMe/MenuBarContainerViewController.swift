@@ -24,9 +24,9 @@ class MenuBarContainerViewController: UIViewController {
         
     }
     
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var menuBarView: MenuBarView!
     
-    @IBOutlet weak var menuBarLeadingConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var blurOverlayView: UIView!
     
@@ -49,6 +49,7 @@ class MenuBarContainerViewController: UIViewController {
     
     @IBOutlet weak var profileTabView: UIView!
     
+    @IBOutlet weak var containerViewTrailing: NSLayoutConstraint!
     
     var isMenuShowing: Bool = false
     
@@ -56,6 +57,7 @@ class MenuBarContainerViewController: UIViewController {
         super.viewDidLoad()
         
         initTabs()
+      //  initMenuBar()
         
         self.user = User.currentUser
         
@@ -76,6 +78,14 @@ class MenuBarContainerViewController: UIViewController {
         
     }
     
+    func initMenuBar(){
+        let menuBarWidth = self.menuBarView.frame.width
+        self.containerViewTrailing.constant = 0
+        let containerFrame = containerView.frame
+        
+      
+    }
+    
     func setupBlurOverlay(){
        self.blurOverlayView.translatesAutoresizingMaskIntoConstraints = false
         //Detect user tapped.
@@ -92,15 +102,17 @@ class MenuBarContainerViewController: UIViewController {
     //TODO: Review animations.
     func toggleMenu(){
         
+        let menuBarWidth = -1 * self.menuBarView.frame.width
+        
         if isMenuShowing {
-            self.menuBarLeadingConstraint.constant = -343.00
+            self.containerViewTrailing.constant = 0
             UIView.animate(withDuration: 0.3, animations: {
                 self.view.layoutIfNeeded()
             })
             
         }else {
             
-            self.menuBarLeadingConstraint.constant = 0
+            self.containerViewTrailing.constant = menuBarWidth
             UIView.animate(withDuration: 0.3, animations: {
                 self.view.layoutIfNeeded()
             })

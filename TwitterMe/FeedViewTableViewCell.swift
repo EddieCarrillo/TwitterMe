@@ -458,9 +458,6 @@ class FeedViewTableViewCell: UITableViewCell {
     
     func playVideo(){
         
-        
-        
-        
         guard let vc = self.playerController, let videoPlayer = self.player else {
             print("Player controller")
             return
