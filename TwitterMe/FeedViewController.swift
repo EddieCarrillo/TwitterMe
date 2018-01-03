@@ -176,6 +176,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             tabBarController.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: profileImageView)
             tabBarController.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: composeTweetImageView)
             tabBarController.navigationItem.title = "Home"
+          
         }
         
         composeTweetButton.addTarget(self, action: #selector(FeedViewController.onComposeTweetButtonTapped), for: UIControlEvents.touchUpInside)

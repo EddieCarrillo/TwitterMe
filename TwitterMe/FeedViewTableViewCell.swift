@@ -10,8 +10,24 @@ import UIKit
 import AVKit
 import ActiveLabel
 
+
+
+
+
+
+
+
+
+enum TwitterColors {
+    static let blue = UIColor(red: (29.0/255), green: 160.0/255, blue: 242.0/255, alpha: 1.0)
+}
+
 //TODO: Add retweet view.
 class FeedViewTableViewCell: UITableViewCell {
+    
+    
+    
+    
     
     
     @IBOutlet weak var profilePictureImageView: UIImageView!
@@ -154,6 +170,12 @@ class FeedViewTableViewCell: UITableViewCell {
         
         print("isActive \(tweetTextLabel is ActiveLabel)")
     
+        self.tweetTextLabel.URLColor = TwitterColors.blue
+        self.tweetTextLabel.hashtagColor = TwitterColors.blue
+        self.tweetTextLabel.mentionColor = TwitterColors.blue
+    
+        
+        
         self.tweetTextLabel.handleHashtagTap { (hashtag: String) in
             print("hashtag character tapped: \(hashtag)")
         }
