@@ -19,6 +19,23 @@ class AnimatedView: UIView {
     var player: AVPlayer?
     var playerLayer: AVPlayerLayer?
     
+    var isGIF: Bool = false {
+        didSet{
+            //GIFS should be infinitely looping
+            if isGIF {
+                self.playButton.isHidden = true
+            }
+        }
+    }
+    
+    
+    
+    var videoURL: URL?{
+        didSet{
+            setupVideo()
+        }
+    }
+    
     
     var firstTime: Bool = true
     
@@ -47,7 +64,7 @@ class AnimatedView: UIView {
     func setupVideo(){
         let urlString = "https://devimages-cdn.apple.com/samplecode/avfoundationMedia/AVFoundationQueuePlayer_HLS2/master.m3u8"
         
-        guard let mediaUrl = URL(string: urlString) else {
+        guard let mediaUrl = videoURL else {
             print("Could not load the URL correctly")
             return
         }
@@ -75,15 +92,23 @@ class AnimatedView: UIView {
         
         //Create a callback for the event so that when the video stops it replays again.
         NotificationCenter.default.addObserver(self, selector: #selector(playerItemReachedEnd(notification:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: player?.currentItem)
+        
+        if isGIF {
+            self.player?.play()
+        }
     }
     
     
     @objc func playerItemReachedEnd(notification: NSNotification){
-        //reset the gif to 0
+        //reset the video/gif to 0
         player?.seek(to: kCMTimeZero)
-        //Pause the video and show play button again
-        self.player?.pause()
-        self.playButton.isHidden = false
+        
+        if (!isGIF){
+            //Pause the video and show play button again
+            self.player?.pause()
+            self.playButton.isHidden = false
+        }
+        
         
         print("video ended!")
     }

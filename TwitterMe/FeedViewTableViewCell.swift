@@ -519,45 +519,30 @@ class FeedViewTableViewCell: UITableViewCell {
             return
         }
         
+        
+        
+        
         guard let mediaUrl = URL(string: urlString) else {
             print("Could not load the URL correctly")
             return
         }
         
         
-        //Create a new player
-        self.player = AVPlayer(url: mediaUrl)
+        let animatedViewFrame = self.mediaView.bounds
         
-        //Create a player layer
-        let playerLayer = AVPlayerLayer(player: player)
-        //Keep aspect ratio
-        playerLayer.videoGravity = AVLayerVideoGravityResizeAspect
+        let animatedView = AnimatedView(frame: animatedViewFrame)
+        self.mediaView.addSubview(animatedView)
         
-        
-        //TODO: Investigate this bug. (Can't just assign frame of media view to playerLayer frame)
-        playerLayer.frame = CGRect(x: 0, y: 0, width: self.mediaView.frame.width, height: self.mediaView.frame.height)
-        //        //Resize player layer dimensions to media view dimensions
-        //            playerLayer.frame = self.mediaView.frame
-        
-        //Don't mess with the video at the end.
-        player?.actionAtItemEnd = AVPlayerActionAtItemEnd.none
-        
-        //Start the animated_gif
-        player?.play()
+        animatedView.isGIF = true
+        animatedView.videoURL = mediaUrl
+        animatedView.player?.play()
         
         
-        //Insert the player into the view
-        self.mediaView.layer.insertSublayer(playerLayer, at: 0)
         
-        //Create a callback for the event so that when the video stops it replays again.
-        NotificationCenter.default.addObserver(self, selector: #selector(TweetDetailViewController.playerItemReachedEnd(notification:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: player?.currentItem)
+       
     }
     
     
-    func playerItemReachedEnd(notification: NSNotification){
-        //reset the gif to 0
-        player?.seek(to: kCMTimeZero)
-    }
     
     func setupTweetVideo(media: Media){
         print("Play video triggered!")
