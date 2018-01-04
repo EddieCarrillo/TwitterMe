@@ -311,7 +311,7 @@ class FeedViewTableViewCell: UITableViewCell {
             }else if mediaType == Media.animatedGIFType {
                 setupAnimatedGIF(media: media)
             }else {
-                setupImage(media: media)
+                setupImages(medias: medias)
             }
         }
         
@@ -322,53 +322,181 @@ class FeedViewTableViewCell: UITableViewCell {
     }
     
     
-    func setupImage(media: Media){
-        
-        
-        var mediaImageView = UIImageView()
+    func setupImages(medias: [Media]){
         
         
         
-        var imageHeight = 0
-        var imageWidth = 0
-        var scaling = Size.scalingFit
-        
-        if let photoSizes = media.sizes {
-            if let largeSize = photoSizes.large {
-                imageHeight = largeSize[Size.heightKey] as! Int
-                imageWidth = largeSize[Size.widthKey] as! Int
-                scaling = largeSize[Size.scalingKey] as! String
-            }
+        if medias.count == 1 {
+            setupOneImage(medias: medias)
+        }else if medias.count == 2 {
+            setupTwoImage(medias: medias)
+        }else if medias.count == 3 {
+            setupThreeImage(medias: medias)
+        }else if medias.count == 4 {
+            setupFourImage(medias: medias)
         }
-        
-        //self.mediaViewHeightConstraint.constant = (self.mediaView.frame.size.width * CGFloat.init(imageHeight)) / CGFloat.init(imageWidth)
-        
-        
-        if let mediaUrl = media.mediaUrlHttps {
-            mediaImageView.setImageWith(URL(string: mediaUrl)!)
-            print("mediaUrl: \(mediaUrl)")
-        }else {
-            print("Could not get the url ")
-            self.mediaView.isHidden = true
-            self.mediaViewHeightConstraint.constant = 0
-            return
-        }
-        
-        //    mediaView = mediaImageView
-        mediaImageView.frame = CGRect(x: 0, y: 0, width: mediaView.frame.width, height: mediaView.frame.height)
-        
-        if scaling == Size.scalingFit {
-            mediaImageView.contentMode = .scaleAspectFit
-        }else {
-            mediaImageView.contentMode = .scaleToFill
-        }
-        
-        mediaView.addSubview(mediaImageView)
-        print("[SUBVIEW WAS ADDDED]")
-        
-        
+//
+//
+//        var mediaImageView = UIImageView()
+//
+//
+//
+//        var imageHeight = 0
+//        var imageWidth = 0
+//        var scaling = Size.scalingFit
+//
+//        if let photoSizes = media.sizes {
+//            if let largeSize = photoSizes.large {
+//                imageHeight = largeSize[Size.heightKey] as! Int
+//                imageWidth = largeSize[Size.widthKey] as! Int
+//                scaling = largeSize[Size.scalingKey] as! String
+//            }
+//        }
+//
+//        //self.mediaViewHeightConstraint.constant = (self.mediaView.frame.size.width * CGFloat.init(imageHeight)) / CGFloat.init(imageWidth)
+//
+//
+//        if let mediaUrl = media.mediaUrlHttps {
+//            mediaImageView.setImageWith(URL(string: mediaUrl)!)
+//            print("mediaUrl: \(mediaUrl)")
+//        }else {
+//            print("Could not get the url ")
+//            self.mediaView.isHidden = true
+//            self.mediaViewHeightConstraint.constant = 0
+//            return
+//        }
+//
+//        //    mediaView = mediaImageView
+//        mediaImageView.frame = CGRect(x: 0, y: 0, width: mediaView.frame.width, height: mediaView.frame.height)
+//
+//        if scaling == Size.scalingFit {
+//            mediaImageView.contentMode = .scaleAspectFit
+//        }else {
+//            mediaImageView.contentMode = .scaleToFill
+//        }
+//
+//        mediaView.addSubview(mediaImageView)
+//        print("[SUBVIEW WAS ADDDED]")
+//
+//
         
     }
+    
+    
+    func setupOneImage(medias: [Media]){
+        let media = medias[0]
+        
+        let photoViewFrame = self.mediaView.bounds
+        
+        let onePhotoView = OnePhotoMedia(frame: photoViewFrame)
+        if let urlString = media.mediaUrlHttps {
+            onePhotoView.photoURL = URL(string: urlString)
+        }else {
+            print("No url string")
+        }
+        
+        mediaView.addSubview(onePhotoView)
+    }
+    
+    
+    func setupTwoImage(medias: [Media]){
+        let firstMedia = medias[0]
+        let secondMedia = medias[1]
+        //Set up the size of the custom view
+        let photoViewFrame = self.mediaView.bounds
+        
+        let twoPhotoView = TwoPhotoView(frame: photoViewFrame)
+        
+        if let firstUrlString = firstMedia.mediaUrlHttps {
+            twoPhotoView.firstURL = URL(string: firstUrlString )
+        }else {
+            print("[ERROR] No first url string")
+        }
+        
+        if let secondUrlString = secondMedia.mediaUrlHttps {
+            twoPhotoView.secondURL = URL(string: secondUrlString)
+        }else {
+            print("[ERROR] No first url string")
+        }
+        
+        mediaView.addSubview(twoPhotoView)
+        
+    }
+    
+    
+    func setupThreeImage(medias: [Media]){
+        let firstMedia = medias[0]
+        let secondMedia = medias[1]
+        let thirdMedia = medias[2]
+        //Set up the size of the custom view
+        let photoViewFrame = self.mediaView.bounds
+        
+        let threePhotoView = ThreePhotoView(frame: photoViewFrame)
+        
+        if let firstUrlString = firstMedia.mediaUrlHttps {
+            threePhotoView.firstURL = URL(string: firstUrlString )
+        }else {
+            print("[ERROR] No first url string")
+        }
+        
+        if let secondUrlString = secondMedia.mediaUrlHttps {
+            threePhotoView.secondURL = URL(string: secondUrlString)
+        }else {
+            print("[ERROR] No first url string")
+        }
+        
+        if let thirdUrlString = thirdMedia.mediaUrlHttps {
+            threePhotoView.thirdURL = URL(string: thirdUrlString)
+        }else {
+            print("[ERROR] No first url string")
+        }
+        
+        mediaView.addSubview(threePhotoView)
+    }
+    
+    
+    func setupFourImage(medias: [Media]){
+        
+        let firstMedia = medias[0]
+        let secondMedia = medias[1]
+        let thirdMedia = medias[2]
+        let fourthMedia = medias[3]
+        //Set up the size of the custom view
+        let photoViewFrame = self.mediaView.bounds
+        
+        let fourPhotoView = FourPhotoView(frame: photoViewFrame)
+        
+        if let firstUrlString = firstMedia.mediaUrlHttps {
+            fourPhotoView.firstURL = URL(string: firstUrlString )
+        }else {
+            print("[ERROR] No first url string")
+        }
+        
+        if let secondUrlString = secondMedia.mediaUrlHttps {
+            fourPhotoView.secondURL = URL(string: secondUrlString)
+        }else {
+            print("[ERROR] No first url string")
+        }
+        
+        if let thirdUrlString = thirdMedia.mediaUrlHttps {
+            fourPhotoView.thirdURL = URL(string: thirdUrlString)
+        }else {
+            print("[ERROR] No first url string")
+        }
+        
+        
+        if let fourthURLString = fourthMedia.mediaUrlHttps {
+            fourPhotoView.fourthURL = URL(string: fourthURLString)
+        }else {
+            print("[ERROR] No first url string")
+        }
+        
+        
+        mediaView.addSubview(fourPhotoView)
+    }
+    
+    
+    
     
     func setupAnimatedGIF(media: Media){
         guard let videoInfo = media.videoInfo else {
@@ -491,7 +619,7 @@ class FeedViewTableViewCell: UITableViewCell {
     }
     
     func addVideoPreviewPicture(media: Media){
-        setupImage(media: media)
+        setupOneImage(medias: [media])
     }
 
     override func awakeFromNib() {

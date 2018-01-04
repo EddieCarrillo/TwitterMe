@@ -41,6 +41,16 @@
 		2C050B5D1FEB121700853E49 /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C050B5C1FEB121700853E49 /* HomeTabBarController.swift */; };
 		70ED9160BFF98A95290346FE /* Pods_TwitterMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE3ECA5CC556FB72B277487 /* Pods_TwitterMe.framework */; };
 		77E4FB53E0A6507B8848DD8E /* Pods_TwitterMeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D69F8652BE34972786CAAEB8 /* Pods_TwitterMeTests.framework */; };
+		F7F5ED161FFDA6DF0030A276 /* AnimatedMedia.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7F5ED0C1FFDA6DE0030A276 /* AnimatedMedia.xib */; };
+		F7F5ED171FFDA6DF0030A276 /* AnimatedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F5ED0D1FFDA6DE0030A276 /* AnimatedView.swift */; };
+		F7F5ED181FFDA6DF0030A276 /* OnePhotoMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F5ED0E1FFDA6DE0030A276 /* OnePhotoMedia.swift */; };
+		F7F5ED191FFDA6DF0030A276 /* OnePhotoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7F5ED0F1FFDA6DE0030A276 /* OnePhotoView.xib */; };
+		F7F5ED1A1FFDA6DF0030A276 /* ThreePhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F5ED101FFDA6DE0030A276 /* ThreePhotoView.swift */; };
+		F7F5ED1B1FFDA6DF0030A276 /* FourPhotoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7F5ED111FFDA6DE0030A276 /* FourPhotoView.xib */; };
+		F7F5ED1C1FFDA6DF0030A276 /* ThreePhotoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7F5ED121FFDA6DE0030A276 /* ThreePhotoView.xib */; };
+		F7F5ED1D1FFDA6DF0030A276 /* TwoPhotoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7F5ED131FFDA6DF0030A276 /* TwoPhotoView.xib */; };
+		F7F5ED1E1FFDA6DF0030A276 /* TwoPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F5ED141FFDA6DF0030A276 /* TwoPhotoView.swift */; };
+		F7F5ED1F1FFDA6DF0030A276 /* FourPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F5ED151FFDA6DF0030A276 /* FourPhotoView.swift */; };
 		F7F7C7F01FF19AFC002286B1 /* VideoInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F7C7EF1FF19AFC002286B1 /* VideoInfo.swift */; };
 /* End PBXBuildFile section */
 
@@ -99,6 +109,16 @@
 		F51A6F330E245DE42C969203 /* Pods-TwitterMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterMe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TwitterMe/Pods-TwitterMe.debug.xcconfig"; sourceTree = "<group>"; };
 		F7F37E9C1FF16791001F36E6 /* BDBOAuth1Manager */ = {isa = PBXFileReference; lastKnownFileType = folder; name = BDBOAuth1Manager; path = Pods/BDBOAuth1Manager/BDBOAuth1Manager; sourceTree = "<group>"; };
 		F7F37E9E1FF167DC001F36E6 /* BDBOAuth1Manager */ = {isa = PBXFileReference; lastKnownFileType = folder; name = BDBOAuth1Manager; path = Pods/BDBOAuth1Manager; sourceTree = "<group>"; };
+		F7F5ED0C1FFDA6DE0030A276 /* AnimatedMedia.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnimatedMedia.xib; sourceTree = "<group>"; };
+		F7F5ED0D1FFDA6DE0030A276 /* AnimatedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedView.swift; sourceTree = "<group>"; };
+		F7F5ED0E1FFDA6DE0030A276 /* OnePhotoMedia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnePhotoMedia.swift; sourceTree = "<group>"; };
+		F7F5ED0F1FFDA6DE0030A276 /* OnePhotoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnePhotoView.xib; sourceTree = "<group>"; };
+		F7F5ED101FFDA6DE0030A276 /* ThreePhotoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreePhotoView.swift; sourceTree = "<group>"; };
+		F7F5ED111FFDA6DE0030A276 /* FourPhotoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FourPhotoView.xib; sourceTree = "<group>"; };
+		F7F5ED121FFDA6DE0030A276 /* ThreePhotoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ThreePhotoView.xib; sourceTree = "<group>"; };
+		F7F5ED131FFDA6DF0030A276 /* TwoPhotoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TwoPhotoView.xib; sourceTree = "<group>"; };
+		F7F5ED141FFDA6DF0030A276 /* TwoPhotoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoPhotoView.swift; sourceTree = "<group>"; };
+		F7F5ED151FFDA6DF0030A276 /* FourPhotoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FourPhotoView.swift; sourceTree = "<group>"; };
 		F7F7C7EF1FF19AFC002286B1 /* VideoInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -125,6 +145,7 @@
 		05254BCE1FB3EC6000E803CD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F7F5ECF71FFDA68C0030A276 /* Custom */,
 				2C050B581FE8875200853E49 /* MenuBarView.swift */,
 				0542E1C31FB29BE4006DE1EC /* FeedViewTableViewCell.swift */,
 				056A62731FC3CC5600A73C2F /* ProfileView.swift */,
@@ -242,6 +263,23 @@
 			name = Entities;
 			sourceTree = "<group>";
 		};
+		F7F5ECF71FFDA68C0030A276 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				F7F5ED0C1FFDA6DE0030A276 /* AnimatedMedia.xib */,
+				F7F5ED0D1FFDA6DE0030A276 /* AnimatedView.swift */,
+				F7F5ED151FFDA6DF0030A276 /* FourPhotoView.swift */,
+				F7F5ED111FFDA6DE0030A276 /* FourPhotoView.xib */,
+				F7F5ED0E1FFDA6DE0030A276 /* OnePhotoMedia.swift */,
+				F7F5ED0F1FFDA6DE0030A276 /* OnePhotoView.xib */,
+				F7F5ED101FFDA6DE0030A276 /* ThreePhotoView.swift */,
+				F7F5ED121FFDA6DE0030A276 /* ThreePhotoView.xib */,
+				F7F5ED141FFDA6DF0030A276 /* TwoPhotoView.swift */,
+				F7F5ED131FFDA6DF0030A276 /* TwoPhotoView.xib */,
+			);
+			name = Custom;
+			sourceTree = "<group>";
+		};
 		FD84AE32BEF27AD75741540B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -344,10 +382,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				05254BD01FB3FC0800E803CD /* Bugs.pdf in Resources */,
+				F7F5ED161FFDA6DF0030A276 /* AnimatedMedia.xib in Resources */,
 				1F5A59021FA8F03C0065A8C5 /* LaunchScreen.storyboard in Resources */,
+				F7F5ED1B1FFDA6DF0030A276 /* FourPhotoView.xib in Resources */,
 				1F5A58FF1FA8F03B0065A8C5 /* Assets.xcassets in Resources */,
+				F7F5ED1C1FFDA6DF0030A276 /* ThreePhotoView.xib in Resources */,
+				F7F5ED1D1FFDA6DF0030A276 /* TwoPhotoView.xib in Resources */,
 				1F5A591D1FA8F45D0065A8C5 /* Podfile in Resources */,
 				1F5A58FD1FA8F03B0065A8C5 /* Main.storyboard in Resources */,
+				F7F5ED191FFDA6DF0030A276 /* OnePhotoView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,25 +519,30 @@
 				1F97FA181FEF30BC00852A6F /* Poll.swift in Sources */,
 				1F97FA121FEF2FEF00852A6F /* Media.swift in Sources */,
 				1F5A591F1FA8F6B10065A8C5 /* LoginViewController.swift in Sources */,
+				F7F5ED171FFDA6DF0030A276 /* AnimatedView.swift in Sources */,
 				1FE8E5CD1FEE052A00B6432B /* AccountChooserViewController.swift in Sources */,
 				056A62741FC3CC5600A73C2F /* ProfileView.swift in Sources */,
 				0542E1C41FB29BE4006DE1EC /* FeedViewTableViewCell.swift in Sources */,
 				1F97FA161FEF309C00852A6F /* Symbol.swift in Sources */,
 				2C0135601FE82DFB008722D6 /* MenuBarContainerViewController.swift in Sources */,
 				1F5A591B1FA8F3DD0065A8C5 /* TwitterClient.swift in Sources */,
+				F7F5ED1A1FFDA6DF0030A276 /* ThreePhotoView.swift in Sources */,
 				1F97FA141FEF304B00852A6F /* UserMention.swift in Sources */,
 				1F5A59251FAA33B30065A8C5 /* Tweet.swift in Sources */,
 				1F97FA0C1FEF2BEF00852A6F /* Entities.swift in Sources */,
 				1F97FA1A1FEF335600852A6F /* Size.swift in Sources */,
+				F7F5ED1F1FFDA6DF0030A276 /* FourPhotoView.swift in Sources */,
 				1F97FA101FEF2FBB00852A6F /* TURL.swift in Sources */,
 				1F97FA0E1FEF2F4A00852A6F /* Hashtag.swift in Sources */,
 				1F5A59231FAA33A30065A8C5 /* User.swift in Sources */,
+				F7F5ED181FFDA6DF0030A276 /* OnePhotoMedia.swift in Sources */,
 				1FC71B371FB16F2B00D94696 /* FeedViewController.swift in Sources */,
 				2C050B551FE8823100853E49 /* UIViewExtensions.swift in Sources */,
 				2C050B591FE8875200853E49 /* MenuBarView.swift in Sources */,
 				0572AEED1FB54D60007ED4AA /* ProfileViewController.swift in Sources */,
 				2C050B531FE858E100853E49 /* CentralNavigationController.swift in Sources */,
 				F7F7C7F01FF19AFC002286B1 /* VideoInfo.swift in Sources */,
+				F7F5ED1E1FFDA6DF0030A276 /* TwoPhotoView.swift in Sources */,
 				1F5A58F81FA8F03B0065A8C5 /* AppDelegate.swift in Sources */,
 				2C0135241FE6F1F0008722D6 /* ComposeTweetViewController.swift in Sources */,
 				2C050B5D1FEB121700853E49 /* HomeTabBarController.swift in Sources */,

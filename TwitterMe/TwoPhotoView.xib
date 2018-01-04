@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TwoPhotoView" customModule="MediaDisplay" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="RWg-Sx-pQA"/>
+                <outlet property="firstImageView" destination="2bp-4A-7ps" id="oHF-LS-2qP"/>
+                <outlet property="secondImageView" destination="sy3-Ji-8fh" id="TSq-6Y-Pp1"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="293" height="86"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="man" translatesAutoresizingMaskIntoConstraints="NO" id="2bp-4A-7ps">
+                    <rect key="frame" x="0.0" y="0.0" width="146.5" height="86"/>
+                </imageView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="girl" translatesAutoresizingMaskIntoConstraints="NO" id="sy3-Ji-8fh">
+                    <rect key="frame" x="146.5" y="0.0" width="146.5" height="86"/>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="sy3-Ji-8fh" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.5" id="MrA-xK-1yA"/>
+                <constraint firstItem="2bp-4A-7ps" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.5" id="Xsl-Qw-FH9"/>
+                <constraint firstItem="sy3-Ji-8fh" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="ahh-Nj-b4s"/>
+                <constraint firstItem="2bp-4A-7ps" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="diL-bq-ybF"/>
+                <constraint firstItem="sy3-Ji-8fh" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="grh-2r-8IT"/>
+                <constraint firstItem="2bp-4A-7ps" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="hMR-2l-uam"/>
+                <constraint firstItem="2bp-4A-7ps" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="jO3-zH-pED"/>
+                <constraint firstItem="sy3-Ji-8fh" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="z6j-ij-WGQ"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="31.5" y="-230"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="girl" width="194" height="259"/>
+        <image name="man" width="266" height="190"/>
+    </resources>
+</document>

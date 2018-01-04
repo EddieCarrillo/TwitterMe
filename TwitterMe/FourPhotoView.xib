@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FourPhotoView" customModule="TwitterMe" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="to5-oo-F1C"/>
+                <outlet property="firstImageView" destination="THu-8L-bca" id="Bcc-ff-eBr"/>
+                <outlet property="fourthImageView" destination="2CA-me-yDP" id="dTB-CZ-x1e"/>
+                <outlet property="secondImageView" destination="CSA-Mt-okD" id="fow-0z-aIK"/>
+                <outlet property="thirdImageView" destination="HZf-jr-OJP" id="AZZ-k9-9lw"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="THu-8L-bca">
+                    <rect key="frame" x="0.0" y="0.0" width="187.5" height="70"/>
+                </imageView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CSA-Mt-okD">
+                    <rect key="frame" x="187.5" y="0.0" width="187.5" height="70"/>
+                </imageView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HZf-jr-OJP">
+                    <rect key="frame" x="0.0" y="70" width="187.5" height="70"/>
+                </imageView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2CA-me-yDP">
+                    <rect key="frame" x="187.5" y="70" width="187.5" height="70"/>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="CSA-Mt-okD" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.5" id="1vq-Mx-IZq"/>
+                <constraint firstItem="2CA-me-yDP" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.5" id="2wB-PA-XR5"/>
+                <constraint firstItem="CSA-Mt-okD" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.5" id="71C-cM-IKl"/>
+                <constraint firstAttribute="bottom" secondItem="HZf-jr-OJP" secondAttribute="bottom" id="9ri-6n-5wY"/>
+                <constraint firstItem="CSA-Mt-okD" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="HA6-4f-2jh"/>
+                <constraint firstItem="2CA-me-yDP" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.5" id="K6L-Np-DIK"/>
+                <constraint firstItem="2CA-me-yDP" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="UkH-dc-nxL"/>
+                <constraint firstItem="HZf-jr-OJP" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.5" id="WnF-5e-xbT"/>
+                <constraint firstItem="THu-8L-bca" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.5" id="Z3a-Pd-meR"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="CSA-Mt-okD" secondAttribute="trailing" id="aLZ-9O-PDY"/>
+                <constraint firstAttribute="trailing" secondItem="2CA-me-yDP" secondAttribute="trailing" id="bby-0T-Q6b"/>
+                <constraint firstItem="HZf-jr-OJP" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.5" id="dnE-hu-akf"/>
+                <constraint firstItem="THu-8L-bca" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="e1Y-em-A4o"/>
+                <constraint firstItem="THu-8L-bca" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="m5c-x3-wwi"/>
+                <constraint firstItem="THu-8L-bca" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.5" id="oTJ-Gs-RsN"/>
+                <constraint firstItem="HZf-jr-OJP" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="rBe-oo-vsW"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="72.5" y="-210"/>
+        </view>
+    </objects>
+</document>
