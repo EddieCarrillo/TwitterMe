@@ -46,9 +46,10 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        self.tableView.estimatedRowHeight = 100
+        
         //Add autolayout
         self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 200
         
         self.navigationController?.navigationBar.barTintColor = UIColor.white
         
@@ -235,6 +236,10 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             
         }
         
+        
+        
+        cell.translatesAutoresizingMaskIntoConstraints = false
+        
         //Duct tape bug fix.
         cell.mediaView.frame = CGRect(x: cell.mediaView.frame.origin.x, y: cell.mediaView.frame.origin.y, width: cell.mediaView.frame.width, height: CGFloat(cell.defaultMediaViewHeight))
         
@@ -247,6 +252,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.profilePictureImageView.addGestureRecognizer(tapGestureProfilePicture)
         
         
+        
         cell.tweet = tweet
         
         
@@ -254,6 +260,15 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
 
         
     }
+    
+    
+//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        return UITableViewAutomaticDimension
+//    }
+//
+//    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        return UITableViewAutomaticDimension
+//    }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -270,12 +285,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
-    
-    func makeRetweetViewDisappear() {
-        
-        
-    }
-    
+  
     
     
 

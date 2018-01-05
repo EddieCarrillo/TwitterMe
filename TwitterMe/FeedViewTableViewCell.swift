@@ -12,12 +12,6 @@ import ActiveLabel
 
 
 
-
-
-
-
-
-
 enum TwitterColors {
     static let blue = UIColor(red: (29.0/255), green: 160.0/255, blue: 242.0/255, alpha: 1.0)
 }
@@ -56,16 +50,22 @@ class FeedViewTableViewCell: UITableViewCell {
     
     @IBOutlet weak var privateMessageImageView: UIImageView!
     
+    
+    //Top message indictated tweet is being retweeted
     @IBOutlet weak var retweetOwnerLabel: UILabel!
     
-    @IBOutlet weak var retweetedView: UIView!
+    @IBOutlet weak var retweetOwnerLabelHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var retweetedImageView: UIImageView!
+    
+    @IBOutlet weak var retweeetImageViewHeight: NSLayoutConstraint!
+    
+    
     
     @IBOutlet weak var mediaView: UIView!
     
     @IBOutlet weak var mediaViewHeightConstraint: NSLayoutConstraint!
-    
-    
-    @IBOutlet weak var retweetViewTopConstraint: NSLayoutConstraint!
+
     
     
     var videoPlayTriggered: ((AVPlayerViewController,AVPlayer)->())?
@@ -79,7 +79,8 @@ class FeedViewTableViewCell: UITableViewCell {
     var playerLayer: AVPlayerLayer?
     
     let defaultMediaViewHeight = 120
-    
+    let defaultRetweetedImageViewHeight = 12
+    let defaultRetweetedLabelHeight = 14
     
     
     
@@ -208,7 +209,6 @@ class FeedViewTableViewCell: UITableViewCell {
         }
         
         if !tweet.isRetweet {
-            self.retweetedView.isHidden = true
             hideRetweetView()
             self.displayedTweet = self.tweet
         }else {
@@ -223,8 +223,6 @@ class FeedViewTableViewCell: UITableViewCell {
     
     //Function assumes that tweet is a retweet
     func setupRetweetView(){
-
-        self.retweetedView.isHidden = false
 
         guard let tweet = self.tweet else {
             print("Could not load the tweet!")
@@ -242,9 +240,19 @@ class FeedViewTableViewCell: UITableViewCell {
         }
 
         self.retweetOwnerLabel.text = "\(ownerName) retweeted"
+        
+        showRetweetView()
 
 
     }
+    
+    
+    func showRetweetView(){
+        self.retweetOwnerLabelHeight.constant = CGFloat(self.defaultRetweetedLabelHeight)
+        self.retweeetImageViewHeight.constant = CGFloat(self.defaultRetweetedImageViewHeight)
+        
+    }
+    
     
     
     
@@ -283,11 +291,15 @@ class FeedViewTableViewCell: UITableViewCell {
     func setupTweetMedia(){
         guard let tweet = self.displayedTweet else {
             print("Could load the tweet")
+            //Hide the media view
+            self.mediaViewHeightConstraint.constant = 0
             return
         }
         
         guard let entity = tweet.entities else {
             print("Could not load tweet entitites")
+            //Hide the media view
+            self.mediaViewHeightConstraint.constant = 0
             return
         }
         
@@ -295,11 +307,11 @@ class FeedViewTableViewCell: UITableViewCell {
             print("Could not load the tweet media")
             //Hide the media view
             self.mediaViewHeightConstraint.constant = 0
-            self.mediaView.isHidden = true
+            //self.mediaView.isHidden = true
             return
         }
         
-        self.mediaView.isHidden = false
+       // self.mediaView.isHidden = false
         self.mediaViewHeightConstraint.constant = CGFloat.init(self.defaultMediaViewHeight)
         //If the medias is not nil then we are guaranteed the first element is not nil
         let media = medias[0]
@@ -622,7 +634,7 @@ class FeedViewTableViewCell: UITableViewCell {
         //Remove tap gestures
         self.mediaView.gestureRecognizers = []
         
-        self.retweetViewTopConstraint.constant = 2
+        
         
         //Reset the media view size
         self.mediaViewHeightConstraint.constant = CGFloat.init(self.defaultMediaViewHeight)
@@ -638,8 +650,11 @@ class FeedViewTableViewCell: UITableViewCell {
     }
     
     func hideRetweetView(){
-        self.retweetViewTopConstraint.constant = -34
+        self.retweeetImageViewHeight.constant = 0
+        self.retweetOwnerLabelHeight.constant = 0
     }
+    
+    
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
