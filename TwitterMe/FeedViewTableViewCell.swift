@@ -239,7 +239,7 @@ class FeedViewTableViewCell: UITableViewCell {
             return
         }
 
-        self.retweetOwnerLabel.text = "\(ownerName) retweeted"
+        self.retweetOwnerLabel.text = "\(ownerName) Retweeted"
         
         showRetweetView()
 

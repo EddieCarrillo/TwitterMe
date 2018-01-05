@@ -24,7 +24,7 @@
             <subviews>
                 <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HWp-rf-Q0x">
                     <rect key="frame" x="120" y="104.5" width="80" height="69.5"/>
-                    <state key="normal" image="play_button">
+                    <state key="normal" image="play_button-1">
                         <color key="titleColor" red="0.11372549019607843" green="0.62745098039215685" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
@@ -44,6 +44,6 @@
         </view>
     </objects>
     <resources>
-        <image name="play_button" width="24" height="24"/>
+        <image name="play_button-1" width="300" height="300"/>
     </resources>
 </document>

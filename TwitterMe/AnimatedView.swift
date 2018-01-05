@@ -24,6 +24,8 @@ class AnimatedView: UIView {
             //GIFS should be infinitely looping
             if isGIF {
                 self.playButton.isHidden = true
+            }else {
+                self.playButton.isHidden = false
             }
         }
     }

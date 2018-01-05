@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ThreePhotoView" customModule="MediaDisplay" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ThreePhotoView" customModule="TwitterMe" customModuleProvider="target">
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="D9i-08-SZc"/>
                 <outlet property="firstImageView" destination="Q5X-xA-TL3" id="Luh-zL-9AV"/>
@@ -25,28 +25,28 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="man" translatesAutoresizingMaskIntoConstraints="NO" id="Q5X-xA-TL3">
-                    <rect key="frame" x="0.0" y="0.0" width="134.5" height="107"/>
+                    <rect key="frame" x="0.0" y="0.0" width="132.5" height="107"/>
                 </imageView>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="girl" translatesAutoresizingMaskIntoConstraints="NO" id="CAV-Fh-epf">
-                    <rect key="frame" x="134.5" y="0.0" width="134.5" height="53.5"/>
+                    <rect key="frame" x="136.5" y="0.0" width="132.5" height="51.5"/>
                 </imageView>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="american" translatesAutoresizingMaskIntoConstraints="NO" id="UIE-z8-7j9">
-                    <rect key="frame" x="134.5" y="53.5" width="134.5" height="53.5"/>
+                    <rect key="frame" x="136.5" y="55.5" width="132.5" height="51.5"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="CAV-Fh-epf" secondAttribute="trailing" id="1Mc-rb-0XK"/>
                 <constraint firstItem="Q5X-xA-TL3" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="4hi-6l-xFX"/>
-                <constraint firstItem="Q5X-xA-TL3" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.5" id="HOj-58-0dV"/>
-                <constraint firstItem="CAV-Fh-epf" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.5" id="R1C-NK-sCT"/>
-                <constraint firstItem="UIE-z8-7j9" firstAttribute="height" secondItem="vUN-kp-3ea" secondAttribute="height" multiplier="0.5" id="Rxt-w8-V0h"/>
+                <constraint firstItem="Q5X-xA-TL3" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.5" constant="-2" id="HOj-58-0dV"/>
+                <constraint firstItem="CAV-Fh-epf" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.5" constant="-2" id="R1C-NK-sCT"/>
+                <constraint firstItem="UIE-z8-7j9" firstAttribute="height" secondItem="vUN-kp-3ea" secondAttribute="height" multiplier="0.5" constant="-2" id="Rxt-w8-V0h"/>
                 <constraint firstItem="UIE-z8-7j9" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="TNp-kt-PgV"/>
                 <constraint firstItem="CAV-Fh-epf" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Uxh-WA-ctJ"/>
-                <constraint firstItem="CAV-Fh-epf" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.5" id="aS0-DD-COY"/>
+                <constraint firstItem="CAV-Fh-epf" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.5" constant="-2" id="aS0-DD-COY"/>
                 <constraint firstItem="Q5X-xA-TL3" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="gmF-lw-Yai"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="UIE-z8-7j9" secondAttribute="bottom" id="qLn-gm-ycZ"/>
-                <constraint firstItem="UIE-z8-7j9" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.5" id="zWE-Ym-XAo"/>
+                <constraint firstItem="UIE-z8-7j9" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.5" constant="-2" id="zWE-Ym-XAo"/>
                 <constraint firstItem="Q5X-xA-TL3" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="zpK-fC-6Eh"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
