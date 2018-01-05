@@ -140,6 +140,11 @@ class FeedViewTableViewCell: UITableViewCell {
             checkForRetweet()
             updateUI()
             setupTweetMedia()
+            
+            //When view controller is not showing turn off all videos.
+            NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "StopVideos"), object: nil, queue: OperationQueue.main) { (notification: Notification) in
+                self.pauseVideo()
+            }
         
     }
     
@@ -558,7 +563,6 @@ class FeedViewTableViewCell: UITableViewCell {
     
     func setupTweetVideo(media: Media){
         print("Play video triggered!")
-        
         guard let videoInfo = media.videoInfo else {
             print("Could not retrieve video info!")
             return
@@ -660,6 +664,30 @@ class FeedViewTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        resetCellContent()
+    }
+    
+    
+    func pauseVideo(){
+        var uncheckedAnimatedView: AnimatedView?
+        
+        for subview in self.mediaView.subviews {
+            if subview is AnimatedView{
+                uncheckedAnimatedView = subview as? AnimatedView
+            }
+        }
+        
+        guard let animatedView = uncheckedAnimatedView else {
+            print("Could not load animated view")
+            return
+        }
+        
+        animatedView.pause()
+        
+        
+    }
+    
+    func resetCellContent(){
         //Remove any subviews (Possibly any image views.)
         for subview in self.mediaView.subviews {
             subview.removeFromSuperview()
@@ -678,8 +706,6 @@ class FeedViewTableViewCell: UITableViewCell {
                 layer.removeFromSuperlayer()
             }
         }
-        //self.mediaView.layoutSubviews()
-       
     }
     
     func hideRetweetView(){

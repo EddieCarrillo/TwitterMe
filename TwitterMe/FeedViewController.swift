@@ -31,6 +31,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         //Init UIRefreshControl
         let refreshControl = UIRefreshControl()
         
@@ -68,6 +69,15 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.setupNavigationBar()
         //self.refreshData(success: {}, failureBlock: {})
         
+        
+    }
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        //Should notify cells to stop playing videos
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "StopVideos"), object: nil)
         
     }
     

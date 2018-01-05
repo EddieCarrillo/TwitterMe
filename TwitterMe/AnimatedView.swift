@@ -76,11 +76,23 @@ class AnimatedView: UIView {
             firstTime = false
         }
         
-        
-        
         player?.play()
         self.playButton.isHidden = true
     }
+    
+    func pause(){
+        
+        if self.player?.timeControlStatus == AVPlayerTimeControlStatus.playing {
+            self.playButton.isHidden = false
+            self.player?.pause()
+        }else {
+            print("The video is already paused!")
+        }
+        
+    }
+    
+    
+    
     
     func setupVideo(){
 //        let urlString = "https://devimages-cdn.apple.com/samplecode/avfoundationMediaAVFoundationQueuePlayer_HLS2/master.m3u8"
