@@ -30,11 +30,27 @@ class AnimatedView: UIView {
         }
     }
     
+    @IBOutlet weak var previewPhoto: UIImageView!
     
     
     var videoURL: URL?{
         didSet{
-            setupVideo()
+            //setupVideo()
+            if let previewPhotoURL = self.previewPhotoURL{
+                previewPhoto.setImageWith(previewPhotoURL)
+            }else {
+                print("Bad photo URL")
+            }
+        }
+    }
+    
+    var previewPhotoURL: URL? {
+        didSet{
+            if let previewPhotoURL = self.previewPhotoURL{
+                previewPhoto.setImageWith(previewPhotoURL)
+            }else {
+                print("Bad photo URL")
+            }
         }
     }
     
@@ -56,15 +72,18 @@ class AnimatedView: UIView {
         print("Play tapped!")
         if firstTime{
            setupVideo()
+            self.previewPhoto.isHidden = true
             firstTime = false
         }
+        
+        
         
         player?.play()
         self.playButton.isHidden = true
     }
     
     func setupVideo(){
-        let urlString = "https://devimages-cdn.apple.com/samplecode/avfoundationMedia/AVFoundationQueuePlayer_HLS2/master.m3u8"
+//        let urlString = "https://devimages-cdn.apple.com/samplecode/avfoundationMediaAVFoundationQueuePlayer_HLS2/master.m3u8"
         
         guard let mediaUrl = videoURL else {
             print("Could not load the URL correctly")
@@ -82,7 +101,7 @@ class AnimatedView: UIView {
         
         
         //TODO: Investigate this bug. (Can't just assign frame of media view to playerLayer frame)
-        playerLayer.frame = CGRect(x: 0, y: 0, width: self.contentView.frame.width, height: self.contentView.frame.height)
+        playerLayer.frame = self.bounds
         //        //Resize player layer dimensions to media view dimensions
         //            playerLayer.frame = self.mediaView.frame
         
@@ -113,6 +132,27 @@ class AnimatedView: UIView {
         
         
         print("video ended!")
+    }
+    
+    
+    func setupOneImage(pictureURL: URL?){
+        
+        guard let url = pictureURL else {
+            print("bad url cannot set up preview picture image")
+            return
+        }
+        
+        let photoViewFrame = bounds
+        
+        let onePhotoView = OnePhotoMedia(frame: photoViewFrame)
+        onePhotoView.photoURL = url
+        
+        self.addSubview(onePhotoView)
+    }
+    
+    
+    func addVideoPreviewPicture(withURL: URL?){
+        setupOneImage(pictureURL: withURL)
     }
     
     func initSubviews(){

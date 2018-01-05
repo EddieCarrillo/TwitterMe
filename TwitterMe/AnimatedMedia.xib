@@ -15,6 +15,7 @@
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="ZUS-G8-TMt"/>
                 <outlet property="playButton" destination="HWp-rf-Q0x" id="EMU-0K-5Wx"/>
+                <outlet property="previewPhoto" destination="d3g-58-Gsw" id="xho-6r-ehT"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -22,6 +23,10 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="278"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="d3g-58-Gsw">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="278"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </imageView>
                 <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HWp-rf-Q0x">
                     <rect key="frame" x="120" y="104.5" width="80" height="69.5"/>
                     <state key="normal" image="play_button-1">
@@ -33,10 +38,14 @@
                 </button>
             </subviews>
             <constraints>
+                <constraint firstItem="d3g-58-Gsw" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="4zE-Ze-PII"/>
                 <constraint firstItem="HWp-rf-Q0x" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.25" id="90P-3f-KmB"/>
                 <constraint firstItem="HWp-rf-Q0x" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="FyP-kR-aVy"/>
                 <constraint firstItem="HWp-rf-Q0x" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.25" id="Hc5-NJ-9e9"/>
+                <constraint firstItem="d3g-58-Gsw" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="L9O-xD-jSS"/>
                 <constraint firstItem="HWp-rf-Q0x" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="MzF-z4-LeA"/>
+                <constraint firstItem="d3g-58-Gsw" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="Wgc-tt-WVe"/>
+                <constraint firstItem="d3g-58-Gsw" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="lqv-q3-OdT"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

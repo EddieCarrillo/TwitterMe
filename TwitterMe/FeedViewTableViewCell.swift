@@ -586,26 +586,59 @@ class FeedViewTableViewCell: UITableViewCell {
         }
         
         
+        let animatedViewFrame = self.mediaView.bounds
+        let animatedView = AnimatedView(frame: animatedViewFrame)
+//
         
-        //Create a new player, passing it an HTTP Live Streaming Url
-        self.player = AVPlayer(url: url)
         
-        //Create a new AVPlayerViewController and pass a reference to the player.
-        self.playerController = AVPlayerViewController()
+        if let previewPhotoURLString = media.mediaUrlHttps{
+            animatedView.previewPhotoURL = URL(string: previewPhotoURLString)
+        }
+
+        animatedView.videoURL = url
         
-        playerController?.player = player
+       
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(TweetDetailViewController.playVideo))
-        self.mediaView.gestureRecognizers = []
-        self.mediaView.gestureRecognizers?.append(tapGesture)
+        animatedView.isGIF = false
         
-        addVideoPreviewPicture(media: media)
+        self.mediaView.addSubview(animatedView)
+        
+        
+//        //Create a new player, passing it an HTTP Live Streaming Url
+//        self.player = AVPlayer(url: url)
+//
+//        //Create a new AVPlayerViewController and pass a reference to the player.
+//        self.playerController = AVPlayerViewController()
+//
+//        playerController?.player = player
+//
+//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(TweetDetailViewController.playVideo))
+//        self.mediaView.gestureRecognizers = []
+//        self.mediaView.gestureRecognizers?.append(tapGesture)
+//
+//        addVideoPreviewPicture(media: media)
         
     }
     
     func playVideo(){
         
-        guard let vc = self.playerController, let videoPlayer = self.player else {
+        var uncheckedAnimatedView: AnimatedView?
+        
+        for subview in self.mediaView.subviews {
+            if subview is AnimatedView{
+                uncheckedAnimatedView = subview as? AnimatedView
+            }
+        }
+        
+        guard let animatedView = uncheckedAnimatedView else {
+            print("Could not load animated view")
+            return
+        }
+        
+        
+        
+        
+        guard let vc = self.playerController, let videoPlayer = animatedView.player else {
             print("Player controller")
             return
         }
