@@ -15,6 +15,20 @@ class OnePhotoMedia: UIView {
     
     @IBOutlet weak var firstImageView: UIImageView!
     
+    var imageTapped: ((Int, [UIImage])->())?
+    
+    var images: [UIImage] {
+        get{
+            if let photo = firstImageView.image {
+                return [photo]
+            }else{
+                return []
+           }
+        }
+    }
+    
+    
+    
     
     
     
@@ -48,9 +62,9 @@ class OnePhotoMedia: UIView {
         initSubviews()
     }
     
-    
-    
-    
+    func firstImageTapped(){
+        imageTapped?(0, images)
+    }
     
     
     func initSubviews(){
@@ -61,6 +75,9 @@ class OnePhotoMedia: UIView {
         contentView.clipsToBounds = true
         //Make the corners more rounded
         self.layer.cornerRadius = 5.0
+        let firstTapGesture = UITapGestureRecognizer(target: self, action: #selector(firstImageTapped))
+    firstImageView.addGestureRecognizer(firstTapGesture)
+        
         addSubview(contentView)
     }
     

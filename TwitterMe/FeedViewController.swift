@@ -8,8 +8,9 @@
 
 import UIKit
 import AVKit
+import ImageViewer
 
-class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class FeedViewController: UIViewController {
     
    
     @IBOutlet weak var tableView: UITableView!
@@ -19,6 +20,8 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     let tweetDetailSegue = "TweetDetailSegue"
     let composeTweetSegue = "ComposeTweetSegue"
     var tweets: [Tweet] = []
+    
+    var currentGalleryItems: [GalleryItem] = []
     
     var lastPressedCell: FeedViewTableViewCell?
     var refreshControl: UIRefreshControl?
@@ -229,80 +232,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
 
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: feedViewCellReuseId) as!FeedViewTableViewCell
-        
-        cell.videoPlayTriggered = { (playerViewController: AVPlayerViewController, videoPlayer: AVPlayer) in
-            //Modally present the view controller and call the player's play() method when complete.
-            self.present(playerViewController, animated: true) {
-                videoPlayer.play()
-            }
-            
-        }
-        
-        
-        
-        cell.translatesAutoresizingMaskIntoConstraints = false
-        
-        //Duct tape bug fix.
-        cell.mediaView.frame = CGRect(x: cell.mediaView.frame.origin.x, y: cell.mediaView.frame.origin.y, width: cell.mediaView.frame.width, height: CGFloat(cell.defaultMediaViewHeight))
-        
-        let tweet = tweets[indexPath.row]
-        
-        let tapGestureNameLabel = UITapGestureRecognizer(target: self, action: #selector(FeedViewController.didTapName(_:)))
-        cell.nameLabel.addGestureRecognizer(tapGestureNameLabel)
-        
-        let tapGestureProfilePicture = UITapGestureRecognizer(target: self, action: #selector (FeedViewController.didTapName(_:)))
-        cell.profilePictureImageView.addGestureRecognizer(tapGestureProfilePicture)
-        
-        
-        
-        cell.tweet = tweet
-        
-        
-        return cell
-
-        
-    }
-    
-    
-//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        return UITableViewAutomaticDimension
-//    }
-//
-//    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        return UITableViewAutomaticDimension
-//    }
-    
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tweets.count
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)
-        self.lastPressedCell = cell as! FeedViewTableViewCell
-        
-        
-        self.performSegue(withIdentifier: tweetDetailSegue, sender: nil)
-        
-        
-    }
-    
-  
-    
-    
-
-
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
@@ -328,6 +257,114 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             
         }
     }
+
+
+
+
+extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: feedViewCellReuseId) as!FeedViewTableViewCell
+        
+        cell.videoPlayTriggered = { (playerViewController: AVPlayerViewController, videoPlayer: AVPlayer) in
+            //Modally present the view controller and call the player's play() method when complete.
+            self.present(playerViewController, animated: true) {
+                videoPlayer.play()
+            }
+            
+        }
+        
+        cell.imageViewTapped = { (index: Int, images: [UIImage]) in
+            
+            self.currentGalleryItems = self.imagesToGallery(images: images)
+            
+            //Need to set gallery items before initializing view controller
+            let galleryViewController = GalleryViewController(startIndex: index, itemsDatasource: self, displacedViewsDatasource: nil, configuration: self.galleryConfiguration())
+            
+            self.present(galleryViewController, animated: true, completion: {
+                print("[SHOWING GVC]")
+            })
+        }
+        
+        
+        
+        cell.translatesAutoresizingMaskIntoConstraints = false
+        
+        //Duct tape bug fix.
+        cell.mediaView.frame = CGRect(x: cell.mediaView.frame.origin.x, y: cell.mediaView.frame.origin.y, width: cell.mediaView.frame.width, height: CGFloat(cell.defaultMediaViewHeight))
+        
+        let tweet = tweets[indexPath.row]
+        
+        let tapGestureNameLabel = UITapGestureRecognizer(target: self, action: #selector(FeedViewController.didTapName(_:)))
+        cell.nameLabel.addGestureRecognizer(tapGestureNameLabel)
+        
+        let tapGestureProfilePicture = UITapGestureRecognizer(target: self, action: #selector (FeedViewController.didTapName(_:)))
+        cell.profilePictureImageView.addGestureRecognizer(tapGestureProfilePicture)
+        
+        
+        
+        cell.tweet = tweet
+        
+        
+        return cell
+        
+        
+    }
+    
+    func galleryConfiguration() -> GalleryConfiguration {
+        return [GalleryConfigurationItem.closeLayout(ButtonLayout.pinLeft(0, 0)),
+                GalleryConfigurationItem.itemFadeDuration(0.2)]
+    }
+    
+    
+    func imagesToGallery(images: [UIImage]) -> [GalleryItem] {
+        var items: [GalleryItem] = []
+        for image in images {
+            
+          let galleryItem = GalleryItem.image(fetchImageBlock: {
+                $0(image)
+            })
+            
+            items.append(galleryItem)
+        }
+        
+        return items
+    }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        self.lastPressedCell = cell as! FeedViewTableViewCell
+        
+        
+        self.performSegue(withIdentifier: tweetDetailSegue, sender: nil)
+        
+        
+    }
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tweets.count
+    }
+}
+
+
+
+
+
+
+extension FeedViewController: GalleryItemsDatasource{
+    
+    func itemCount() -> Int {
+        return currentGalleryItems.count
+    }
+    
+    func provideGalleryItem(_ index: Int) -> GalleryItem {
+        return currentGalleryItems[index]
+    }
+    
+    
+}
     
 
 

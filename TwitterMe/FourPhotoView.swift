@@ -28,6 +28,25 @@ class FourPhotoView: UIView {
     @IBOutlet weak var fourthImageView: UIImageView!
     
     
+    var imageTapped: ((Int, [UIImage]) -> ())?
+    
+    var images: [UIImage] {
+        get{
+            var unwrappedPhotos: [UIImage] = []
+            
+            let wrapped: [UIImage?] = [firstImageView.image, secondImageView.image, thirdImageView.image, fourthImageView.image]
+            
+            for wrapped in wrapped {
+                if let unwrappedPhoto = wrapped {
+                    unwrappedPhotos.append(unwrappedPhoto)
+                }
+            }
+            
+            return unwrappedPhotos
+        }
+    }
+    
+    
     var firstPhoto: UIImage? {
         didSet{
             guard let firstImage = firstPhoto else {
@@ -120,6 +139,22 @@ class FourPhotoView: UIView {
     }
     
     
+    func firstImageTapped(){
+        imageTapped?(0, images)
+    }
+    
+    func secondImageTapped(){
+        imageTapped?(1, images)
+    }
+    
+    func thirdImageTapped(){
+        imageTapped?(2, images)
+    }
+    
+    func fourthImageTapped(){
+        imageTapped?(3, images)
+    }
+    
     
     
     required init?(coder aDecoder: NSCoder) {
@@ -144,6 +179,16 @@ class FourPhotoView: UIView {
         
         //Make the corners more rounded
         self.layer.cornerRadius = 10
+        
+        firstImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(firstImageTapped)))
+        secondImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(secondImageTapped)))
+        
+        thirdImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(thirdImageTapped)))
+        
+           fourthImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(fourthImageTapped)))
+        
+        
+        
         addSubview(contentView)
         
         

@@ -18,7 +18,6 @@
 		1F5A59021FA8F03C0065A8C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F5A59001FA8F03C0065A8C5 /* LaunchScreen.storyboard */; };
 		1F5A590D1FA8F03D0065A8C5 /* TwitterMeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5A590C1FA8F03D0065A8C5 /* TwitterMeTests.swift */; };
 		1F5A591B1FA8F3DD0065A8C5 /* TwitterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5A591A1FA8F3DD0065A8C5 /* TwitterClient.swift */; };
-		1F5A591D1FA8F45D0065A8C5 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 1F5A591C1FA8F45D0065A8C5 /* Podfile */; };
 		1F5A591F1FA8F6B10065A8C5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5A591E1FA8F6B10065A8C5 /* LoginViewController.swift */; };
 		1F5A59231FAA33A30065A8C5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5A59221FAA33A30065A8C5 /* User.swift */; };
 		1F5A59251FAA33B30065A8C5 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5A59241FAA33B30065A8C5 /* Tweet.swift */; };
@@ -41,6 +40,7 @@
 		2C050B5D1FEB121700853E49 /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C050B5C1FEB121700853E49 /* HomeTabBarController.swift */; };
 		70ED9160BFF98A95290346FE /* Pods_TwitterMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE3ECA5CC556FB72B277487 /* Pods_TwitterMe.framework */; };
 		77E4FB53E0A6507B8848DD8E /* Pods_TwitterMeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D69F8652BE34972786CAAEB8 /* Pods_TwitterMeTests.framework */; };
+		F71D3D322000143C000269F4 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = F71D3D312000143B000269F4 /* Podfile */; };
 		F7F5ED161FFDA6DF0030A276 /* AnimatedMedia.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7F5ED0C1FFDA6DE0030A276 /* AnimatedMedia.xib */; };
 		F7F5ED171FFDA6DF0030A276 /* AnimatedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F5ED0D1FFDA6DE0030A276 /* AnimatedView.swift */; };
 		F7F5ED181FFDA6DF0030A276 /* OnePhotoMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F5ED0E1FFDA6DE0030A276 /* OnePhotoMedia.swift */; };
@@ -80,7 +80,6 @@
 		1F5A590C1FA8F03D0065A8C5 /* TwitterMeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterMeTests.swift; sourceTree = "<group>"; };
 		1F5A590E1FA8F03D0065A8C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F5A591A1FA8F3DD0065A8C5 /* TwitterClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterClient.swift; sourceTree = "<group>"; };
-		1F5A591C1FA8F45D0065A8C5 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		1F5A591E1FA8F6B10065A8C5 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1F5A59221FAA33A30065A8C5 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1F5A59241FAA33B30065A8C5 /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
@@ -107,6 +106,7 @@
 		DCE3ECA5CC556FB72B277487 /* Pods_TwitterMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TwitterMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED90F6F41C723D02FDA7B8C2 /* Pods-TwitterMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterMe.release.xcconfig"; path = "Pods/Target Support Files/Pods-TwitterMe/Pods-TwitterMe.release.xcconfig"; sourceTree = "<group>"; };
 		F51A6F330E245DE42C969203 /* Pods-TwitterMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterMe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TwitterMe/Pods-TwitterMe.debug.xcconfig"; sourceTree = "<group>"; };
+		F71D3D312000143B000269F4 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		F7F37E9C1FF16791001F36E6 /* BDBOAuth1Manager */ = {isa = PBXFileReference; lastKnownFileType = folder; name = BDBOAuth1Manager; path = Pods/BDBOAuth1Manager/BDBOAuth1Manager; sourceTree = "<group>"; };
 		F7F37E9E1FF167DC001F36E6 /* BDBOAuth1Manager */ = {isa = PBXFileReference; lastKnownFileType = folder; name = BDBOAuth1Manager; path = Pods/BDBOAuth1Manager; sourceTree = "<group>"; };
 		F7F5ED0C1FFDA6DE0030A276 /* AnimatedMedia.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnimatedMedia.xib; sourceTree = "<group>"; };
@@ -196,6 +196,7 @@
 				1F5A58FB1FA8F03B0065A8C5 /* Main.storyboard */,
 				1F5A58FE1FA8F03B0065A8C5 /* Assets.xcassets */,
 				1F5A59001FA8F03C0065A8C5 /* LaunchScreen.storyboard */,
+				F71D3D312000143B000269F4 /* Podfile */,
 				1F5A59031FA8F03C0065A8C5 /* Info.plist */,
 				2C050B541FE8823100853E49 /* UIViewExtensions.swift */,
 			);
@@ -215,7 +216,6 @@
 			isa = PBXGroup;
 			children = (
 				1F5A591A1FA8F3DD0065A8C5 /* TwitterClient.swift */,
-				1F5A591C1FA8F45D0065A8C5 /* Podfile */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -388,9 +388,9 @@
 				1F5A58FF1FA8F03B0065A8C5 /* Assets.xcassets in Resources */,
 				F7F5ED1C1FFDA6DF0030A276 /* ThreePhotoView.xib in Resources */,
 				F7F5ED1D1FFDA6DF0030A276 /* TwoPhotoView.xib in Resources */,
-				1F5A591D1FA8F45D0065A8C5 /* Podfile in Resources */,
 				1F5A58FD1FA8F03B0065A8C5 /* Main.storyboard in Resources */,
 				F7F5ED191FFDA6DF0030A276 /* OnePhotoView.xib in Resources */,
+				F71D3D322000143C000269F4 /* Podfile in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,6 +466,7 @@
 				"${BUILT_PRODUCTS_DIR}/ActiveLabel/ActiveLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/BDBOAuth1Manager/BDBOAuth1Manager.framework",
 				"${BUILT_PRODUCTS_DIR}/DateToolsSwift/DateToolsSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/ImageViewer/ImageViewer.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -473,6 +474,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ActiveLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BDBOAuth1Manager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DateToolsSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImageViewer.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

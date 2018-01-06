@@ -16,6 +16,24 @@ class TwoPhotoView: UIView {
     
     @IBOutlet weak var secondImageView: UIImageView!
     
+    var imageTapped: ((Int, [UIImage])->())?
+    
+    var images: [UIImage] {
+        get{
+            var unwrappedPhotos: [UIImage] = []
+            
+            let wrapped: [UIImage?] = [firstImageView.image, secondImageView.image]
+            
+            for wrapped in wrapped {
+                if let unwrappedPhoto = wrapped {
+                    unwrappedPhotos.append(unwrappedPhoto)
+                }
+            }
+            
+            return unwrappedPhotos
+        }
+    }
+    
     
     
     var firstPhoto: UIImage? {
@@ -65,7 +83,15 @@ class TwoPhotoView: UIView {
     
   
     
+    func firstImageTapped(){
+        imageTapped?(0, images)
+        
+    }
     
+    func secondImageTapped(){
+        imageTapped?(1, images)
+
+    }
     
 
     
@@ -87,6 +113,11 @@ class TwoPhotoView: UIView {
         contentView.frame = bounds
         //Make the corners more rounded
         self.layer.cornerRadius = 100.0
+        
+        
+        firstImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(firstImageTapped)))
+        secondImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(secondImageTapped)))
+        
         
         addSubview(contentView)
         

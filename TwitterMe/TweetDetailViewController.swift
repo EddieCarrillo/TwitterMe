@@ -214,7 +214,6 @@ class TweetDetailViewController: UIViewController {
         var mediaImageView = UIImageView()
         
         
-        
         var imageHeight = 0
         var imageWidth = 0
         var scaling = Size.scalingFit

@@ -19,6 +19,25 @@ class ThreePhotoView: UIView {
     @IBOutlet weak var thirdImageView: UIImageView!
     
     
+    var imageTapped: ((Int, [UIImage]) -> ())?
+    
+    var images: [UIImage] {
+        get{
+            var unwrappedPhotos: [UIImage] = []
+            
+            let wrapped: [UIImage?] = [firstImageView.image, secondImageView.image, thirdImageView.image]
+            
+            for wrapped in wrapped {
+                if let unwrappedPhoto = wrapped {
+                    unwrappedPhotos.append(unwrappedPhoto)
+                }
+            }
+            
+            return unwrappedPhotos
+        }
+    }
+    
+    
     
     var firstPhoto: UIImage? {
         didSet{
@@ -90,6 +109,17 @@ class ThreePhotoView: UIView {
     
     
     
+    func firstImageTapped(){
+        imageTapped?(0, images)
+    }
+    
+    func secondImageTapped(){
+        imageTapped?(1, images)
+    }
+    
+    func thirdImageTapped(){
+        imageTapped?(2, images)
+    }
     
     
     
@@ -114,6 +144,15 @@ class ThreePhotoView: UIView {
         contentView.clipsToBounds = true
         //Make the corners more rounded
         self.layer.cornerRadius = 5.0
+        
+        firstImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(firstImageTapped)))
+        secondImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(secondImageTapped)))
+        
+        thirdImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(thirdImageTapped)))
+        
+        
+        
+        
         addSubview(contentView)
     }
     

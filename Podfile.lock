@@ -18,19 +18,22 @@ PODS:
   - BDBOAuth1Manager (2.0.0):
     - AFNetworking/NSURLSession (~> 3.0.0)
   - DateToolsSwift (2.0.3)
+  - ImageViewer (4.0)
 
 DEPENDENCIES:
   - ActiveLabel
   - AFNetworking (= 3.0.0)
   - BDBOAuth1Manager (= 2.0.0)
   - DateToolsSwift
+  - ImageViewer (= 4.0)
 
 SPEC CHECKSUMS:
   ActiveLabel: 68625f22775f51c31bb691ca8de20f1e5a3bc825
   AFNetworking: 932ff751f9d6fb1dad0b3af58b7e3ffba0a4e7fd
   BDBOAuth1Manager: 92d17d06f8a648602962304cd2f35ae7394fa001
   DateToolsSwift: bf69bf9056d9e53c5c03f06e51f219b9b8b02f9e
+  ImageViewer: 364abc0309c33dda86d08ca25b0243e5c67d8cd3
 
-PODFILE CHECKSUM: 3b79ac753dc317f205414c59f5549fc2e45cea55
+PODFILE CHECKSUM: 70f235910a134012e50bd3dc9c5f3ece52df4843
 
 COCOAPODS: 1.3.1

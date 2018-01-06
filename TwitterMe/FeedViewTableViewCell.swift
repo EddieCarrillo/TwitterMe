@@ -68,6 +68,8 @@ class FeedViewTableViewCell: UITableViewCell {
 
     
     
+    var imageViewTapped: ((Int, [UIImage]) -> ())?
+    
     var videoPlayTriggered: ((AVPlayerViewController,AVPlayer)->())?
     
     var displayedTweet: Tweet?
@@ -341,8 +343,6 @@ class FeedViewTableViewCell: UITableViewCell {
     
     func setupImages(medias: [Media]){
         
-        
-        
         if medias.count == 1 {
             setupOneImage(medias: medias)
         }else if medias.count == 2 {
@@ -406,6 +406,7 @@ class FeedViewTableViewCell: UITableViewCell {
         let photoViewFrame = self.mediaView.bounds
         
         let onePhotoView = OnePhotoMedia(frame: photoViewFrame)
+        onePhotoView.imageTapped = imageViewTapped
         if let urlString = media.mediaUrlHttps {
             onePhotoView.photoURL = URL(string: urlString)
         }else {
@@ -423,6 +424,7 @@ class FeedViewTableViewCell: UITableViewCell {
         let photoViewFrame = self.mediaView.bounds
         
         let twoPhotoView = TwoPhotoView(frame: photoViewFrame)
+        twoPhotoView.imageTapped = imageViewTapped
         
         if let firstUrlString = firstMedia.mediaUrlHttps {
             twoPhotoView.firstURL = URL(string: firstUrlString )
@@ -449,6 +451,7 @@ class FeedViewTableViewCell: UITableViewCell {
         let photoViewFrame = self.mediaView.bounds
         
         let threePhotoView = ThreePhotoView(frame: photoViewFrame)
+        threePhotoView.imageTapped = imageViewTapped
         
         if let firstUrlString = firstMedia.mediaUrlHttps {
             threePhotoView.firstURL = URL(string: firstUrlString )
@@ -482,6 +485,7 @@ class FeedViewTableViewCell: UITableViewCell {
         let photoViewFrame = self.mediaView.bounds
         
         let fourPhotoView = FourPhotoView(frame: photoViewFrame)
+        fourPhotoView.imageTapped = imageViewTapped
         
         if let firstUrlString = firstMedia.mediaUrlHttps {
             fourPhotoView.firstURL = URL(string: firstUrlString )
@@ -656,11 +660,6 @@ class FeedViewTableViewCell: UITableViewCell {
         setupOneImage(medias: [media])
     }
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
     
     override func prepareForReuse() {
         super.prepareForReuse()
