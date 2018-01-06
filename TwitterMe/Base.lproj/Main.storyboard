@@ -351,7 +351,7 @@
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <color key="barTintColor" red="0.11372549019607843" green="0.21258370535714285" blue="0.94885319471359253" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.94885319471359253" green="0.92880446090268376" blue="0.92648242259490365" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="kgL-yH-cj3">
                         <autoresizingMask key="autoresizingMask"/>
@@ -383,7 +383,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3I8-u3-W61" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1652" y="258"/>
+            <point key="canvasLocation" x="958" y="1017"/>
         </scene>
         <!--Feed View Controller-->
         <scene sceneID="SdH-rc-LEH">
@@ -620,8 +620,8 @@
                     <navigationItem key="navigationItem" id="FZI-FP-D6l"/>
                     <connections>
                         <outlet property="tableView" destination="6w4-fj-RCL" id="WdZ-W0-s1N"/>
-                        <segue destination="Ela-f2-imf" kind="show" identifier="TweetDetailSegue" id="ziH-5B-KzQ"/>
                         <segue destination="D2N-A5-jU1" kind="show" identifier="ComposeTweetSegue" id="XjF-Gz-vva"/>
+                        <segue destination="Ela-f2-imf" kind="show" identifier="TweetDetailSegue" id="NoK-G6-e13"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oak-Rb-0M7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -766,7 +766,7 @@
             </objects>
             <point key="canvasLocation" x="3581" y="258"/>
         </scene>
-        <!--Tweet Detail View Controller-->
+        <!--Tweet-->
         <scene sceneID="mTY-yJ-Rtr">
             <objects>
                 <viewController id="Ela-f2-imf" customClass="TweetDetailViewController" customModule="TwitterMe" customModuleProvider="target" sceneMemberID="viewController">
@@ -946,6 +946,11 @@
                             <constraint firstItem="5Yw-Tk-6gD" firstAttribute="leading" secondItem="WRx-w1-YvU" secondAttribute="trailing" constant="8" id="uxB-68-EqY"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Tweet" id="OXX-cc-VUU">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="tc4-Et-Xfa">
+                            <color key="tintColor" red="0.71888595819473267" green="0.6826171875" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="createdAtLabel" destination="I7q-aQ-kOg" id="Bjd-4V-c5b"/>
                         <outlet property="favoritesButton" destination="y1l-xc-wZU" id="Gcm-h5-nM6"/>
@@ -964,7 +969,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zlp-N1-PNp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3418.840579710145" y="1025.5434782608697"/>
+            <point key="canvasLocation" x="3516" y="-448"/>
         </scene>
         <!--Compose Tweet View Controller-->
         <scene sceneID="eTc-Is-Mvh">
@@ -1359,6 +1364,7 @@
                     <connections>
                         <outlet property="profileView" destination="vwJ-Zc-JPw" id="6lW-3Q-XMe"/>
                         <outlet property="tableview" destination="3hX-8R-ATn" id="6wL-XY-aMI"/>
+                        <segue destination="Ela-f2-imf" kind="show" identifier="ProfileTweetDetailSegue" id="okK-c9-AL3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ba6-lo-nBx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1382,7 +1388,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Yo-LM-iv5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1651" y="1026"/>
+            <point key="canvasLocation" x="1000" y="1785"/>
         </scene>
     </scenes>
     <resources>
@@ -1402,4 +1408,7 @@
         <image name="retweet-icon" width="30" height="30"/>
         <image name="search-icon" width="16" height="16"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="NoK-G6-e13"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -30,7 +30,7 @@ class ProfileViewController: UIViewController  {
     let feedViewCellReuseId = "FeedViewTableViewCell"
     let profileFeedCellReuseId = "ProfileFeedTableViewCell"
     let profileSegue = "ProfileSegue"
-    let tweetDetailSegue = "TweetDetailSegue"
+    let tweetDetailSegue = "ProfileTweetDetailSegue"
     let composeTweetSegue = "ComposeTweetSegue"
     
     
@@ -60,7 +60,7 @@ class ProfileViewController: UIViewController  {
        // self.navigationController?.navigationBar.isHidden = false
         
         self.tableview.dataSource = self
-        //self.tableview.delegate = self
+        self.tableview.delegate = self
         self.tableview.estimatedRowHeight = 100
         //Add autolayout
         self.tableview.rowHeight = UITableViewAutomaticDimension
@@ -167,6 +167,11 @@ class ProfileViewController: UIViewController  {
             if let  tweetDetailViewController = segue.destination as? TweetDetailViewController{
                 let lastPressed = lastPressedCell
                 tweetDetailViewController.tweet = lastPressed?.tweet
+            }else if let navigationController = segue.destination as? UINavigationController{
+                if let  tweetDetailViewController = navigationController.viewControllers.first as? TweetDetailViewController{
+                    let lastPressed = lastPressedCell
+                    tweetDetailViewController.tweet = lastPressed?.tweet
+                }
             }
         }else if segue.identifier == composeTweetSegue {
             if let composeTweetViewController  = segue.destination as? ComposeTweetViewController{
@@ -190,7 +195,7 @@ class ProfileViewController: UIViewController  {
 }
     
 
-extension ProfileViewController: UITableViewDataSource {
+extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return tweets.count
@@ -231,6 +236,16 @@ extension ProfileViewController: UITableViewDataSource {
         cell.tweet = tweet
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        self.lastPressedCell = cell as! FeedViewTableViewCell
+        print("[DIDSELECTINDEXPATH]")
+        
+        self.performSegue(withIdentifier: tweetDetailSegue, sender: nil)
+        
+        
     }
     
 }
