@@ -91,22 +91,26 @@ class ProfileViewController: UIViewController  {
     }
     
     
-    @IBAction func didTapProfilePicture(_ sender: UITapGestureRecognizer) {
+     func didTapProfilePicture(_ sender: UITapGestureRecognizer) {
         print("Profile picture tapped.")
         lastPressedCell = sender.view?.superview?.superview as! FeedViewTableViewCell?
-        self.performSegue(withIdentifier: profileSegue, sender: nil)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let profileViewController = storyboard.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+        prepare(profileViewController: profileViewController)
+        self.navigationController?.pushViewController(profileViewController, animated: true)
         
     }
     
     
-    @IBAction func didTapName(_ sender: UITapGestureRecognizer) {
+     func didTapName(_ sender: UITapGestureRecognizer) {
         print("Profile name tapped")
+        didTapProfilePicture(sender)
         
-        lastPressedCell = sender.view?.superview?.superview as! FeedViewTableViewCell?
-        
-        let tabBarController = self.parent as! HomeTabBarController
+//        lastPressedCell = sender.view?.superview?.superview as! FeedViewTableViewCell?
+//        let parent = self.parent
+        //let tabBarController = parent as! HomeTabBarController
         //Bug fix open retweeted tweet's owner's profile
-        tabBarController.profilePictureTapped?((lastPressedCell?.displayedTweet?.owner)!)
+      //  tabBarController.profilePictureTapped?((lastPressedCell?.displayedTweet?.owner)!)
         
         
     }
@@ -152,11 +156,39 @@ class ProfileViewController: UIViewController  {
     }
     
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        if segue.identifier == profileSegue {
+            if let profileViewController = segue.destination as? ProfileViewController{
+               prepare(profileViewController: profileViewController)
+            }
+        }else if segue.identifier == tweetDetailSegue {
+            if let  tweetDetailViewController = segue.destination as? TweetDetailViewController{
+                let lastPressed = lastPressedCell
+                tweetDetailViewController.tweet = lastPressed?.tweet
+            }
+        }else if segue.identifier == composeTweetSegue {
+            if let composeTweetViewController  = segue.destination as? ComposeTweetViewController{
+                composeTweetViewController.user = User.currentUser!
+                composeTweetViewController.finished = {
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
+        }
+        
+    }
+    
+    
+    func prepare(profileViewController vc: ProfileViewController){
+        let lastPresed = lastPressedCell
+        vc.user = lastPresed?.tweet?.owner
+    }
+    
+    
     
 }
-
-
-
+    
 
 extension ProfileViewController: UITableViewDataSource {
     
