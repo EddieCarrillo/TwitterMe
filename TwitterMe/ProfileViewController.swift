@@ -8,12 +8,13 @@
 
 import UIKit
 import BDBOAuth1Manager
+import ImageViewer
 
-class ProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ProfileViewController: UIViewController  {
     
     
     var user: User?
-    var userTweets: [Tweet] = []
+    var tweets: [Tweet] = []
 
     @IBOutlet weak var backgroundProfileImageView: UIImageView!
     
@@ -23,8 +24,18 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     
     @IBOutlet var profileView: ProfileView!
     
+    var lastPressedCell: FeedViewTableViewCell?
+
+    
     let feedViewCellReuseId = "FeedViewTableViewCell"
     let profileFeedCellReuseId = "ProfileFeedTableViewCell"
+    let profileSegue = "ProfileSegue"
+    let tweetDetailSegue = "TweetDetailSegue"
+    let composeTweetSegue = "ComposeTweetSegue"
+    
+    
+    var currentGalleryItems: [GalleryItem] = []
+
     
     
     override func viewDidLoad() {
@@ -49,7 +60,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
        // self.navigationController?.navigationBar.isHidden = false
         
         self.tableview.dataSource = self
-        self.tableview.delegate = self
+        //self.tableview.delegate = self
         self.tableview.estimatedRowHeight = 100
         //Add autolayout
         self.tableview.rowHeight = UITableViewAutomaticDimension
@@ -57,7 +68,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         profileView.user = currentUser
         let twitterClient = TwitterClient.sharedInstance
         twitterClient?.loadTweets(user: currentUser, sucess: { (tweets: [Tweet]) in
-            self.userTweets = tweets
+            self.tweets = tweets
             self.tableview.reloadData()
         }, failure: { (error: Error) in
             print("[ERROR]: \(error)")
@@ -69,9 +80,67 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        //Should notify cells to stop playing videos
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "StopVideos"), object: nil)
+        
+    }
+    
+    
+    @IBAction func didTapProfilePicture(_ sender: UITapGestureRecognizer) {
+        print("Profile picture tapped.")
+        lastPressedCell = sender.view?.superview?.superview as! FeedViewTableViewCell?
+        self.performSegue(withIdentifier: profileSegue, sender: nil)
+        
+    }
+    
+    
+    @IBAction func didTapName(_ sender: UITapGestureRecognizer) {
+        print("Profile name tapped")
+        
+        lastPressedCell = sender.view?.superview?.superview as! FeedViewTableViewCell?
+        
+        let tabBarController = self.parent as! HomeTabBarController
+        //Bug fix open retweeted tweet's owner's profile
+        tabBarController.profilePictureTapped?((lastPressedCell?.displayedTweet?.owner)!)
+        
+        
+    }
+    
+    func refreshTimeline(_ refreshControl: UIRefreshControl){
+        let twitterClient = TwitterClient.sharedInstance
+        
+        let successBlock: () -> () = {
+            refreshControl.endRefreshing()
+        }
+        
+        let failure: ()->() = {
+            refreshControl.endRefreshing()
+            
+        }
+        refreshControl.beginRefreshing()
+        
+        refreshData(success: successBlock, failureBlock: failure)
+        
+        
+    }
+    
+    func refreshData(success: @escaping()->(), failureBlock: @escaping () -> ()){
+        let twitterClient = TwitterClient.sharedInstance
+        guard let user = user else  {
+            return
+        }
+        
+        twitterClient?.loadTweets(user: user, sucess: { (tweets: [Tweet]) in
+            self.tweets = tweets
+        }, failure: { (error: Error) in
+            print("error: \(error)")
+        })
+        
     }
     
     
@@ -82,33 +151,92 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     
     }
     
-  
+    
+    
+}
+
+
+
+
+extension ProfileViewController: UITableViewDataSource {
+    
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-         return userTweets.count
+        return tweets.count
     }
     
     
-    // Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
-    // Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
-    
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: profileFeedCellReuseId ) as! FeedViewTableViewCell
+        cell.imageViewTapped = { (index: Int, images: [UIImage]) in
+            
+            self.currentGalleryItems = self.imagesToGallery(images: images)
+            
+            //Need to set gallery items before initializing view controller
+            let galleryViewController = GalleryViewController(startIndex: index, itemsDatasource: self, displacedViewsDatasource: nil, configuration: self.galleryConfiguration())
+            
+            self.present(galleryViewController, animated: true, completion: {
+                print("[SHOWING GVC]")
+            })
+        }
         
-        cell.tweet = userTweets[indexPath.row]
         
+        
+        cell.translatesAutoresizingMaskIntoConstraints = false
+        
+        //Duct tape bug fix.
+        cell.mediaView.frame = CGRect(x: cell.mediaView.frame.origin.x, y: cell.mediaView.frame.origin.y, width: cell.mediaView.frame.width, height: CGFloat(cell.defaultMediaViewHeight))
+        
+        let tweet = tweets[indexPath.row]
+        
+        let tapGestureNameLabel = UITapGestureRecognizer(target: self, action: #selector(FeedViewController.didTapName(_:)))
+        cell.nameLabel.addGestureRecognizer(tapGestureNameLabel)
+        
+        let tapGestureProfilePicture = UITapGestureRecognizer(target: self, action: #selector (FeedViewController.didTapName(_:)))
+        cell.profilePictureImageView.addGestureRecognizer(tapGestureProfilePicture)
+        
+        
+        
+        cell.tweet = tweet
         
         return cell
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+
+
+extension ProfileViewController: GalleryItemsDatasource {
+    
+    //Neccesary for DataSource
+    func itemCount() -> Int {
+        return currentGalleryItems.count
+    }
+    
+    func provideGalleryItem(_ index: Int) -> GalleryItem {
+        return currentGalleryItems[index]
+    }
+    
+    
+    //Helper functions
+    func galleryConfiguration() -> GalleryConfiguration {
+        return [GalleryConfigurationItem.closeLayout(ButtonLayout.pinLeft(0, 0)),
+                GalleryConfigurationItem.itemFadeDuration(0.2)]
+    }
+    
+    func imagesToGallery(images: [UIImage]) -> [GalleryItem] {
+        var items: [GalleryItem] = []
+        for image in images {
+            
+            let galleryItem = GalleryItem.image(fetchImageBlock: {
+                $0(image)
+            })
+            
+            items.append(galleryItem)
+        }
+        
+        return items
+    }
+    
+}
+
+
+
