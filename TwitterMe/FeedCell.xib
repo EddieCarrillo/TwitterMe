@@ -180,6 +180,7 @@
                     <constraint firstItem="NY2-Ty-niW" firstAttribute="leading" secondItem="kCw-1T-nSW" secondAttribute="trailing" constant="4" id="wEm-Iw-2SW"/>
                     <constraint firstItem="e6G-AY-rm7" firstAttribute="leading" secondItem="8Xg-9G-vgp" secondAttribute="trailing" constant="8" id="zC9-z2-f6r"/>
                     <constraint firstItem="4t3-Sw-yXX" firstAttribute="bottom" secondItem="6m6-fo-gNS" secondAttribute="bottom" id="zFY-c4-tea"/>
+                    <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="5cV-aM-dlh" secondAttribute="trailing" constant="8" id="zq4-tN-f42"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
