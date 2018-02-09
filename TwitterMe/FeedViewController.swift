@@ -42,7 +42,7 @@ class FeedViewController: UIViewController {
         
         tableView.register(UINib(nibName: "FeedCell", bundle: Bundle.main), forCellReuseIdentifier: reusableFeedCellId)
         
-        
+        //Turn off cell highlighting
         
         //Init UIRefreshControl
         let refreshControl = UIRefreshControl()
@@ -274,6 +274,9 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reusableFeedCellId) as!FeedCell
+        
+        //Turn off highlighting for cell selection
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
         
         cell.videoPlayTriggered = { (playerViewController: AVPlayerViewController, videoPlayer: AVPlayer) in
             //Modally present the view controller and call the player's play() method when complete.
