@@ -21,6 +21,10 @@ class FeedViewController: UIViewController {
     let composeTweetSegue = "ComposeTweetSegue"
     var tweets: [Tweet] = []
     
+    
+    
+    let reusableFeedCellId = "com.ecarrillo.FeedCell"
+    
     var currentGalleryItems: [GalleryItem] = []
     
     var lastPressedCell: FeedViewTableViewCell?
@@ -33,6 +37,11 @@ class FeedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
+        tableView.register(UINib(nibName: "FeedCell", bundle: Bundle.main), forCellReuseIdentifier: reusableFeedCellId)
+        
         
         
         //Init UIRefreshControl
@@ -264,7 +273,7 @@ class FeedViewController: UIViewController {
 extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: feedViewCellReuseId) as!FeedViewTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: reusableFeedCellId) as!FeedCell
         
         cell.videoPlayTriggered = { (playerViewController: AVPlayerViewController, videoPlayer: AVPlayer) in
             //Modally present the view controller and call the player's play() method when complete.

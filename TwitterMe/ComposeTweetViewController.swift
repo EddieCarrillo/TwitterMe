@@ -21,11 +21,6 @@ class ComposeTweetViewController: UIViewController {
     
     var finished: (()->())?
     
-    
-    
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
