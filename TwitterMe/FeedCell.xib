@@ -68,6 +68,9 @@
                             <constraint firstAttribute="width" constant="30" id="wAj-EM-kT4"/>
                         </constraints>
                         <state key="normal" image="reply-icon"/>
+                        <connections>
+                            <action selector="onReplyTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="n2s-2r-Ef8"/>
+                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4t3-Sw-yXX">
                         <rect key="frame" x="163" y="213.5" width="25" height="25"/>
@@ -76,6 +79,9 @@
                             <constraint firstAttribute="width" constant="25" id="S1n-ly-sbu"/>
                         </constraints>
                         <state key="normal" image="retweet-icon"/>
+                        <connections>
+                            <action selector="onRetweetTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="PgP-OR-FyG"/>
+                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WwU-4g-Cs5">
                         <rect key="frame" x="234" y="213.5" width="25" height="25"/>
@@ -84,6 +90,9 @@
                             <constraint firstAttribute="width" constant="25" id="xG7-lQ-sPq"/>
                         </constraints>
                         <state key="normal" image="favor-icon"/>
+                        <connections>
+                            <action selector="onLikeTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="8L1-P4-xou"/>
+                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1231" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FG6-Vm-k86">
                         <rect key="frame" x="196" y="218.5" width="30" height="20"/>
