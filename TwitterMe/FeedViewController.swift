@@ -27,7 +27,7 @@ class FeedViewController: UIViewController {
     
     var currentGalleryItems: [GalleryItem] = []
     
-    var lastPressedCell: FeedViewTableViewCell?
+    var lastPressedCell: FeedCell?
     var refreshControl: UIRefreshControl?
     
     
@@ -96,7 +96,7 @@ class FeedViewController: UIViewController {
 
     @IBAction func didTapProfilePicture(_ sender: UITapGestureRecognizer) {
         print("Profile picture tapped.")
-        lastPressedCell = sender.view?.superview?.superview as! FeedViewTableViewCell?
+        lastPressedCell = sender.view?.superview?.superview as! FeedCell?
         self.performSegue(withIdentifier: profileSegue, sender: nil)
         
     }
@@ -105,7 +105,7 @@ class FeedViewController: UIViewController {
     @IBAction func didTapName(_ sender: UITapGestureRecognizer) {
         print("Profile name tapped")
         
-        lastPressedCell = sender.view?.superview?.superview as! FeedViewTableViewCell?
+        lastPressedCell = sender.view?.superview?.superview as! FeedCell?
         
 
          let tabBarController = self.parent as! HomeTabBarController
@@ -343,7 +343,7 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
-        self.lastPressedCell = cell as! FeedViewTableViewCell
+        self.lastPressedCell = cell as! FeedCell
         
         
         self.performSegue(withIdentifier: tweetDetailSegue, sender: nil)

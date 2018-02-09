@@ -27,7 +27,7 @@ class ProfileViewController: UIViewController  {
     
     @IBOutlet var profileView: ProfileView!
     
-    var lastPressedCell: FeedViewTableViewCell?
+    var lastPressedCell: FeedCell?
 
     
     let feedViewCellReuseId = "FeedViewTableViewCell"
@@ -35,6 +35,8 @@ class ProfileViewController: UIViewController  {
     let profileSegue = "ProfileSegue"
     let tweetDetailSegue = "ProfileTweetDetailSegue"
     let composeTweetSegue = "ComposeTweetSegue"
+    let reusableFeedCellId = "com.ecarrillo.FeedCell"
+
     
     
     var currentGalleryItems: [GalleryItem] = []
@@ -48,6 +50,8 @@ class ProfileViewController: UIViewController  {
             self.user = User.currentUser
         }
         
+        
+        
         guard let currentUser = self.user else  {
             print("Trouble loading user.")
             return
@@ -56,6 +60,9 @@ class ProfileViewController: UIViewController  {
         if let tabBarController = self.parent{ // If this is true this means that it is nested in tab bar
            tabBarController.navigationItem.title = ""
         }
+        
+        //Register cell
+        tableview.register(UINib(nibName: "FeedCell", bundle: Bundle.main), forCellReuseIdentifier: self.reusableFeedCellId)
         
         
         //self.navigationItem.title = "Profile"
@@ -99,7 +106,7 @@ class ProfileViewController: UIViewController  {
     
      func didTapProfilePicture(_ sender: UITapGestureRecognizer) {
         print("Profile picture tapped.")
-        lastPressedCell = sender.view?.superview?.superview as! FeedViewTableViewCell?
+        lastPressedCell = sender.view?.superview?.superview as! FeedCell?
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let profileViewController = storyboard.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
         prepare(profileViewController: profileViewController)
@@ -209,7 +216,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: profileFeedCellReuseId ) as! FeedViewTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.reusableFeedCellId ) as! FeedCell
         cell.imageViewTapped = { (index: Int, images: [UIImage]) in
             
             self.currentGalleryItems = self.imagesToGallery(images: images)
@@ -246,7 +253,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
-        self.lastPressedCell = cell as! FeedViewTableViewCell
+        self.lastPressedCell = cell as! FeedCell
         print("[DIDSELECTINDEXPATH]")
         
         self.performSegue(withIdentifier: tweetDetailSegue, sender: nil)
