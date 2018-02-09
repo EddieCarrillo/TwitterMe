@@ -217,6 +217,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.reusableFeedCellId ) as! FeedCell
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
         cell.imageViewTapped = { (index: Int, images: [UIImage]) in
             
             self.currentGalleryItems = self.imagesToGallery(images: images)
