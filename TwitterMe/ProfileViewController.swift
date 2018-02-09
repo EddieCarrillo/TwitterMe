@@ -22,6 +22,9 @@ class ProfileViewController: UIViewController  {
     
     @IBOutlet weak var tableview: UITableView!
     
+    var followersText: String?
+    var followingText: String?
+    
     @IBOutlet var profileView: ProfileView!
     
     var lastPressedCell: FeedViewTableViewCell?
@@ -66,6 +69,9 @@ class ProfileViewController: UIViewController  {
         self.tableview.rowHeight = UITableViewAutomaticDimension
         //Update the GUI (For the top half of the screen.)
         profileView.user = currentUser
+        followersText =  profileView.followersNumberLabel.text
+         followingText = profileView.followingNumberLabel.text
+        
         let twitterClient = TwitterClient.sharedInstance
         twitterClient?.loadTweets(user: currentUser, sucess: { (tweets: [Tweet]) in
             self.tweets = tweets

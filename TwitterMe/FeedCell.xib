@@ -177,6 +177,26 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="dateLabel" destination="5cV-aM-dlh" id="FSg-Ch-beK"/>
+                <outlet property="favoriteButton" destination="WwU-4g-Cs5" id="Sk7-nv-W2o"/>
+                <outlet property="favoriteNumberLabel" destination="pHs-Ve-dOp" id="LjW-WR-roe"/>
+                <outlet property="handleLabel" destination="XkK-wO-FrG" id="aXe-6Y-dwv"/>
+                <outlet property="mediaView" destination="nw0-rZ-Mg2" id="9fJ-d2-vfo"/>
+                <outlet property="mediaViewHeightConstraint" destination="fES-NS-suw" id="e6J-6L-Etd"/>
+                <outlet property="nameLabel" destination="GTx-cV-OLz" id="NyI-kr-LZg"/>
+                <outlet property="privateMessageImageView" destination="j3e-f6-EIv" id="5rt-ua-vG4"/>
+                <outlet property="profilePictureImageView" destination="8Xg-9G-vgp" id="L40-wB-HCP"/>
+                <outlet property="replyButton" destination="6m6-fo-gNS" id="CIt-lJ-AJw"/>
+                <outlet property="replyNumberLabel" destination="PhI-cs-uh3" id="G5q-M9-fo7"/>
+                <outlet property="retweeetImageViewHeight" destination="ded-Nz-059" id="7Ys-k9-zFu"/>
+                <outlet property="retweetButton" destination="4t3-Sw-yXX" id="cC4-A4-qWG"/>
+                <outlet property="retweetNumberLabel" destination="FG6-Vm-k86" id="YQ2-zt-NrZ"/>
+                <outlet property="retweetOwnerLabel" destination="NY2-Ty-niW" id="z4g-bf-rGo"/>
+                <outlet property="retweetOwnerLabelHeight" destination="CpL-6M-vSA" id="bf4-sZ-RMV"/>
+                <outlet property="retweetedImageView" destination="kCw-1T-nSW" id="bcZ-dl-4CZ"/>
+                <outlet property="tweetTextLabel" destination="e6G-AY-rm7" id="UAb-vK-rnJ"/>
+            </connections>
             <point key="canvasLocation" x="316.5" y="652"/>
         </tableViewCell>
     </objects>

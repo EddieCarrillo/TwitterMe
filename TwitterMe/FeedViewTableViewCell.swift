@@ -12,9 +12,9 @@ import ActiveLabel
 
 
 
-enum TwitterColors {
-    static let blue = UIColor(red: (29.0/255), green: 160.0/255, blue: 242.0/255, alpha: 1.0)
-}
+//enum TwitterColors {
+//    static let blue = UIColor(red: (29.0/255), green: 160.0/255, blue: 242.0/255, alpha: 1.0)
+//}
 
 //TODO: Add retweet view.
 class FeedViewTableViewCell: UITableViewCell {

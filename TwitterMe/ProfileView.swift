@@ -49,7 +49,7 @@ class ProfileView: UIView {
             
             if let followersNumber = user.followersCount {
                 let followersNumberText  = "\(followersNumber)"
-                self.followingNumberLabel.text = followersNumberText
+                self.followersNumberLabel.text = followersNumberText
             }
 //            
             if let profileUrl = user.profileUrl {
