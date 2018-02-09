@@ -21,9 +21,13 @@ class FeedViewController: UIViewController {
     let composeTweetSegue = "ComposeTweetSegue"
     var tweets: [Tweet] = []
     
+    
+    
+    let reusableFeedCellId = "com.ecarrillo.FeedCell"
+    
     var currentGalleryItems: [GalleryItem] = []
     
-    var lastPressedCell: FeedViewTableViewCell?
+    var lastPressedCell: FeedCell?
     var refreshControl: UIRefreshControl?
     
     
@@ -34,6 +38,11 @@ class FeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
+        tableView.register(UINib(nibName: "FeedCell", bundle: Bundle.main), forCellReuseIdentifier: reusableFeedCellId)
+        
+        //Turn off cell highlighting
         
         //Init UIRefreshControl
         let refreshControl = UIRefreshControl()
@@ -87,7 +96,7 @@ class FeedViewController: UIViewController {
 
     @IBAction func didTapProfilePicture(_ sender: UITapGestureRecognizer) {
         print("Profile picture tapped.")
-        lastPressedCell = sender.view?.superview?.superview as! FeedViewTableViewCell?
+        lastPressedCell = sender.view?.superview?.superview as! FeedCell?
         self.performSegue(withIdentifier: profileSegue, sender: nil)
         
     }
@@ -96,7 +105,7 @@ class FeedViewController: UIViewController {
     @IBAction func didTapName(_ sender: UITapGestureRecognizer) {
         print("Profile name tapped")
         
-        lastPressedCell = sender.view?.superview?.superview as! FeedViewTableViewCell?
+        lastPressedCell = sender.view?.superview?.superview as! FeedCell?
         
 
          let tabBarController = self.parent as! HomeTabBarController
@@ -264,7 +273,10 @@ class FeedViewController: UIViewController {
 extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: feedViewCellReuseId) as!FeedViewTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: reusableFeedCellId) as!FeedCell
+        
+        //Turn off highlighting for cell selection
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
         
         cell.videoPlayTriggered = { (playerViewController: AVPlayerViewController, videoPlayer: AVPlayer) in
             //Modally present the view controller and call the player's play() method when complete.
@@ -334,7 +346,7 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
-        self.lastPressedCell = cell as! FeedViewTableViewCell
+        self.lastPressedCell = cell as! FeedCell
         
         
         self.performSegue(withIdentifier: tweetDetailSegue, sender: nil)

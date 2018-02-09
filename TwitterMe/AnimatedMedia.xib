@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -28,7 +27,12 @@
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HWp-rf-Q0x">
-                    <rect key="frame" x="120" y="104.5" width="80" height="69.5"/>
+                    <rect key="frame" x="135" y="114.5" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="J2G-0d-koB"/>
+                        <constraint firstAttribute="height" constant="50" id="owy-nI-S6E"/>
+                    </constraints>
+                    <color key="tintColor" red="0.25281808035714287" green="0.70413578498233342" blue="0.94274553571428577" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <state key="normal" image="play_button-1">
                         <color key="titleColor" red="0.11372549019607843" green="0.62745098039215685" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
@@ -39,9 +43,7 @@
             </subviews>
             <constraints>
                 <constraint firstItem="d3g-58-Gsw" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="4zE-Ze-PII"/>
-                <constraint firstItem="HWp-rf-Q0x" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.25" id="90P-3f-KmB"/>
                 <constraint firstItem="HWp-rf-Q0x" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="FyP-kR-aVy"/>
-                <constraint firstItem="HWp-rf-Q0x" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.25" id="Hc5-NJ-9e9"/>
                 <constraint firstItem="d3g-58-Gsw" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="L9O-xD-jSS"/>
                 <constraint firstItem="HWp-rf-Q0x" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="MzF-z4-LeA"/>
                 <constraint firstItem="d3g-58-Gsw" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="Wgc-tt-WVe"/>
