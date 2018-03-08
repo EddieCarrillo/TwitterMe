@@ -1,9 +1,9 @@
 //
-//  FeedViewTableViewCell.swift
+//  FeedCell.swift
 //  TwitterMe
 //
-//  Created by Eduardo Carrillo on 11/7/17.
-//  Copyright © 2017 ecproductions. All rights reserved.
+//  Created by Eduardo Carrillo on 2/8/18.
+//  Copyright © 2018 ecproductions. All rights reserved.
 //
 
 import UIKit
@@ -12,18 +12,17 @@ import ActiveLabel
 
 
 
-//enum TwitterColors {
-//    static let blue = UIColor(red: (29.0/255), green: 160.0/255, blue: 242.0/255, alpha: 1.0)
-//}
+import AVKit
+import ActiveLabel
 
-//TODO: Add retweet view.
-class FeedViewTableViewCell: UITableViewCell {
-    
-    
-    
-    
-    
-    
+
+
+enum TwitterColors {
+    static let blue = UIColor(red: (29.0/255), green: 160.0/255, blue: 242.0/255, alpha: 1.0)
+}
+
+class FeedCell: UITableViewCell {
+
     @IBOutlet weak var profilePictureImageView: UIImageView!
     
     @IBOutlet weak var nameLabel: UILabel!
@@ -65,7 +64,7 @@ class FeedViewTableViewCell: UITableViewCell {
     @IBOutlet weak var mediaView: UIView!
     
     @IBOutlet weak var mediaViewHeightConstraint: NSLayoutConstraint!
-
+    
     
     
     var imageViewTapped: ((Int, [UIImage]) -> ())?
@@ -108,7 +107,7 @@ class FeedViewTableViewCell: UITableViewCell {
         //Update the UI
         self.retweetButton.isSelected = tweet.retweeted
         self.updateStats()
-
+        
     }
     
     
@@ -147,9 +146,9 @@ class FeedViewTableViewCell: UITableViewCell {
             NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "StopVideos"), object: nil, queue: OperationQueue.main) { (notification: Notification) in
                 self.pauseVideo()
             }
+            
+        }
         
-    }
-    
         
     }
     
@@ -177,11 +176,11 @@ class FeedViewTableViewCell: UITableViewCell {
         self.dateLabel.text = tweet.dateText
         
         print("isActive \(tweetTextLabel is ActiveLabel)")
-    
+        
         self.tweetTextLabel.URLColor = TwitterColors.blue
         self.tweetTextLabel.hashtagColor = TwitterColors.blue
         self.tweetTextLabel.mentionColor = TwitterColors.blue
-    
+        
         
         
         self.tweetTextLabel.handleHashtagTap { (hashtag: String) in
@@ -189,7 +188,7 @@ class FeedViewTableViewCell: UITableViewCell {
         }
         
         
-       self.tweetTextLabel.text = tweet.text
+        self.tweetTextLabel.text = tweet.text
         updateStats()
         self.profilePictureImageView.isUserInteractionEnabled = true
         self.profilePictureImageView.setRounded()
@@ -230,27 +229,27 @@ class FeedViewTableViewCell: UITableViewCell {
     
     //Function assumes that tweet is a retweet
     func setupRetweetView(){
-
+        
         guard let tweet = self.tweet else {
             print("Could not load the tweet!")
             return
         }
-
+        
         guard let owner = tweet.owner else {
             print("Could not load the owner!")
             return
         }
-
+        
         guard let ownerName = owner.name else {
             print("Could not load ther owner name.")
             return
         }
-
+        
         self.retweetOwnerLabel.text = "\(ownerName) Retweeted"
         
         showRetweetView()
-
-
+        
+        
     }
     
     
@@ -318,7 +317,7 @@ class FeedViewTableViewCell: UITableViewCell {
             return
         }
         
-       // self.mediaView.isHidden = false
+        // self.mediaView.isHidden = false
         self.mediaViewHeightConstraint.constant = CGFloat.init(self.defaultMediaViewHeight)
         //If the medias is not nil then we are guaranteed the first element is not nil
         let media = medias[0]
@@ -352,50 +351,50 @@ class FeedViewTableViewCell: UITableViewCell {
         }else if medias.count == 4 {
             setupFourImage(medias: medias)
         }
-//
-//
-//        var mediaImageView = UIImageView()
-//
-//
-//
-//        var imageHeight = 0
-//        var imageWidth = 0
-//        var scaling = Size.scalingFit
-//
-//        if let photoSizes = media.sizes {
-//            if let largeSize = photoSizes.large {
-//                imageHeight = largeSize[Size.heightKey] as! Int
-//                imageWidth = largeSize[Size.widthKey] as! Int
-//                scaling = largeSize[Size.scalingKey] as! String
-//            }
-//        }
-//
-//        //self.mediaViewHeightConstraint.constant = (self.mediaView.frame.size.width * CGFloat.init(imageHeight)) / CGFloat.init(imageWidth)
-//
-//
-//        if let mediaUrl = media.mediaUrlHttps {
-//            mediaImageView.setImageWith(URL(string: mediaUrl)!)
-//            print("mediaUrl: \(mediaUrl)")
-//        }else {
-//            print("Could not get the url ")
-//            self.mediaView.isHidden = true
-//            self.mediaViewHeightConstraint.constant = 0
-//            return
-//        }
-//
-//        //    mediaView = mediaImageView
-//        mediaImageView.frame = CGRect(x: 0, y: 0, width: mediaView.frame.width, height: mediaView.frame.height)
-//
-//        if scaling == Size.scalingFit {
-//            mediaImageView.contentMode = .scaleAspectFit
-//        }else {
-//            mediaImageView.contentMode = .scaleToFill
-//        }
-//
-//        mediaView.addSubview(mediaImageView)
-//        print("[SUBVIEW WAS ADDDED]")
-//
-//
+        //
+        //
+        //        var mediaImageView = UIImageView()
+        //
+        //
+        //
+        //        var imageHeight = 0
+        //        var imageWidth = 0
+        //        var scaling = Size.scalingFit
+        //
+        //        if let photoSizes = media.sizes {
+        //            if let largeSize = photoSizes.large {
+        //                imageHeight = largeSize[Size.heightKey] as! Int
+        //                imageWidth = largeSize[Size.widthKey] as! Int
+        //                scaling = largeSize[Size.scalingKey] as! String
+        //            }
+        //        }
+        //
+        //        //self.mediaViewHeightConstraint.constant = (self.mediaView.frame.size.width * CGFloat.init(imageHeight)) / CGFloat.init(imageWidth)
+        //
+        //
+        //        if let mediaUrl = media.mediaUrlHttps {
+        //            mediaImageView.setImageWith(URL(string: mediaUrl)!)
+        //            print("mediaUrl: \(mediaUrl)")
+        //        }else {
+        //            print("Could not get the url ")
+        //            self.mediaView.isHidden = true
+        //            self.mediaViewHeightConstraint.constant = 0
+        //            return
+        //        }
+        //
+        //        //    mediaView = mediaImageView
+        //        mediaImageView.frame = CGRect(x: 0, y: 0, width: mediaView.frame.width, height: mediaView.frame.height)
+        //
+        //        if scaling == Size.scalingFit {
+        //            mediaImageView.contentMode = .scaleAspectFit
+        //        }else {
+        //            mediaImageView.contentMode = .scaleToFill
+        //        }
+        //
+        //        mediaView.addSubview(mediaImageView)
+        //        print("[SUBVIEW WAS ADDDED]")
+        //
+        //
         
     }
     
@@ -560,7 +559,7 @@ class FeedViewTableViewCell: UITableViewCell {
         
         
         
-       
+        
     }
     
     
@@ -596,35 +595,35 @@ class FeedViewTableViewCell: UITableViewCell {
         
         let animatedViewFrame = self.mediaView.bounds
         let animatedView = AnimatedView(frame: animatedViewFrame)
-//
+        //
         
         
         if let previewPhotoURLString = media.mediaUrlHttps{
             animatedView.previewPhotoURL = URL(string: previewPhotoURLString)
         }
-
+        
         animatedView.videoURL = url
         
-       
+        
         
         animatedView.isGIF = false
         
         self.mediaView.addSubview(animatedView)
         
         
-//        //Create a new player, passing it an HTTP Live Streaming Url
-//        self.player = AVPlayer(url: url)
-//
-//        //Create a new AVPlayerViewController and pass a reference to the player.
-//        self.playerController = AVPlayerViewController()
-//
-//        playerController?.player = player
-//
-//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(TweetDetailViewController.playVideo))
-//        self.mediaView.gestureRecognizers = []
-//        self.mediaView.gestureRecognizers?.append(tapGesture)
-//
-//        addVideoPreviewPicture(media: media)
+        //        //Create a new player, passing it an HTTP Live Streaming Url
+        //        self.player = AVPlayer(url: url)
+        //
+        //        //Create a new AVPlayerViewController and pass a reference to the player.
+        //        self.playerController = AVPlayerViewController()
+        //
+        //        playerController?.player = player
+        //
+        //        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(TweetDetailViewController.playVideo))
+        //        self.mediaView.gestureRecognizers = []
+        //        self.mediaView.gestureRecognizers?.append(tapGesture)
+        //
+        //        addVideoPreviewPicture(media: media)
         
     }
     
@@ -653,13 +652,13 @@ class FeedViewTableViewCell: UITableViewCell {
         
         
         videoPlayTriggered?(vc, videoPlayer)
-       
+        
     }
     
     func addVideoPreviewPicture(media: Media){
         setupOneImage(medias: [media])
     }
-
+    
     
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -713,12 +712,16 @@ class FeedViewTableViewCell: UITableViewCell {
     }
     
     
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
         print("The cell was selected.")
         // Configure the view for the selected state
     }
-
+    
+    
+    
 }
+    
+
