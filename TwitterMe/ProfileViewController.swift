@@ -10,7 +10,7 @@ import UIKit
 import BDBOAuth1Manager
 import ImageViewer
 
-class ProfileViewController: UIViewController  {
+class ProfileViewController: UIViewController, UITableViewDelegate  {
     
     
     var user: User?
@@ -40,11 +40,14 @@ class ProfileViewController: UIViewController  {
     
     
     var currentGalleryItems: [GalleryItem] = []
-
+   
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+         let tableview = UITableView()
+        tableview.delegate = self
         
         if user == nil {
             self.user = User.currentUser

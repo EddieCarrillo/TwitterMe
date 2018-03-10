@@ -39,9 +39,14 @@
 		2C050B5D1FEB121700853E49 /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C050B5C1FEB121700853E49 /* HomeTabBarController.swift */; };
 		70ED9160BFF98A95290346FE /* Pods_TwitterMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE3ECA5CC556FB72B277487 /* Pods_TwitterMe.framework */; };
 		77E4FB53E0A6507B8848DD8E /* Pods_TwitterMeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D69F8652BE34972786CAAEB8 /* Pods_TwitterMeTests.framework */; };
+		F70F315520524B7B00B797BB /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70F315320524B7B00B797BB /* CollectionViewCell.swift */; };
+		F70F315620524B7B00B797BB /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F70F315420524B7B00B797BB /* CollectionViewCell.xib */; };
 		F71D3D322000143C000269F4 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = F71D3D312000143B000269F4 /* Podfile */; };
 		F72AA05C202D14FA00E33B38 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72AA05A202D14FA00E33B38 /* FeedCell.swift */; };
 		F72AA05D202D14FA00E33B38 /* FeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F72AA05B202D14FA00E33B38 /* FeedCell.xib */; };
+		F738179E2050F4260074BCD1 /* CustomLayoutAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F738179B2050F4260074BCD1 /* CustomLayoutAttributes.swift */; };
+		F738179F2050F4260074BCD1 /* CustomLayoutSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F738179C2050F4260074BCD1 /* CustomLayoutSettings.swift */; };
+		F73817A02050F4260074BCD1 /* CustomLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F738179D2050F4260074BCD1 /* CustomLayout.swift */; };
 		F7F5ED161FFDA6DF0030A276 /* AnimatedMedia.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7F5ED0C1FFDA6DE0030A276 /* AnimatedMedia.xib */; };
 		F7F5ED171FFDA6DF0030A276 /* AnimatedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F5ED0D1FFDA6DE0030A276 /* AnimatedView.swift */; };
 		F7F5ED181FFDA6DF0030A276 /* OnePhotoMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F5ED0E1FFDA6DE0030A276 /* OnePhotoMedia.swift */; };
@@ -106,9 +111,14 @@
 		DCE3ECA5CC556FB72B277487 /* Pods_TwitterMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TwitterMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED90F6F41C723D02FDA7B8C2 /* Pods-TwitterMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterMe.release.xcconfig"; path = "Pods/Target Support Files/Pods-TwitterMe/Pods-TwitterMe.release.xcconfig"; sourceTree = "<group>"; };
 		F51A6F330E245DE42C969203 /* Pods-TwitterMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterMe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TwitterMe/Pods-TwitterMe.debug.xcconfig"; sourceTree = "<group>"; };
+		F70F315320524B7B00B797BB /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		F70F315420524B7B00B797BB /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
 		F71D3D312000143B000269F4 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		F72AA05A202D14FA00E33B38 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		F72AA05B202D14FA00E33B38 /* FeedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedCell.xib; sourceTree = "<group>"; };
+		F738179B2050F4260074BCD1 /* CustomLayoutAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLayoutAttributes.swift; sourceTree = "<group>"; };
+		F738179C2050F4260074BCD1 /* CustomLayoutSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLayoutSettings.swift; sourceTree = "<group>"; };
+		F738179D2050F4260074BCD1 /* CustomLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLayout.swift; sourceTree = "<group>"; };
 		F7F37E9C1FF16791001F36E6 /* BDBOAuth1Manager */ = {isa = PBXFileReference; lastKnownFileType = folder; name = BDBOAuth1Manager; path = Pods/BDBOAuth1Manager/BDBOAuth1Manager; sourceTree = "<group>"; };
 		F7F37E9E1FF167DC001F36E6 /* BDBOAuth1Manager */ = {isa = PBXFileReference; lastKnownFileType = folder; name = BDBOAuth1Manager; path = Pods/BDBOAuth1Manager; sourceTree = "<group>"; };
 		F7F5ED0C1FFDA6DE0030A276 /* AnimatedMedia.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnimatedMedia.xib; sourceTree = "<group>"; };
@@ -267,6 +277,9 @@
 		F7F5ECF71FFDA68C0030A276 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
+				F738179D2050F4260074BCD1 /* CustomLayout.swift */,
+				F738179B2050F4260074BCD1 /* CustomLayoutAttributes.swift */,
+				F738179C2050F4260074BCD1 /* CustomLayoutSettings.swift */,
 				F7F5ED0C1FFDA6DE0030A276 /* AnimatedMedia.xib */,
 				F7F5ED0D1FFDA6DE0030A276 /* AnimatedView.swift */,
 				F7F5ED151FFDA6DF0030A276 /* FourPhotoView.swift */,
@@ -279,6 +292,8 @@
 				F7F5ED131FFDA6DF0030A276 /* TwoPhotoView.xib */,
 				F72AA05A202D14FA00E33B38 /* FeedCell.swift */,
 				F72AA05B202D14FA00E33B38 /* FeedCell.xib */,
+				F70F315320524B7B00B797BB /* CollectionViewCell.swift */,
+				F70F315420524B7B00B797BB /* CollectionViewCell.xib */,
 			);
 			name = Custom;
 			sourceTree = "<group>";
@@ -386,6 +401,7 @@
 			files = (
 				F7F5ED161FFDA6DF0030A276 /* AnimatedMedia.xib in Resources */,
 				1F5A59021FA8F03C0065A8C5 /* LaunchScreen.storyboard in Resources */,
+				F70F315620524B7B00B797BB /* CollectionViewCell.xib in Resources */,
 				F7F5ED1B1FFDA6DF0030A276 /* FourPhotoView.xib in Resources */,
 				1F5A58FF1FA8F03B0065A8C5 /* Assets.xcassets in Resources */,
 				F7F5ED1C1FFDA6DF0030A276 /* ThreePhotoView.xib in Resources */,
@@ -538,6 +554,9 @@
 				1F97FA1A1FEF335600852A6F /* Size.swift in Sources */,
 				F7F5ED1F1FFDA6DF0030A276 /* FourPhotoView.swift in Sources */,
 				1F97FA101FEF2FBB00852A6F /* TURL.swift in Sources */,
+				F738179E2050F4260074BCD1 /* CustomLayoutAttributes.swift in Sources */,
+				F73817A02050F4260074BCD1 /* CustomLayout.swift in Sources */,
+				F738179F2050F4260074BCD1 /* CustomLayoutSettings.swift in Sources */,
 				1F97FA0E1FEF2F4A00852A6F /* Hashtag.swift in Sources */,
 				1F5A59231FAA33A30065A8C5 /* User.swift in Sources */,
 				F7F5ED181FFDA6DF0030A276 /* OnePhotoMedia.swift in Sources */,
@@ -548,6 +567,7 @@
 				2C050B531FE858E100853E49 /* CentralNavigationController.swift in Sources */,
 				F7F7C7F01FF19AFC002286B1 /* VideoInfo.swift in Sources */,
 				F72AA05C202D14FA00E33B38 /* FeedCell.swift in Sources */,
+				F70F315520524B7B00B797BB /* CollectionViewCell.swift in Sources */,
 				F7F5ED1E1FFDA6DF0030A276 /* TwoPhotoView.swift in Sources */,
 				1F5A58F81FA8F03B0065A8C5 /* AppDelegate.swift in Sources */,
 				2C0135241FE6F1F0008722D6 /* ComposeTweetViewController.swift in Sources */,
