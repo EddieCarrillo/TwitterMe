@@ -9,18 +9,21 @@
 import UIKit
 import BDBOAuth1Manager
 import ImageViewer
+import LFTwitterProfile
 
-class ProfileViewController: UIViewController, UITableViewDelegate  {
+
+class ProfileViewController: TwitterProfileViewController  {
     
     
     var user: User?
     var tweets: [Tweet] = []
 
-    @IBOutlet weak var backgroundProfileImageView: UIImageView!
     
-    @IBOutlet weak var profilePictureImageView: UIImageView!
     
-    @IBOutlet weak var tableview: UITableView!
+    
+    
+   var tweetsTableView: UITableView!
+    
     
     var followersText: String?
     var followingText: String?
@@ -43,18 +46,18 @@ class ProfileViewController: UIViewController, UITableViewDelegate  {
    
     
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-         let tableview = UITableView()
-        tableview.delegate = self
+        
+        initProfileGUI()
         
         if user == nil {
             self.user = User.currentUser
         }
-        
-        
-        
+    
         guard let currentUser = self.user else  {
             print("Trouble loading user.")
             return
@@ -64,28 +67,18 @@ class ProfileViewController: UIViewController, UITableViewDelegate  {
            tabBarController.navigationItem.title = ""
         }
         
-        //Register cell
-        tableview.register(UINib(nibName: "FeedCell", bundle: Bundle.main), forCellReuseIdentifier: self.reusableFeedCellId)
-        
-        
-        //self.navigationItem.title = "Profile"
         transparentBar()
-       // self.navigationController?.navigationBar.isHidden = false
         
-        self.tableview.dataSource = self
-        self.tableview.delegate = self
-        self.tableview.estimatedRowHeight = 100
         //Add autolayout
-        self.tableview.rowHeight = UITableViewAutomaticDimension
         //Update the GUI (For the top half of the screen.)
-        profileView.user = currentUser
-        followersText =  profileView.followersNumberLabel.text
-         followingText = profileView.followingNumberLabel.text
+        //profileView.user = currentUser
+//        followersText =  profileView.followersNumberLabel.text
+//         followingText = profileView.followingNumberLabel.text
         
         let twitterClient = TwitterClient.sharedInstance
         twitterClient?.loadTweets(user: currentUser, sucess: { (tweets: [Tweet]) in
             self.tweets = tweets
-            self.tableview.reloadData()
+            //self.tableview.reloadData()
         }, failure: { (error: Error) in
             print("[ERROR]: \(error)")
         })
@@ -94,6 +87,16 @@ class ProfileViewController: UIViewController, UITableViewDelegate  {
         
 
         // Do any additional setup after loading the view.
+    }
+    
+    
+    
+    func initProfileGUI(){
+        username =  self.user?.name
+        self.profileImage = self.user?.profilePicture
+        self.headerCoverView.setImageWith((self.user?.backgroundProfileUrl)!)
+        self.profileImageView?.setImageWith((self.user?.profileUrl)!)
+        
     }
 
     
@@ -122,11 +125,11 @@ class ProfileViewController: UIViewController, UITableViewDelegate  {
         print("Profile name tapped")
         didTapProfilePicture(sender)
         
-//        lastPressedCell = sender.view?.superview?.superview as! FeedViewTableViewCell?
-//        let parent = self.parent
-        //let tabBarController = parent as! HomeTabBarController
+        lastPressedCell = sender.view?.superview?.superview as! FeedCell?
+        let parent = self.parent
+        let tabBarController = parent as! HomeTabBarController
         //Bug fix open retweeted tweet's owner's profile
-      //  tabBarController.profilePictureTapped?((lastPressedCell?.displayedTweet?.owner)!)
+        tabBarController.profilePictureTapped?((lastPressedCell?.displayedTweet?.owner)!)
         
         
     }
@@ -157,6 +160,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate  {
         
         twitterClient?.loadTweets(user: user, sucess: { (tweets: [Tweet]) in
             self.tweets = tweets
+            self.tweetsTableView.reloadData()
         }, failure: { (error: Error) in
             print("error: \(error)")
         })
@@ -264,6 +268,39 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         
         
     }
+    
+}
+
+
+extension ProfileViewController{
+    
+    override func numberOfSegments() -> Int {
+        return 1
+    }
+    
+    override func segmentTitle(forSegment index: Int) -> String {
+        switch index {
+        case 0:
+            return "Tweets"
+        default:
+           return "Tweets"
+        }
+    }
+    
+    
+    override func prepareForLayout() {
+        initTableViews()
+    }
+    
+    
+    
+    func initTableViews(){
+        let tweetsTableView = UITableView(frame: CGRect.zero, style: .plain)
+        self.tweetsTableView = tweetsTableView
+        tweetsTableView.delegate = self
+        tweetsTableView.dataSource = self
+    }
+    
     
 }
 
