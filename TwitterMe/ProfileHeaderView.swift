@@ -42,6 +42,12 @@ class ProfileHeaderView: UIView {
         }
     }
     
+    //May not need this.
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+    }
+    
     
     func updateGUI(user: User){
         

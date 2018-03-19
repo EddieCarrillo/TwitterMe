@@ -100,6 +100,25 @@ class ProfileViewController: UIViewController  {
     }
     
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        sizeHeaderToFit()
+    }
+    
+    func sizeHeaderToFit(){
+        headerView.setNeedsLayout()
+        headerView.layoutIfNeeded()
+        
+        let height = headerView.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
+        
+        var frame = headerView.frame
+        frame.size.height = height
+        headerView.frame = frame
+        //To redraw the table header view ... I think
+        tableview.tableHeaderView = headerView
+    }
+    
+    
     
     
     func updateHeaderWithConstraints(){
