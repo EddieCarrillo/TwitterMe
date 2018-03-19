@@ -19,16 +19,17 @@ class FeedViewController: UIViewController {
     let profileSegue = "ProfileSegue"
     let tweetDetailSegue = "TweetDetailSegue"
     let composeTweetSegue = "ComposeTweetSegue"
-    var tweets: [Tweet] = []
-    
-    
-    
     let reusableFeedCellId = "com.ecarrillo.FeedCell"
-    
+    //Tweet data
+    var tweets: [Tweet] = []
+    //Gallery data (images for when use taps media)
     var currentGalleryItems: [GalleryItem] = []
-    
+    //For knowing which cell to get tweet data from
     var lastPressedCell: FeedCell?
+    //For loading effect
     var refreshControl: UIRefreshControl?
+    
+    var isMoreDataLoading: Bool = false
     
     
     @IBOutlet weak var retweetViewTopConstraint: NSLayoutConstraint!
@@ -48,7 +49,7 @@ class FeedViewController: UIViewController {
         let refreshControl = UIRefreshControl()
         
         //Bind action to the refresh control
-        refreshControl.addTarget(self, action: #selector(refreshTimeline(_:)
+        refreshControl.addTarget(self, action: #selector(refreshTimeline
             ), for: UIControlEvents.valueChanged)
         
         //add refresh to table view
@@ -118,18 +119,26 @@ class FeedViewController: UIViewController {
     
     
     
-    func refreshTimeline(_ refreshControl: UIRefreshControl){
+    @objc func refreshTimeline(){
         let twitterClient = TwitterClient.sharedInstance
         
         let successBlock: () -> () = {
-            refreshControl.endRefreshing()
+            if let refreshControl = self.refreshControl{
+                refreshControl.endRefreshing()
+
+            }
         }
         
         let failure: ()->() = {
-            refreshControl.endRefreshing()
-            
+            if let refreshControl = self.refreshControl{
+                refreshControl.endRefreshing()
+                
+            }
         }
-        refreshControl.beginRefreshing()
+        
+        if let refreshControl = self.refreshControl{
+            refreshControl.beginRefreshing()
+        }
         
         refreshData(success: successBlock, failureBlock: failure)
         
@@ -143,11 +152,13 @@ class FeedViewController: UIViewController {
             //Default behavior
                 self.tweets = tweets
                 self.tableView.reloadData()
+            self.isMoreDataLoading = false
             //Injectable behavior
             success()
                 
         }, failure: { (error: Error) in
             print("[ERROR]: \(error)")
+            self.isMoreDataLoading = false
             //Injectible behavior
             failureBlock()
         })
@@ -266,6 +277,34 @@ class FeedViewController: UIViewController {
             
         }
     }
+
+extension FeedViewController {
+    
+
+    
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        //To prevent a billion requests!
+        if (!isMoreDataLoading){
+            let contentHeight = tableView.contentSize.height
+            //Point at which we should reload the data
+            //We are defining this to be one screeen scroll length away
+            let offsetThreshold = contentHeight - tableView.bounds.height
+            
+            let offset = scrollView.contentOffset.y
+            //When the user has scrolled past the threshold
+            if (offset > offsetThreshold && tableView.isDragging){
+                //Actual code to load the data
+                isMoreDataLoading = true
+                refreshTimeline()
+            }
+            
+        }
+      
+    }
+    
+}
 
 
 

@@ -21,10 +21,11 @@ class TwitterClient: BDBOAuth1SessionManager{
     static let sharedInstance =  TwitterClient(baseURL: URL(string: "https://api.twitter.com"), consumerKey: consumerKey, consumerSecret: consumerSecret)
     
     
+    
     /*URLS*/
-    let homeTimelineEndpoint = "1.1/statuses/home_timeline.json"
+    let homeTimelineEndpoint = "1.1/statuses/home_timeline.json?count=100"
     let saveTweetEndpoint = "/1.1/statuses/update.json"
-    let userTimelineEndpoint = "/1.1/statuses/user_timeline.json"
+    let userTimelineEndpoint = "/1.1/statuses/user_timeline.json?count=100"
     let loginVerifyEndpoint = "1.1/account/verify_credentials.json"
     let oauthTokenEndpoint = "oauth/request_token"
     let retweetEndpoint = "1.1/statuses/retweet"
