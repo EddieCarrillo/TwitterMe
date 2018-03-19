@@ -42,6 +42,7 @@
 		F71D3D322000143C000269F4 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = F71D3D312000143B000269F4 /* Podfile */; };
 		F72AA05C202D14FA00E33B38 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72AA05A202D14FA00E33B38 /* FeedCell.swift */; };
 		F72AA05D202D14FA00E33B38 /* FeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F72AA05B202D14FA00E33B38 /* FeedCell.xib */; };
+		F7611B272060656C008DE8B3 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7611B262060656C008DE8B3 /* ProfileHeaderView.swift */; };
 		F7F5ED161FFDA6DF0030A276 /* AnimatedMedia.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7F5ED0C1FFDA6DE0030A276 /* AnimatedMedia.xib */; };
 		F7F5ED171FFDA6DF0030A276 /* AnimatedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F5ED0D1FFDA6DE0030A276 /* AnimatedView.swift */; };
 		F7F5ED181FFDA6DF0030A276 /* OnePhotoMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F5ED0E1FFDA6DE0030A276 /* OnePhotoMedia.swift */; };
@@ -109,6 +110,7 @@
 		F71D3D312000143B000269F4 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		F72AA05A202D14FA00E33B38 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		F72AA05B202D14FA00E33B38 /* FeedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedCell.xib; sourceTree = "<group>"; };
+		F7611B262060656C008DE8B3 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		F7F37E9C1FF16791001F36E6 /* BDBOAuth1Manager */ = {isa = PBXFileReference; lastKnownFileType = folder; name = BDBOAuth1Manager; path = Pods/BDBOAuth1Manager/BDBOAuth1Manager; sourceTree = "<group>"; };
 		F7F37E9E1FF167DC001F36E6 /* BDBOAuth1Manager */ = {isa = PBXFileReference; lastKnownFileType = folder; name = BDBOAuth1Manager; path = Pods/BDBOAuth1Manager; sourceTree = "<group>"; };
 		F7F5ED0C1FFDA6DE0030A276 /* AnimatedMedia.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnimatedMedia.xib; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				2C050B581FE8875200853E49 /* MenuBarView.swift */,
 				0542E1C31FB29BE4006DE1EC /* FeedViewTableViewCell.swift */,
 				056A62731FC3CC5600A73C2F /* ProfileView.swift */,
+				F7611B262060656C008DE8B3 /* ProfileHeaderView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -542,6 +545,7 @@
 				1F5A59231FAA33A30065A8C5 /* User.swift in Sources */,
 				F7F5ED181FFDA6DF0030A276 /* OnePhotoMedia.swift in Sources */,
 				1FC71B371FB16F2B00D94696 /* FeedViewController.swift in Sources */,
+				F7611B272060656C008DE8B3 /* ProfileHeaderView.swift in Sources */,
 				2C050B551FE8823100853E49 /* UIViewExtensions.swift in Sources */,
 				2C050B591FE8875200853E49 /* MenuBarView.swift in Sources */,
 				0572AEED1FB54D60007ED4AA /* ProfileViewController.swift in Sources */,

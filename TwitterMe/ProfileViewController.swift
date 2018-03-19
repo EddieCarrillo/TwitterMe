@@ -12,105 +12,79 @@ import ImageViewer
 
 class ProfileViewController: UIViewController  {
     
-    
+    //User profile
     var user: User?
+    //Tweets for feed of timeline
     var tweets: [Tweet] = []
 
-    @IBOutlet weak var backgroundProfileImageView: UIImageView!
     
-    @IBOutlet weak var profilePictureImageView: UIImageView!
-    
+    //normal tweets feed may add more later
     @IBOutlet weak var tableview: UITableView!
     
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var handleLabel: UILabel!
-    
-    @IBOutlet weak var bioLabel: UILabel!
-    
-    @IBOutlet weak var headerTopConstraint: NSLayoutConstraint!
-    let headerTopDefault = 0.0
-    
-    @IBOutlet weak var bannerHeightConstraint: NSLayoutConstraint!
-    
-    let bannerDefaultHeight = 180.0
-    
-    
-    var followersText: String?
-    var followingText: String?
-    
-    @IBOutlet weak var followingCountLabel: UILabel!
-    @IBOutlet weak var followersCountLabel: UILabel!
-    
-    var lastPressedCell: FeedCell?
-    
-    
-    @IBOutlet var headerView: UIView!
-    
-    var headerViewHeight: CGFloat = 360
-
-    
+    //MARK- REUSE ID's
     let feedViewCellReuseId = "FeedViewTableViewCell"
     let profileFeedCellReuseId = "ProfileFeedTableViewCell"
     let profileSegue = "ProfileSegue"
     let tweetDetailSegue = "ProfileTweetDetailSegue"
     let composeTweetSegue = "ComposeTweetSegue"
     let reusableFeedCellId = "com.ecarrillo.FeedCell"
-
+   
+    //Keep track of last cell pressed by user
+    var lastPressedCell: FeedCell?
     
     
+    @IBOutlet weak var headerView: ProfileHeaderView!
+    
+    //This refers to images used when user taps on media inside tweet.
     var currentGalleryItems: [GalleryItem] = []
 
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //Nil only when view controller was not navigated to.
         if user == nil {
             self.user = User.currentUser
         }
-         
-        
-        
-        tableview.delegate = self
-//        let headerView = tableview.tableHeaderView
-//
-//        tableview.tableHeaderView = nil
-//        tableview.addSubview(headerView!)
-//
-//        tableview.contentInset = UIEdgeInsets(top: headerViewHeight, left: 0, bottom: 0, right: 0)
-//
-//        tableview.contentOffset.y = -headerViewHeight
-        
-        
-       // updateHeaderView()
-        updateHeaderWithConstraints()
-        
-        
-        
+        // If the current user is not loaded then this app has bigger problems to deal with
         guard let currentUser = self.user else  {
             print("Trouble loading user.")
             return
         }
+        
+        initTableViews()
         //We don't want title appearing for profile screen.
         if let tabBarController = self.parent{ // If this is true this means that it is nested in tab bar
            tabBarController.navigationItem.title = ""
         }
 
-        //Register cell
-        tableview.register(UINib(nibName: "FeedCell", bundle: Bundle.main), forCellReuseIdentifier: self.reusableFeedCellId)
-
-
         //self.navigationItem.title = "Profile"
         transparentBar()
        // self.navigationController?.navigationBar.isHidden = false
 
+        updateGUI(user: currentUser)
+        loadTweets()
+        
+    }
+    
+    func initTableViews(){
+        tableview.delegate = self
+        updateHeaderWithConstraints()
+        //Register cell
+        tableview.register(UINib(nibName: "FeedCell", bundle: Bundle.main), forCellReuseIdentifier: self.reusableFeedCellId)
         self.tableview.dataSource = self
-        self.tableview.delegate = self
         self.tableview.estimatedRowHeight = 100
         //Add autolayout
         self.tableview.rowHeight = UITableViewAutomaticDimension
-        //Update the GUI (For the top half of the screen.)
-        updateGUI(user: currentUser)
+        
+    }
+    
+    func loadTweets(){
+        guard let currentUser = self.user else  {
+            print("Trouble loading user.")
+            return
+        }
+        
         let twitterClient = TwitterClient.sharedInstance
         twitterClient?.loadTweets(user: currentUser, sucess: { (tweets: [Tweet]) in
             self.tweets = tweets
@@ -118,85 +92,30 @@ class ProfileViewController: UIViewController  {
         }, failure: { (error: Error) in
             print("[ERROR]: \(error)")
         })
-
-
-        
-
-        // Do any additional setup after loading the view.
     }
     
     
     func updateGUI(user: User){
-        
-        if let profileName = user.name {
-            self.nameLabel.text = profileName
-        }
-        
-        if let profileHandle = user.screenname {
-            self.handleLabel.text =  "@\(profileHandle)"
-        }
-        
-        if let bio = user.tagline {
-            self.bioLabel.text = bio
-        }
-        
-        if let followingNumber = user.followingCount {
-            let followingNumberText = "\(followingNumber)"
-            self.followingCountLabel.text = followingNumberText
-        }
-        
-        if let followersNumber = user.followersCount {
-            let followersNumberText  = "\(followersNumber)"
-            self.followersCountLabel.text = followersNumberText
-        }
-        //
-        if let profileUrl = user.profileUrl {
-            self.profilePictureImageView.setImageWith(profileUrl)
-            self.profilePictureImageView.setRounded()
-        }
-        
-        if let backgroundPictureUrl  = user.backgroundProfileUrl {
-            self.backgroundProfileImageView.setImageWith(backgroundPictureUrl)
-            //                self.profilePictureImageView.setImageWith(backgroundPictureUrl)
-            print("[BACKGROUND_PICTURE_URL] SUCCESS")
-            
-        }else {
-            print("[BACKGROUND_PICTURE_URL] could not set image with url")
-        }
-        
-        
+        headerView.user = user
     }
     
     
-    func updateHeaderView(){
-        let offset = tableview.contentOffset.y
-        let base = 0
-        
-        var headerRect = CGRect(x: CGFloat(0), y: -headerViewHeight, width: tableview.bounds.width, height: headerViewHeight)
-        
-        
-        if offset < -headerViewHeight {
-            headerRect.origin.y = offset
-            headerRect.size.height = -offset
-        }
-        
-       headerView.frame = headerRect
-    }
+    
     
     func updateHeaderWithConstraints(){
         let offset = tableview.contentOffset.y
         let base = CGFloat(0)
         
-        var bannerPosition = CGFloat(headerTopDefault)
-        var bannerHeight = CGFloat(bannerDefaultHeight)
+        var bannerPosition = CGFloat(headerView.headerTopDefault)
+        var bannerHeight = CGFloat(headerView.bannerDefaultHeight)
         
         if offset < base {
           bannerPosition = offset
-          bannerHeight = CGFloat(bannerDefaultHeight) - offset
+          bannerHeight = CGFloat(headerView.bannerDefaultHeight) - offset
         }
         
-        headerTopConstraint.constant = bannerPosition
-        bannerHeightConstraint.constant = bannerHeight
+        headerView.headerTopConstraint.constant = bannerPosition
+        headerView.bannerHeightConstraint.constant = bannerHeight
         
         
         

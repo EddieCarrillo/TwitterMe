@@ -850,7 +850,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="0.84199729677429547" green="0.85239232512953367" blue="0.85239232512953367" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <view key="tableHeaderView" contentMode="scaleToFill" id="4hP-vd-Dtf" customClass="ProfileView" customModule="TwitterMe" customModuleProvider="target">
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="4hP-vd-Dtf" customClass="ProfileHeaderView" customModule="TwitterMe" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="352"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
@@ -953,13 +953,15 @@
                                         <constraint firstItem="zmE-E4-TI8" firstAttribute="bottom" secondItem="nyv-kx-1rG" secondAttribute="centerY" id="y9L-cH-08r"/>
                                     </constraints>
                                     <connections>
-                                        <outlet property="backgroundPictureImageView" destination="nyv-kx-1rG" id="xKR-C2-yrQ"/>
+                                        <outlet property="bannerHeightConstraint" destination="0lm-SS-ahz" id="RnF-yT-VAs"/>
                                         <outlet property="bioLabel" destination="Elk-BA-Pqh" id="t3Z-Nk-jxJ"/>
-                                        <outlet property="followersNumberLabel" destination="b4U-G3-i0d" id="Vvj-FV-OdZ"/>
-                                        <outlet property="followingNumberLabel" destination="qvC-iS-4CJ" id="NPn-Gp-Y3K"/>
-                                        <outlet property="profileHandleLabel" destination="1id-Eh-1WS" id="YI7-Hw-YBW"/>
-                                        <outlet property="profileNameLabel" destination="ZMq-N1-vda" id="Fwc-hj-bV3"/>
-                                        <outlet property="profilePictureImageView" destination="zmE-E4-TI8" id="ph1-8M-RBA"/>
+                                        <outlet property="followersCountLabel" destination="b4U-G3-i0d" id="ZHg-xC-Hk5"/>
+                                        <outlet property="followingCountLabel" destination="qvC-iS-4CJ" id="EVf-FK-3lh"/>
+                                        <outlet property="handleLabel" destination="1id-Eh-1WS" id="Y8j-Sm-Wqv"/>
+                                        <outlet property="headerTopConstraint" destination="Zyl-ot-QmN" id="K5q-yx-bmb"/>
+                                        <outlet property="profileBanner" destination="zmE-E4-TI8" id="yXl-Wa-F2i"/>
+                                        <outlet property="profilePicture" destination="nyv-kx-1rG" id="HMh-j1-iuU"/>
+                                        <outlet property="usernameLabel" destination="ZMq-N1-vda" id="CXy-E4-Rj4"/>
                                     </connections>
                                 </view>
                             </tableView>
@@ -977,16 +979,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="0GQ-oW-pDp"/>
                     <connections>
-                        <outlet property="backgroundProfileImageView" destination="zmE-E4-TI8" id="VaI-E2-4YA"/>
-                        <outlet property="bannerHeightConstraint" destination="0lm-SS-ahz" id="TQs-Gq-MtQ"/>
-                        <outlet property="bioLabel" destination="Elk-BA-Pqh" id="pk7-CI-gdg"/>
-                        <outlet property="followersCountLabel" destination="b4U-G3-i0d" id="e5X-ei-LZI"/>
-                        <outlet property="followingCountLabel" destination="qvC-iS-4CJ" id="c55-7N-vmH"/>
-                        <outlet property="handleLabel" destination="1id-Eh-1WS" id="qqK-3X-uiM"/>
-                        <outlet property="headerTopConstraint" destination="Zyl-ot-QmN" id="snr-UC-pHI"/>
-                        <outlet property="headerView" destination="4hP-vd-Dtf" id="oOe-Rk-NDP"/>
-                        <outlet property="nameLabel" destination="ZMq-N1-vda" id="U3x-Eq-uDv"/>
-                        <outlet property="profilePictureImageView" destination="nyv-kx-1rG" id="Kdv-tm-hvO"/>
+                        <outlet property="headerView" destination="4hP-vd-Dtf" id="uHi-5u-0ON"/>
                         <outlet property="tableview" destination="3hX-8R-ATn" id="6wL-XY-aMI"/>
                         <segue destination="Ela-f2-imf" kind="show" identifier="ProfileTweetDetailSegue" id="okK-c9-AL3"/>
                     </connections>
