@@ -53,13 +53,13 @@ class User: NSObject {
         
         self.screenname = dictionary["screen_name"] as? String
         
-        if let profileUrlString = dictionary["profile_image_url_https"] as? String {
+        if let profileUrlString = dictionary["profile_image_url"] as? String {
            
             self.profileUrl = URL(string: profileUrlString)
         }
         
         
-        if let backgroundProfileUrlString = dictionary["profile_background_image_url_https"] as? String {
+        if let backgroundProfileUrlString = dictionary["profile_banner_url"] as? String {
             self.backgroundProfileUrl = URL(string: backgroundProfileUrlString)
         }
         

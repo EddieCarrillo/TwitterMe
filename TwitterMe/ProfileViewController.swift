@@ -22,12 +22,24 @@ class ProfileViewController: UIViewController  {
     
     @IBOutlet weak var tableview: UITableView!
     
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var handleLabel: UILabel!
+    
+    @IBOutlet weak var bioLabel: UILabel!
+    
+    
     var followersText: String?
     var followingText: String?
     
-    @IBOutlet var profileView: ProfileView!
+    @IBOutlet weak var followingCountLabel: UILabel!
+    @IBOutlet weak var followersCountLabel: UILabel!
     
     var lastPressedCell: FeedCell?
+    
+    
+    @IBOutlet var headerView: UIView!
+    
+    var headerViewHeight: CGFloat = 360
 
     
     let feedViewCellReuseId = "FeedViewTableViewCell"
@@ -51,6 +63,20 @@ class ProfileViewController: UIViewController  {
         }
         
         
+        tableview.delegate = self
+        let headerView = tableview.tableHeaderView
+        
+        tableview.tableHeaderView = nil
+        tableview.addSubview(headerView!)
+        
+        tableview.contentInset = UIEdgeInsets(top: headerViewHeight, left: 0, bottom: 0, right: 0)
+        
+        tableview.contentOffset.y = -headerViewHeight
+        
+        
+        updateHeaderView()
+        
+        
         
         guard let currentUser = self.user else  {
             print("Trouble loading user.")
@@ -60,25 +86,22 @@ class ProfileViewController: UIViewController  {
         if let tabBarController = self.parent{ // If this is true this means that it is nested in tab bar
            tabBarController.navigationItem.title = ""
         }
-        
+
         //Register cell
         tableview.register(UINib(nibName: "FeedCell", bundle: Bundle.main), forCellReuseIdentifier: self.reusableFeedCellId)
-        
-        
+
+
         //self.navigationItem.title = "Profile"
         transparentBar()
        // self.navigationController?.navigationBar.isHidden = false
-        
+
         self.tableview.dataSource = self
         self.tableview.delegate = self
         self.tableview.estimatedRowHeight = 100
         //Add autolayout
         self.tableview.rowHeight = UITableViewAutomaticDimension
         //Update the GUI (For the top half of the screen.)
-        profileView.user = currentUser
-        followersText =  profileView.followersNumberLabel.text
-         followingText = profileView.followingNumberLabel.text
-        
+        updateGUI(user: currentUser)
         let twitterClient = TwitterClient.sharedInstance
         twitterClient?.loadTweets(user: currentUser, sucess: { (tweets: [Tweet]) in
             self.tweets = tweets
@@ -86,11 +109,69 @@ class ProfileViewController: UIViewController  {
         }, failure: { (error: Error) in
             print("[ERROR]: \(error)")
         })
-        
-        
+
+
         
 
         // Do any additional setup after loading the view.
+    }
+    
+    
+    func updateGUI(user: User){
+        
+        if let profileName = user.name {
+            self.nameLabel.text = profileName
+        }
+        
+        if let profileHandle = user.screenname {
+            self.handleLabel.text =  "@\(profileHandle)"
+        }
+        
+        if let bio = user.tagline {
+            self.bioLabel.text = bio
+        }
+        
+        if let followingNumber = user.followingCount {
+            let followingNumberText = "\(followingNumber)"
+            self.followingCountLabel.text = followingNumberText
+        }
+        
+        if let followersNumber = user.followersCount {
+            let followersNumberText  = "\(followersNumber)"
+            self.followersCountLabel.text = followersNumberText
+        }
+        //
+        if let profileUrl = user.profileUrl {
+            self.profilePictureImageView.setImageWith(profileUrl)
+            self.profilePictureImageView.setRounded()
+        }
+        
+        if let backgroundPictureUrl  = user.backgroundProfileUrl {
+            self.backgroundProfileImageView.setImageWith(backgroundPictureUrl)
+            //                self.profilePictureImageView.setImageWith(backgroundPictureUrl)
+            print("[BACKGROUND_PICTURE_URL] SUCCESS")
+            
+        }else {
+            print("[BACKGROUND_PICTURE_URL] could not set image with url")
+        }
+        
+        
+    }
+    
+    
+    func updateHeaderView(){
+        let offset = tableview.contentOffset.y
+        let base = 0
+        
+        var headerRect = CGRect(x: CGFloat(0), y: -headerViewHeight, width: tableview.bounds.width, height: headerViewHeight)
+        
+        
+        if offset < -headerViewHeight {
+            headerRect.origin.y = offset
+            headerRect.size.height = -offset
+        }
+        
+       headerView.frame = headerRect
     }
 
     
@@ -169,6 +250,8 @@ class ProfileViewController: UIViewController  {
     }
     
     
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
@@ -205,6 +288,13 @@ class ProfileViewController: UIViewController  {
     
     
     
+}
+
+
+extension ProfileViewController{
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        updateHeaderView()
+    }
 }
     
 
