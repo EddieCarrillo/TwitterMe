@@ -27,6 +27,13 @@ class ProfileViewController: UIViewController  {
     
     @IBOutlet weak var bioLabel: UILabel!
     
+    @IBOutlet weak var headerTopConstraint: NSLayoutConstraint!
+    let headerTopDefault = 0.0
+    
+    @IBOutlet weak var bannerHeightConstraint: NSLayoutConstraint!
+    
+    let bannerDefaultHeight = 180.0
+    
     
     var followersText: String?
     var followingText: String?
@@ -61,20 +68,22 @@ class ProfileViewController: UIViewController  {
         if user == nil {
             self.user = User.currentUser
         }
+         
         
         
         tableview.delegate = self
-        let headerView = tableview.tableHeaderView
+//        let headerView = tableview.tableHeaderView
+//
+//        tableview.tableHeaderView = nil
+//        tableview.addSubview(headerView!)
+//
+//        tableview.contentInset = UIEdgeInsets(top: headerViewHeight, left: 0, bottom: 0, right: 0)
+//
+//        tableview.contentOffset.y = -headerViewHeight
         
-        tableview.tableHeaderView = nil
-        tableview.addSubview(headerView!)
         
-        tableview.contentInset = UIEdgeInsets(top: headerViewHeight, left: 0, bottom: 0, right: 0)
-        
-        tableview.contentOffset.y = -headerViewHeight
-        
-        
-        updateHeaderView()
+       // updateHeaderView()
+        updateHeaderWithConstraints()
         
         
         
@@ -172,6 +181,25 @@ class ProfileViewController: UIViewController  {
         }
         
        headerView.frame = headerRect
+    }
+    
+    func updateHeaderWithConstraints(){
+        let offset = tableview.contentOffset.y
+        let base = CGFloat(0)
+        
+        var bannerPosition = CGFloat(headerTopDefault)
+        var bannerHeight = CGFloat(bannerDefaultHeight)
+        
+        if offset < base {
+          bannerPosition = offset
+          bannerHeight = CGFloat(bannerDefaultHeight) - offset
+        }
+        
+        headerTopConstraint.constant = bannerPosition
+        bannerHeightConstraint.constant = bannerHeight
+        
+        
+        
     }
 
     
@@ -293,7 +321,8 @@ class ProfileViewController: UIViewController  {
 
 extension ProfileViewController{
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        updateHeaderView()
+       // updateHeaderView()
+        updateHeaderWithConstraints()
     }
 }
     

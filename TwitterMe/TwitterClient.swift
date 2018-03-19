@@ -127,13 +127,17 @@ class TwitterClient: BDBOAuth1SessionManager{
             //  print("response: \(response)")
             
             
-            let userDictionary = response as? NSDictionary
+            if  let userDictionary = response as? NSDictionary{
+                let user = User(dictionary: userDictionary)
+                print("[NAME]: \(user.name)")
+                success(user)
+            }else {
+                failure(NSError(domain: "No user dictionary", code: 404, userInfo: nil))
+            }
             
-            let user = User(dictionary: userDictionary!)
+          
     
-            success(user)
-    
-            print("[NAME]: \(user.name)")
+            
         }, failure: { (task: URLSessionDataTask?, error: Error) in
             print("[ERROR]: \(error)")
             failure(error)
