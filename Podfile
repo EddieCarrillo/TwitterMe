@@ -11,6 +11,7 @@ target 'TwitterMe' do
    pod 'ImageViewer', '4.0'
    pod 'DateToolsSwift'
    pod 'ActiveLabel'
+   pod 'RSKPlaceholderTextView'
    
 
   target 'TwitterMeTests' do

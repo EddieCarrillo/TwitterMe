@@ -19,6 +19,7 @@ PODS:
     - AFNetworking/NSURLSession (~> 3.0.0)
   - DateToolsSwift (2.0.3)
   - ImageViewer (4.0)
+  - RSKPlaceholderTextView (3.0.0)
 
 DEPENDENCIES:
   - ActiveLabel
@@ -26,6 +27,7 @@ DEPENDENCIES:
   - BDBOAuth1Manager (= 2.0.0)
   - DateToolsSwift
   - ImageViewer (= 4.0)
+  - RSKPlaceholderTextView
 
 SPEC CHECKSUMS:
   ActiveLabel: e361127c355b911a467db3d5a897b3d7f902e568
@@ -33,7 +35,8 @@ SPEC CHECKSUMS:
   BDBOAuth1Manager: 92d17d06f8a648602962304cd2f35ae7394fa001
   DateToolsSwift: bf69bf9056d9e53c5c03f06e51f219b9b8b02f9e
   ImageViewer: 364abc0309c33dda86d08ca25b0243e5c67d8cd3
+  RSKPlaceholderTextView: 0ce73a19998e236323b3f1f16bf4a4e4a76c2c28
 
-PODFILE CHECKSUM: 6ff5ddf2bb23e34b4620613725da9e5beb697497
+PODFILE CHECKSUM: ee586c3dea1dece7a9db90d25f49c450935a36e1
 
 COCOAPODS: 1.3.1

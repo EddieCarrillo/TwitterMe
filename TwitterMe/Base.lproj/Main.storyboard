@@ -802,22 +802,31 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="What are you up to?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FrW-sJ-a8Z">
-                                <rect key="frame" x="16" y="235" width="382" height="21"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="aFa-Rc-l7d" customClass="RSKPlaceholderTextView" customModule="RSKPlaceholderTextView">
+                                <rect key="frame" x="20" y="217" width="374" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="jcK-j6-Nb0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Share your thoughts"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                        <color key="value" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="db3-Yw-78d" firstAttribute="leading" secondItem="d8u-uH-3ff" secondAttribute="leadingMargin" id="0Sa-Ne-yYr"/>
-                            <constraint firstItem="FrW-sJ-a8Z" firstAttribute="leading" secondItem="d8u-uH-3ff" secondAttribute="leading" constant="16" id="EO2-fK-QbV"/>
                             <constraint firstItem="sUI-6n-drb" firstAttribute="top" secondItem="tbB-7U-qXC" secondAttribute="bottom" constant="8" id="IbL-XU-DOy"/>
-                            <constraint firstItem="FrW-sJ-a8Z" firstAttribute="top" secondItem="db3-Yw-78d" secondAttribute="bottom" constant="26" id="J7n-U1-6R6"/>
-                            <constraint firstAttribute="trailing" secondItem="FrW-sJ-a8Z" secondAttribute="trailing" constant="16" id="VLt-3T-ZuA"/>
                             <constraint firstItem="db3-Yw-78d" firstAttribute="top" secondItem="yWR-ea-P7d" secondAttribute="bottom" constant="64" id="YSE-YD-Q3d"/>
                             <constraint firstItem="tbB-7U-qXC" firstAttribute="top" secondItem="yWR-ea-P7d" secondAttribute="bottom" constant="80" id="b2C-gc-8sf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="aFa-Rc-l7d" secondAttribute="trailing" id="c9N-4c-mmn"/>
+                            <constraint firstItem="aFa-Rc-l7d" firstAttribute="top" secondItem="db3-Yw-78d" secondAttribute="bottom" constant="8" id="cNM-gy-CcW"/>
+                            <constraint firstItem="aFa-Rc-l7d" firstAttribute="leading" secondItem="d8u-uH-3ff" secondAttribute="leadingMargin" id="dZq-zl-ORm"/>
                             <constraint firstItem="tbB-7U-qXC" firstAttribute="leading" secondItem="db3-Yw-78d" secondAttribute="trailing" constant="8" id="fRv-yA-Mhy"/>
                             <constraint firstItem="sUI-6n-drb" firstAttribute="leading" secondItem="db3-Yw-78d" secondAttribute="trailing" constant="8" id="flR-fS-moS"/>
                         </constraints>
@@ -825,7 +834,7 @@
                     <connections>
                         <outlet property="handleLabel" destination="sUI-6n-drb" id="8JQ-sh-DYB"/>
                         <outlet property="profileImageView" destination="db3-Yw-78d" id="WSX-GX-KKI"/>
-                        <outlet property="tweetTextField" destination="FrW-sJ-a8Z" id="3Yr-qR-JFc"/>
+                        <outlet property="tweetTextField" destination="aFa-Rc-l7d" id="4al-Z7-WLC"/>
                         <outlet property="usernameLabel" destination="tbB-7U-qXC" id="85q-7O-49r"/>
                     </connections>
                 </viewController>

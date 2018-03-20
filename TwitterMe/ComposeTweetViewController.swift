@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RSKPlaceholderTextView
 
 class ComposeTweetViewController: UIViewController {
     
@@ -17,7 +18,7 @@ class ComposeTweetViewController: UIViewController {
     
     @IBOutlet weak var handleLabel: UILabel!
     
-    @IBOutlet weak var tweetTextField: UITextField!
+    @IBOutlet weak var tweetTextField: RSKPlaceholderTextView!
     
     var finished: (()->())?
     
