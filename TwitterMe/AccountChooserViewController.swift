@@ -51,11 +51,11 @@ class AccountChooserViewController: UIViewController {
     }
     
     
-    func editMenu(){
+    @objc func editMenu(){
         
     }
     
-    func accountChosen(){
+    @objc func accountChosen(){
         
     }
 

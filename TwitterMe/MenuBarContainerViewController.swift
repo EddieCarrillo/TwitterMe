@@ -71,7 +71,7 @@ class MenuBarContainerViewController: UIViewController {
         //If the user taps the nav bar button then toggle the menu...
                 controlNavigationController.navBarButtonTapped = {
             self.toggleMenu()
-        }
+        } as (() -> (Void))
         
         
         setupBlurOverlay()
@@ -125,7 +125,7 @@ class MenuBarContainerViewController: UIViewController {
         
     }
     
-    func tappedOverlay(){
+    @objc func tappedOverlay(){
         self.toggleMenu()
     }
     
@@ -136,7 +136,7 @@ class MenuBarContainerViewController: UIViewController {
         
     }
     
-    func onProfileTabTapped(){
+    @objc func onProfileTabTapped(){
         let controlNavigationController = childViewControllers[0] as! CentralNavigationController
         controlNavigationController.profileTabTapped?()
         //Close the menu after clicking the profile tab

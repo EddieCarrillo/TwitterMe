@@ -288,7 +288,7 @@ class TweetDetailViewController: UIViewController {
         //Create a player layer
         let playerLayer = AVPlayerLayer(player: player)
         //Keep aspect ratio
-        playerLayer.videoGravity = AVLayerVideoGravityResizeAspect
+        playerLayer.videoGravity = AVLayerVideoGravity.resizeAspect
         
         
         //TODO: Investigate this bug. (Can't just assign frame of media view to playerLayer frame)
@@ -311,7 +311,7 @@ class TweetDetailViewController: UIViewController {
     }
     
     
-    func playerItemReachedEnd(notification: NSNotification){
+    @objc func playerItemReachedEnd(notification: NSNotification){
         //reset the gif to 0
         player?.seek(to: kCMTimeZero)
     }
@@ -363,7 +363,7 @@ class TweetDetailViewController: UIViewController {
         
     }
     
-    func playVideo(){
+    @objc func playVideo(){
         guard let vc = self.playerController, let videoPlayer = self.player else {
             print("Player controller")
             return

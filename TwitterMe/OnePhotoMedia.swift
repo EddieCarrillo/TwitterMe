@@ -62,7 +62,7 @@ class OnePhotoMedia: UIView {
         initSubviews()
     }
     
-    func firstImageTapped(){
+    @objc func firstImageTapped(){
         imageTapped?(0, images)
     }
     

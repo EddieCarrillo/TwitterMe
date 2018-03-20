@@ -1,5 +1,5 @@
 PODS:
-  - ActiveLabel (0.7.1)
+  - ActiveLabel (0.8.1)
   - AFNetworking (3.0.0):
     - AFNetworking/NSURLSession (= 3.0.0)
     - AFNetworking/Reachability (= 3.0.0)
@@ -28,12 +28,12 @@ DEPENDENCIES:
   - ImageViewer (= 4.0)
 
 SPEC CHECKSUMS:
-  ActiveLabel: 68625f22775f51c31bb691ca8de20f1e5a3bc825
+  ActiveLabel: e361127c355b911a467db3d5a897b3d7f902e568
   AFNetworking: 932ff751f9d6fb1dad0b3af58b7e3ffba0a4e7fd
   BDBOAuth1Manager: 92d17d06f8a648602962304cd2f35ae7394fa001
   DateToolsSwift: bf69bf9056d9e53c5c03f06e51f219b9b8b02f9e
   ImageViewer: 364abc0309c33dda86d08ca25b0243e5c67d8cd3
 
-PODFILE CHECKSUM: 70f235910a134012e50bd3dc9c5f3ece52df4843
+PODFILE CHECKSUM: 6ff5ddf2bb23e34b4620613725da9e5beb697497
 
 COCOAPODS: 1.3.1

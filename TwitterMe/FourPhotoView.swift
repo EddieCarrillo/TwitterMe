@@ -139,19 +139,19 @@ class FourPhotoView: UIView {
     }
     
     
-    func firstImageTapped(){
+    @objc func firstImageTapped(){
         imageTapped?(0, images)
     }
     
-    func secondImageTapped(){
+    @objc func secondImageTapped(){
         imageTapped?(1, images)
     }
     
-    func thirdImageTapped(){
+    @objc func thirdImageTapped(){
         imageTapped?(2, images)
     }
     
-    func fourthImageTapped(){
+    @objc func fourthImageTapped(){
         imageTapped?(3, images)
     }
     

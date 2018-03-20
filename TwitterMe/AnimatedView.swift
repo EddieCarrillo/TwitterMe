@@ -109,7 +109,7 @@ class AnimatedView: UIView {
         //Create a player layer
         let playerLayer = AVPlayerLayer(player: player)
         //Keep aspect ratio
-        playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+        playerLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
         
         
         //TODO: Investigate this bug. (Can't just assign frame of media view to playerLayer frame)

@@ -11,8 +11,8 @@ class CentralNavigationController: UINavigationController {
     
     
     
-    var navBarButtonTapped: ((Void) -> (Void))?
-    var profileTabTapped: ((Void) -> (Void))?
+    var navBarButtonTapped: (() -> (Void))?
+    var profileTabTapped: (() -> (Void))?
     
 
     override func viewDidLoad() {

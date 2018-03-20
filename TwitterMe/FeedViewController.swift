@@ -220,7 +220,7 @@ class FeedViewController: UIViewController {
         
     }
     
-    func didTapProfileBar(){
+    @objc func didTapProfileBar(){
         guard let centralNavigationController = self.parent?.parent as? CentralNavigationController else {
             print("Could not get the central navigationc controller")
             return
@@ -231,7 +231,7 @@ class FeedViewController: UIViewController {
         
     }
     
-    func onComposeTweetButtonTapped(){
+    @objc func onComposeTweetButtonTapped(){
         print("Compose tweet button tapped")
         self.performSegue(withIdentifier: self.composeTweetSegue, sender: nil)
     }

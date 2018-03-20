@@ -354,10 +354,12 @@
 					1F5A58F31FA8F03B0065A8C5 = {
 						CreatedOnToolsVersion = 8.2;
 						DevelopmentTeam = VYA47NR7Y2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 					1F5A59071FA8F03D0065A8C5 = {
 						CreatedOnToolsVersion = 8.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 1F5A58F31FA8F03B0065A8C5;
 					};
@@ -703,7 +705,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ecproductions.TwitterClient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -721,7 +724,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ecproductions.TwitterClient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -736,7 +740,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ecproductions.TwitterMeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TwitterMe.app/TwitterMe";
 			};
 			name = Debug;
@@ -751,7 +756,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ecproductions.TwitterMeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TwitterMe.app/TwitterMe";
 			};
 			name = Release;

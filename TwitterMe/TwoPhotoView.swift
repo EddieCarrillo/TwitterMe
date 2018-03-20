@@ -83,12 +83,12 @@ class TwoPhotoView: UIView {
     
   
     
-    func firstImageTapped(){
+    @objc func firstImageTapped(){
         imageTapped?(0, images)
         
     }
     
-    func secondImageTapped(){
+    @objc func secondImageTapped(){
         imageTapped?(1, images)
 
     }

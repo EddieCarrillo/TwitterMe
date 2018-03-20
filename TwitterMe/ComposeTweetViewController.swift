@@ -68,7 +68,7 @@ class ComposeTweetViewController: UIViewController {
         
     }
     
-    func didTapTweetButton(){
+    @objc func didTapTweetButton(){
         let tweetText = self.tweetTextField.text
         //No real error handling... yet TODO
         //Perform network call and save tweet text
