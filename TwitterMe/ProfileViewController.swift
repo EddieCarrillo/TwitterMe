@@ -38,6 +38,7 @@ class ProfileViewController: UIViewController  {
     //This refers to images used when user taps on media inside tweet.
     var currentGalleryItems: [GalleryItem] = []
 
+    @IBOutlet weak var tweetsSegementedControl: UISegmentedControl!
     
     
     override func viewDidLoad() {
@@ -61,10 +62,16 @@ class ProfileViewController: UIViewController  {
         //self.navigationItem.title = "Profile"
         transparentBar()
        // self.navigationController?.navigationBar.isHidden = false
-
+        initSegmentedControl()  
         updateGUI(user: currentUser)
         loadTweets()
         
+    }
+    
+    func initSegmentedControl(){
+        tweetsSegementedControl.setTitle("Tweets", forSegmentAt: 0)
+        tweetsSegementedControl.setTitle("Media", forSegmentAt: 1)
+        tweetsSegementedControl.setTitle("Favorites", forSegmentAt: 2)
     }
     
     func initTableViews(){

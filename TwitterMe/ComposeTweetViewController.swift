@@ -20,6 +20,10 @@ class ComposeTweetViewController: UIViewController {
     
     @IBOutlet weak var tweetTextField: RSKPlaceholderTextView!
     
+    @IBOutlet weak var limitErrorBottomConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var errorLabel: UILabel!
+    
     var finished: (()->())?
     
     override func viewDidLoad() {
@@ -29,11 +33,51 @@ class ComposeTweetViewController: UIViewController {
         
         initNavBar()
         
+        setupTextView()
+        //By default user has not reached character limit
+        self.errorLabel.isHidden =  true
+        
         tweetTextField.becomeFirstResponder()
 
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupKeyboardObservers()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+    }
+    
+    
+    func setupTextView(){
+        tweetTextField.delegate = self
+        
+    }
+    
+    func setupKeyboardObservers(){
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow),
+            name: NSNotification.Name.UIKeyboardWillShow,
+            object: nil
+        )
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification?){
+        
+        guard let keyboardFrame = notification?.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue else {
+            return
+        }
+        
+        if let keyboardRectValue = (notification?.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            let keyboardHeight = keyboardRectValue.height
+            limitErrorBottomConstraint.constant = keyboardHeight
+
+        }
+    }
     func initNavBar(){
         
        let saveTweetButton = UIButton(type: .system)
@@ -113,4 +157,19 @@ class ComposeTweetViewController: UIViewController {
     }
     */
 
+}
+
+
+extension ComposeTweetViewController: UITextViewDelegate{
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let characterLimit = 140
+        
+        let newText = NSString(string: textView.text).replacingCharacters(in: range, with: text)
+        print("newtext: \(newText)")
+        let shouldAllow =   newText.count < characterLimit
+        
+        errorLabel.isHidden = shouldAllow
+        print("shouldAllow: \(shouldAllow)")
+        return shouldAllow
+    }
 }
