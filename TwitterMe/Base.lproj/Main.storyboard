@@ -313,9 +313,9 @@
                 <tapGestureRecognizer id="VVC-ET-g2f"/>
                 <tapGestureRecognizer id="QAB-7d-b3Q"/>
             </objects>
-            <point key="canvasLocation" x="776.81159420289862" y="-430.43478260869568"/>
+            <point key="canvasLocation" x="320" y="-438"/>
         </scene>
-        <!--Item-->
+        <!--Messages-->
         <scene sceneID="SAa-G7-79x">
             <objects>
                 <viewController storyboardIdentifier="LogoutViewController" id="dhr-gf-6QF" customClass="LogoutViewController" customModule="TwitterMe" customModuleProvider="target" sceneMemberID="viewController">
@@ -338,11 +338,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="JCw-L4-mmm"/>
+                    <tabBarItem key="tabBarItem" title="Messages" image="message-icon" id="JCw-L4-mmm"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7xq-bs-j9M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1657.9710144927537" y="-437.77173913043481"/>
+            <point key="canvasLocation" x="1104" y="-439"/>
         </scene>
         <!--Central Navigation Controller-->
         <scene sceneID="QSj-nH-61J">
@@ -363,7 +363,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mpv-GY-fg7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="958" y="258"/>
+            <point key="canvasLocation" x="261" y="326"/>
         </scene>
         <!--Home Tab Bar Controller-->
         <scene sceneID="YeP-HT-kat">
@@ -380,13 +380,14 @@
                         <segue destination="Bjr-fA-Xkd" kind="relationship" relationship="viewControllers" id="j0i-Rr-OKQ"/>
                         <segue destination="dFr-k5-bIh" kind="show" identifier="ProfileSegue" id="TqV-Gd-daP"/>
                         <segue destination="dhr-gf-6QF" kind="relationship" relationship="viewControllers" id="6YG-qn-SzN"/>
+                        <segue destination="dFr-k5-bIh" kind="relationship" relationship="viewControllers" id="iXk-nG-B9B"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3I8-u3-W61" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="958" y="1017"/>
+            <point key="canvasLocation" x="1291" y="388"/>
         </scene>
-        <!--Feed View Controller-->
+        <!--Timelines-->
         <scene sceneID="SdH-rc-LEH">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="7mT-8q-15o" customClass="FeedViewController" customModule="TwitterMe" customModuleProvider="target" sceneMemberID="viewController">
@@ -416,7 +417,7 @@
                             <constraint firstItem="0bD-f6-2T1" firstAttribute="top" secondItem="6w4-fj-RCL" secondAttribute="bottom" id="w95-nS-nGG"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="home-icon" id="euD-Z7-Bzl"/>
+                    <tabBarItem key="tabBarItem" title="Timelines" image="home-icon" selectedImage="home-icon" id="euD-Z7-Bzl"/>
                     <navigationItem key="navigationItem" id="FZI-FP-D6l"/>
                     <connections>
                         <outlet property="tableView" destination="6w4-fj-RCL" id="WdZ-W0-s1N"/>
@@ -852,7 +853,7 @@
             </objects>
             <point key="canvasLocation" x="2567" y="1018"/>
         </scene>
-        <!--Profile View Controller-->
+        <!--Me-->
         <scene sceneID="6Pn-Ai-cm6">
             <objects>
                 <viewController storyboardIdentifier="ProfileViewController" id="dFr-k5-bIh" customClass="ProfileViewController" customModule="TwitterMe" customModuleProvider="target" sceneMemberID="viewController">
@@ -1007,6 +1008,7 @@
                             <constraint firstItem="3hX-8R-ATn" firstAttribute="leading" secondItem="vwJ-Zc-JPw" secondAttribute="leading" id="eQ7-1q-6Be"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Me" image="profile-Icon" id="bFy-xg-sKT"/>
                     <navigationItem key="navigationItem" id="0GQ-oW-pDp"/>
                     <connections>
                         <outlet property="headerView" destination="4hP-vd-Dtf" id="uHi-5u-0ON"/>
@@ -1019,7 +1021,7 @@
             </objects>
             <point key="canvasLocation" x="2566.666666666667" y="-447.554347826087"/>
         </scene>
-        <!--View Controller-->
+        <!--Notifications-->
         <scene sceneID="2Ir-5m-7P6">
             <objects>
                 <viewController id="Bjr-fA-Xkd" sceneMemberID="viewController">
@@ -1032,7 +1034,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="search-icon" id="kHm-6F-z1S"/>
+                    <tabBarItem key="tabBarItem" title="Notifications" image="notification-icon" id="kHm-6F-z1S"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Yo-LM-iv5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1048,15 +1050,17 @@
         <image name="if_menu_1540174" width="24" height="24"/>
         <image name="list-icon" width="50" height="50"/>
         <image name="menu-icon" width="50" height="50"/>
+        <image name="message-icon" width="30" height="30"/>
         <image name="moment-icon" width="30" height="30"/>
+        <image name="notification-icon" width="30" height="30"/>
         <image name="profile-Icon" width="26" height="26"/>
         <image name="profileImage" width="400" height="400"/>
         <image name="reply-icon" width="30" height="30"/>
         <image name="retweet-icon" width="30" height="30"/>
         <image name="russian" width="284" height="177"/>
-        <image name="search-icon" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="okK-c9-AL3"/>
+        <segue reference="TqV-Gd-daP"/>
+        <segue reference="NoK-G6-e13"/>
     </inferredMetricsTieBreakers>
 </document>
