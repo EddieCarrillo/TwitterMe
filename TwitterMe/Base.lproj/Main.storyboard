@@ -24,16 +24,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A4k-x6-saN">
-                                <rect key="frame" x="113" y="391" width="125" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A4k-x6-saN">
+                                <rect key="frame" x="84" y="544" width="246" height="64"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="GI0-HK-9A6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                 <state key="normal" title="Login With Twitter"/>
                                 <connections>
                                     <action selector="onLoginTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rhP-I9-YtY"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TwitterLogo" translatesAutoresizingMaskIntoConstraints="NO" id="xmE-RJ-ICB">
+                                <rect key="frame" x="147" y="84" width="120" height="120"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Twitter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6jo-23-JMQ">
+                                <rect key="frame" x="77" y="220" width="261" height="35"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.11547166854143143" green="0.62894904613494873" blue="0.94885319471359253" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="xmE-RJ-ICB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="CZa-DF-Mba"/>
+                            <constraint firstItem="xmE-RJ-ICB" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="64" id="EB2-Ne-H4h"/>
+                            <constraint firstItem="6jo-23-JMQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="PbI-P2-72l"/>
+                            <constraint firstItem="6jo-23-JMQ" firstAttribute="top" secondItem="xmE-RJ-ICB" secondAttribute="bottom" constant="16" id="bQu-y2-1yG"/>
+                            <constraint firstItem="A4k-x6-saN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="64" id="bbL-Q8-myO"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="A4k-x6-saN" secondAttribute="trailing" constant="64" id="fsB-dc-gH9"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="A4k-x6-saN" secondAttribute="bottom" constant="128" id="zAN-zh-R9f"/>
+                        </constraints>
                     </view>
                     <connections>
                         <segue destination="fVP-u5-u8q" kind="show" identifier="FeedSegue" id="yxX-Ws-nN8"/>
@@ -1043,6 +1065,7 @@
     </scenes>
     <resources>
         <image name="IMG_20171217_165015" width="2448" height="3264"/>
+        <image name="TwitterLogo" width="120" height="120"/>
         <image name="favor-icon" width="30" height="30"/>
         <image name="home-icon" width="30" height="30"/>
         <image name="if_check-circle_326571" width="24" height="24"/>
