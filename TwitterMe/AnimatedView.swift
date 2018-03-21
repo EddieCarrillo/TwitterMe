@@ -35,12 +35,18 @@ class AnimatedView: UIView {
     
     var videoURL: URL?{
         didSet{
-            //setupVideo()
-            if let previewPhotoURL = self.previewPhotoURL{
-                previewPhoto.setImageWith(previewPhotoURL)
+            if isGIF{
+                setupAnimatedGIF()
+                self.previewPhoto.isHidden = true
             }else {
-                print("Bad photo URL")
+                if let previewPhotoURL = self.previewPhotoURL{
+                    previewPhoto.setImageWith(previewPhotoURL)
+                }else {
+                    print("Bad photo URL")
+                }
+
             }
+           
         }
     }
     
@@ -91,6 +97,41 @@ class AnimatedView: UIView {
         
     }
     
+    
+    func setupAnimatedGIF(){
+       
+        guard let gifURL = videoURL else{
+            print("BAD GIF URL")
+            return;
+        }
+        
+        //Create a new player
+        self.player = AVPlayer(url: videoURL!)
+        
+        //Create a player layer
+        let playerLayer = AVPlayerLayer(player: player)
+        //Keep aspect ratio
+        playerLayer.videoGravity = AVLayerVideoGravity.resizeAspect
+        
+        
+        //TODO: Investigate this bug. (Can't just assign frame of media view to playerLayer frame)
+        playerLayer.frame = self.bounds
+        //        //Resize player layer dimensions to media view dimensions
+        //            playerLayer.frame = self.mediaView.frame
+        
+        //Don't mess with the video at the end.
+        player?.actionAtItemEnd = AVPlayerActionAtItemEnd.none
+        
+        //Start the animated_gif
+        player?.play()
+        
+        
+        //Insert the player into the view
+        self.layer.insertSublayer(playerLayer, at: 0)
+        
+        //Create a callback for the event so that when the video stops it replays again.
+        NotificationCenter.default.addObserver(self, selector: #selector(TweetDetailViewController.playerItemReachedEnd(notification:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: player?.currentItem)
+    }
     
     
     
