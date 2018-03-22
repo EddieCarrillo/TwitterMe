@@ -226,18 +226,26 @@ class ProfileViewController: UIViewController  {
             return
         }
         
-        let coreImage = CIImage(cgImage: cgimg)
-        
-        let filter = CIFilter(name: "CIGaussianBlur")
-        filter?.setValue(coreImage, forKey: kCIInputImageKey)
-        filter?.setValue(3, forKey: kCIInputRadiusKey)
-        
-        if let filteredCIImage = filter?.value(forKey: kCIOutputImageKey) as? CIImage {
-            let filteredImage = UIImage(ciImage: filteredCIImage)
+        OperationQueue().addOperation {
             
-            headerView.profileBanner.image = filteredImage
+            let openGLContext = EAGLContext(api: .openGLES3)
+            let context = CIContext(eaglContext: openGLContext!)
             
+            
+            let coreImage = CIImage(cgImage: cgimg)
+            
+            let filter = CIFilter(name: "CIGaussianBlur")
+            filter?.setValue(coreImage, forKey: kCIInputImageKey)
+            filter?.setValue(3, forKey: kCIInputRadiusKey)
+            
+            if let filteredCIImage = filter?.value(forKey: kCIOutputImageKey) as? CIImage {
+                let cgImgResult = context.createCGImage(filteredCIImage, from: filteredCIImage.extent)
+                let result = UIImage(cgImage: cgImgResult!)
+                self.headerView.profileBanner.image = result
+                
+            }
         }
+        
     }
     
     
