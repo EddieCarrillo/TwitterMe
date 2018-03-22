@@ -31,6 +31,7 @@ class TwitterClient: BDBOAuth1SessionManager{
     let retweetEndpoint = "1.1/statuses/retweet"
     let unretweetEndpoint = "1.1/statuses/unretweet"
     let favoriteEndpoint = "1.1/favorites/create"
+    let getFavoritesEndpoint = "1.1/favorites/list.json"
     let unfavoriteEndpoint = "1.1/favorites/destroy"
     
    // let oauthAccessTokenEndpoint = ""
@@ -122,6 +123,30 @@ class TwitterClient: BDBOAuth1SessionManager{
 //    
 //    }
     
+    
+    
+    func getFavoritesList(for user: User,success: @escaping([Tweet]) -> () , failure: @escaping (Error)->()){
+        var screenname = ""
+        if let name = user.screenname {
+            screenname = name
+        }else {
+            print("user has no screen name!")
+        }
+        
+        var params: [String: Any] = [:]
+        params["screen_name"] = screenname
+        get(getFavoritesEndpoint, parameters:params , success: { (task: URLSessionDataTask, response: Any?) in
+            if let response = response as? [NSDictionary]{
+                let tweets = Tweet.tweetsWithArray(dictionaries: response)
+                success(tweets)
+            }else {
+                print("Could not get a valid response")
+                
+            }
+        }) { (dataTask, error) in
+             failure(error)
+        }
+    }
     
     func currentAccount( success: @escaping (User) -> (), failure: @escaping (Error) -> ()){
         get(loginVerifyEndpoint, parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in

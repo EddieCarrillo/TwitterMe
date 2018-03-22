@@ -205,7 +205,7 @@ class Tweet: NSObject {
         
     }
     
-    
+
     
     class func tweetsWithArray(dictionaries: [NSDictionary]) -> [Tweet] {
         var tweets: [Tweet] = []

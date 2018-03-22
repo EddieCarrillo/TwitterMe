@@ -16,6 +16,15 @@ class ProfileViewController: UIViewController  {
     var user: User?
     //Tweets for feed of timeline
     var tweets: [Tweet] = []
+    
+    var currentData: [Tweet] = []{
+        didSet{
+            OperationQueue.main.addOperation {
+            self.tableview.reloadData()
+
+            }
+        }
+    }
 
     
     //normal tweets feed may add more later
@@ -39,6 +48,39 @@ class ProfileViewController: UIViewController  {
     var currentGalleryItems: [GalleryItem] = []
 
     @IBOutlet weak var tweetsSegementedControl: UISegmentedControl!
+    
+    @IBAction func onSegmentChanged(_ sender: Any) {
+        let segmentValue = tweetsSegementedControl.selectedSegmentIndex
+        
+        if (segmentValue == 0){
+            currentData = tweets
+        }else if (segmentValue == 1){
+         currentData = tweets.filter({ (tweet) -> Bool in
+                //If the tweet has not media then return false
+                if tweet.entities != nil{
+                    return false
+                }
+                    return true
+                
+            })
+            
+        }else {
+            
+            if let user = user {
+                TwitterClient.sharedInstance?.getFavoritesList(for: user, success: { (tweets) in
+                    self.currentData = tweets
+                }, failure: { (error) in
+                    print(error)
+                })
+            }
+            
+            
+        }
+    }
+    
+    
+    
+    
     
     
     override func viewDidLoad() {
@@ -95,6 +137,9 @@ class ProfileViewController: UIViewController  {
         let twitterClient = TwitterClient.sharedInstance
         twitterClient?.loadTweets(user: currentUser, sucess: { (tweets: [Tweet]) in
             self.tweets = tweets
+            //By default we will let the current to be displayed regulat tweets
+            self.currentData = tweets
+            
             self.tableview.reloadData()
         }, failure: { (error: Error) in
             print("[ERROR]: \(error)")
@@ -104,6 +149,32 @@ class ProfileViewController: UIViewController  {
     
     func updateGUI(user: User){
         headerView.user = user
+        headerView.onTappedSettingsButton = {
+            self.showLogoutAlert()
+            
+        }
+    }
+    
+    func showLogoutAlert(){
+        let alertController = UIAlertController(title: "Do you want to logout?", message:
+            "", preferredStyle: .actionSheet)
+        
+        let logoutAction = UIAlertAction(title: "Log out", style: UIAlertActionStyle.destructive) { (action) in
+            //Handle the case when the user logs out
+            User.logout()
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) { (action) in
+            //Handle case of canceling Doing nothing will just dismiss the view
+        }
+        
+        alertController.addAction(logoutAction)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true) {
+            print("Woo woo")
+        }
+        
     }
     
     
@@ -275,7 +346,7 @@ extension ProfileViewController{
 extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return tweets.count
+        return currentData.count
     }
     
     
@@ -301,7 +372,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         //Duct tape bug fix.
         cell.mediaView.frame = CGRect(x: cell.mediaView.frame.origin.x, y: cell.mediaView.frame.origin.y, width: cell.mediaView.frame.width, height: CGFloat(cell.defaultMediaViewHeight))
         
-        let tweet = tweets[indexPath.row]
+        let tweet = currentData[indexPath.row]
         
         let tapGestureNameLabel = UITapGestureRecognizer(target: self, action: #selector(FeedViewController.didTapName(_:)))
         cell.nameLabel.addGestureRecognizer(tapGestureNameLabel)

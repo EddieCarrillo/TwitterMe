@@ -17,17 +17,36 @@ class ProfileHeaderView: UIView {
     @IBOutlet weak var bioLabel: UILabel!
     @IBOutlet weak var followingCountLabel: UILabel!
     @IBOutlet weak var followersCountLabel: UILabel!
-    
+    @IBOutlet weak var editProfileButton: UIButton!
+    @IBOutlet weak var accountButton: UIButton!
+    @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var headerTopConstraint: NSLayoutConstraint!
-   
-
     @IBOutlet weak var bannerHeightConstraint: NSLayoutConstraint!
+    
+    var onTappedEditButton: (()->())?
+    var onTappedAccountButton: (()->())?
+    var onTappedSettingsButton: (()->())?
+
+    
+    @IBAction func didTapEditButton(_ sender: Any){
+        onTappedEditButton?()
+    }
+    
+    @IBAction func didTapAccountButton(_ sender: Any){
+        onTappedAccountButton?()
+    }
+    
+    @IBAction func didTapSettingsButton(_ sender: Any){
+        onTappedSettingsButton?()
+    }
+    
+    
     
     
     
     let headerTopDefault = 0.0
     let headerViewHeight: CGFloat = 360
-    let bannerDefaultHeight = 180.0
+    let bannerDefaultHeight = 120.0
 
     
     var user: User?{
@@ -37,9 +56,19 @@ class ProfileHeaderView: UIView {
                 return;
             }
             updateGUI(user: profileOwner)
+            //For some reason IBOutlets Xcode is not working so will set up actions programmatially
+            setupActions()
             
             
         }
+    }
+    
+    func setupActions(){
+       
+    }
+    
+    func didTapButton(){
+        
     }
     
     //May not need this.
