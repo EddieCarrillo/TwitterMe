@@ -22,7 +22,19 @@ class ComposeTweetViewController: UIViewController {
     
     @IBOutlet weak var limitErrorBottomConstraint: NSLayoutConstraint!
     
-    @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet weak var characterCountLabel: UILabel!
+    
+    let goodCharacterColor = UIColor(red: 39.0/255, green: 161.0/255, blue: 240/255.0, alpha: 1.0)
+    let badCharacterColor = UIColor(red: 254.0/255, green: 78.0/255, blue: 24/255.0, alpha: 1.0)
+    
+    
+    
+    
+    @IBAction func saveTapped(_ sender: Any) {
+        saveTweet()
+    }
+   
+   
     
     var finished: (()->())?
     
@@ -35,7 +47,7 @@ class ComposeTweetViewController: UIViewController {
         
         setupTextView()
         //By default user has not reached character limit
-        self.errorLabel.isHidden =  true
+       //self.errorLabel.isHidden =  true
         
         tweetTextField.becomeFirstResponder()
 
@@ -98,7 +110,7 @@ class ComposeTweetViewController: UIViewController {
         saveTweetButton.frame = CGRect(x: 0, y: 0, width: 50, height: 100)
         
             
-        saveTweetButton.addTarget(self, action: #selector(ComposeTweetViewController.didTapTweetButton), for: UIControlEvents.touchUpInside)
+        saveTweetButton.addTarget(self, action: #selector(ComposeTweetViewController.saveTweet), for: UIControlEvents.touchUpInside)
         
         let barItem = UIBarButtonItem(customView: saveTweetButton)
         
@@ -113,7 +125,7 @@ class ComposeTweetViewController: UIViewController {
         
     }
     
-    @objc func didTapTweetButton(){
+    @objc func saveTweet(){
         let tweetText = self.tweetTextField.text
         //No real error handling... yet TODO
         //Perform network call and save tweet text
@@ -161,15 +173,16 @@ class ComposeTweetViewController: UIViewController {
 
 
 extension ComposeTweetViewController: UITextViewDelegate{
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        let characterLimit = 140
+    func textViewDidChange(_ textView: UITextView) {
+        let charThreshold = 120
         
-        let newText = NSString(string: textView.text).replacingCharacters(in: range, with: text)
-        print("newtext: \(newText)")
-        let shouldAllow =   newText.count < characterLimit
+        let characterCount = textView.text.count
+        self.characterCountLabel.text = "\(characterCount)"
         
-        errorLabel.isHidden = shouldAllow
-        print("shouldAllow: \(shouldAllow)")
-        return shouldAllow
+        if (characterCount > charThreshold ){
+            self.characterCountLabel.textColor = badCharacterColor
+        }else {
+            self.characterCountLabel.textColor = goodCharacterColor
+        }
     }
 }
