@@ -207,9 +207,9 @@ class ProfileViewController: UIViewController  {
         if offset < base {
           bannerPosition = offset
           bannerHeight = CGFloat(headerView.bannerDefaultHeight) - offset
-          //  blurImage()
+            blurImage()
         }else {
-           // reverseBlur()
+            reverseBlur()
         }
         
         headerView.headerTopConstraint.constant = bannerPosition
@@ -228,7 +228,7 @@ class ProfileViewController: UIViewController  {
         
         let coreImage = CIImage(cgImage: cgimg)
         
-        let filter = CIFilter(name: "CISepiaTone")
+        let filter = CIFilter(name: "CIGaussianBlur")
         filter?.setValue(coreImage, forKey: kCIInputImageKey)
         filter?.setValue(3, forKey: kCIInputRadiusKey)
         
@@ -239,6 +239,15 @@ class ProfileViewController: UIViewController  {
             
         }
     }
+    
+    
+    func reverseBlur(){
+        self.headerView.profileBanner.image = self.headerView.bannerImage
+    }
+    
+    
+    
+    
 
     
     
