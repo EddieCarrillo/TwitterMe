@@ -125,6 +125,36 @@ class TwitterClient: BDBOAuth1SessionManager{
     
     
     
+    
+    func getImage(with url: URL, success: @escaping (UIImage) -> (), failure: @escaping (Error) -> ()){
+        let urlSession  = URLSession(configuration: URLSessionConfiguration.default)
+        urlSession.dataTask(with: url) { (unwrappedData, response , error) in
+            if let error = error {
+                failure(error)
+            }else if let response = response as? HTTPURLResponse {
+                let statusCode = response.statusCode
+                print("status code: \(statusCode)")
+                
+                if let data = unwrappedData{
+                    OperationQueue().addOperation {
+                        if  let image = UIImage(data: data){
+                            OperationQueue.main.addOperation {
+                                success(image)
+                            }
+                        }else {
+                            failure(NSError(domain: "Could not convert data to image", code: 404, userInfo: nil))
+                        }
+                
+                    }
+                }else {
+                    failure(NSError(domain: "Could not get data from server", code: 404, userInfo: nil))
+                }
+            }else {
+                failure(NSError(domain: "Could not get a response", code: 404, userInfo: nil))
+            }
+        }.resume()
+    }
+    
     func getFavoritesList(for user: User,success: @escaping([Tweet]) -> () , failure: @escaping (Error)->()){
         var screenname = ""
         if let name = user.screenname {

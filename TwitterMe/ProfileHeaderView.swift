@@ -23,6 +23,10 @@ class ProfileHeaderView: UIView {
     @IBOutlet weak var headerTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var bannerHeightConstraint: NSLayoutConstraint!
     
+    var bannerImage: UIImage?
+    
+    
+    
     var onTappedEditButton: (()->())?
     var onTappedAccountButton: (()->())?
     var onTappedSettingsButton: (()->())?
@@ -108,7 +112,13 @@ class ProfileHeaderView: UIView {
         }
         
         if let backgroundPictureUrl  = user.backgroundProfileUrl {
-            self.profileBanner.setImageWith(backgroundPictureUrl)
+           let api = TwitterClient.sharedInstance
+            TwitterClient.sharedInstance?.getImage(with: backgroundPictureUrl, success: { (image) in
+                self.bannerImage = image
+                self.profileBanner.image = image
+            }, failure: { (error) in
+                print(error)
+            })
             //                self.profilePictureImageView.setImageWith(backgroundPictureUrl)
             print("[BACKGROUND_PICTURE_URL] SUCCESS")
             

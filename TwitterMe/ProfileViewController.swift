@@ -150,7 +150,6 @@ class ProfileViewController: UIViewController  {
         headerView.user = user
         headerView.onTappedSettingsButton = {
             self.showLogoutAlert()
-            
         }
     }
     
@@ -208,6 +207,9 @@ class ProfileViewController: UIViewController  {
         if offset < base {
           bannerPosition = offset
           bannerHeight = CGFloat(headerView.bannerDefaultHeight) - offset
+          //  blurImage()
+        }else {
+           // reverseBlur()
         }
         
         headerView.headerTopConstraint.constant = bannerPosition
@@ -215,6 +217,27 @@ class ProfileViewController: UIViewController  {
         
         
         
+    }
+    
+    
+    func blurImage(){
+        guard let image = headerView.profileBanner.image, let cgimg = image.cgImage else {
+            print("Image view does not have image")
+            return
+        }
+        
+        let coreImage = CIImage(cgImage: cgimg)
+        
+        let filter = CIFilter(name: "CISepiaTone")
+        filter?.setValue(coreImage, forKey: kCIInputImageKey)
+        filter?.setValue(3, forKey: kCIInputRadiusKey)
+        
+        if let filteredCIImage = filter?.value(forKey: kCIOutputImageKey) as? CIImage {
+            let filteredImage = UIImage(ciImage: filteredCIImage)
+            
+            headerView.profileBanner.image = filteredImage
+            
+        }
     }
 
     
