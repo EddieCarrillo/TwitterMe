@@ -57,11 +57,10 @@ class ProfileViewController: UIViewController  {
         }else if (segmentValue == 1){
          currentData = tweets.filter({ (tweet) -> Bool in
                 //If the tweet has not media then return false
-                if tweet.entities != nil{
+                if tweet.entities?.media == nil{
                     return false
                 }
                     return true
-                
             })
             
         }else {
