@@ -265,7 +265,7 @@ class FeedCell: UITableViewCell {
     
     func updateStats(){
         
-        guard let tweet = self.tweet else {
+        guard let tweet = self.displayedTweet else {
             return
         }
         self.favoriteNumberLabel.text = "\(tweet.favoritesCount)"

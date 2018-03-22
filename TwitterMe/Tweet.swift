@@ -111,6 +111,11 @@ class Tweet: NSObject {
     init(dictionary: NSDictionary){
         self.text = dictionary[Tweet.textKey] as? String
         self.retweetCount = (dictionary[Tweet.retweetCountKey] as? Int) ?? 0
+        if let favoriteCount = dictionary[Tweet.favoritesCountKey] as? Int {
+            print("Has a favorite count")
+        }else {
+            print("Has NO favorite count!")
+        }
         self.favoritesCount = (dictionary[Tweet.favoritesCountKey] as? Int) ?? 0
         self.replyCount = (dictionary[Tweet.replyCountKey] as? Int) ?? 0
         

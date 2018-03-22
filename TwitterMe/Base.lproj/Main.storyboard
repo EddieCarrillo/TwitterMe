@@ -974,6 +974,11 @@
                                                 <segment title=""/>
                                             </segments>
                                         </segmentedControl>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2pr-QV-zBm">
+                                            <rect key="frame" x="259" y="188" width="30" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" image="stat-icon"/>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
@@ -1081,9 +1086,10 @@
         <image name="reply-icon" width="30" height="30"/>
         <image name="retweet-icon" width="30" height="30"/>
         <image name="russian" width="284" height="177"/>
+        <image name="stat-icon" width="30" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="TqV-Gd-daP"/>
-        <segue reference="NoK-G6-e13"/>
+        <segue reference="okK-c9-AL3"/>
     </inferredMetricsTieBreakers>
 </document>
