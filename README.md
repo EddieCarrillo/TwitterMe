@@ -105,6 +105,16 @@ Describe any challenges encountered while building the app.
 List an 3rd party libraries, icons, graphics, or other assets you used in your app.
 
 - [AFNetworking](https://github.com/AFNetworking/AFNetworking) - networking task library
+-[ActiveLavel](https://github.com/optonaut/ActiveLabel.swift) - UILabel drop-in replacement for supporting Hashtags, Mentions, and URLs written in Swift
+-[ImageViewer](https://github.com/MailOnline/ImageViewer) - An image viewer a la Twitter
+-[DateTools](https://github.com/MathewYork/DateTools) - Dates and times made easy in iOSAn
+-[RSKPlaceholderTextView](https://github.com/ruslanskorb/RSKPlaceholderTextView) - A light-weight UI TextView subclass that adds support for placeholder
+-[BDBOAuth1Manager](https://github.com/bdbergeron/BDBOAuth1Manager) - OAuth 1.0a library for AFNetworking 2.x
+
+
+
+
+
 
 ## License
 
