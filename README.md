@@ -68,6 +68,12 @@ Intro screen
 
 <img src='https://i.imgur.com/cNPGvuG.gif'  title= Detail screen  width='' alt='Video Walkthrough' />
 
+Cool sidebar
+
+<img src='https://i.imgur.com/cCeiNEC.gif'  title= Detail screen  width='' alt='Video Walkthrough' />
+
+
+
 
 
 
