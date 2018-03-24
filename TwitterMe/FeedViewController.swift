@@ -80,6 +80,8 @@ class FeedViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.setupNavigationBar()
+        self.refreshData(success: {}, failureBlock: {})
+
         //self.refreshData(success: {}, failureBlock: {})
         
         

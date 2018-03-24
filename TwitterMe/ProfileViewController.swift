@@ -112,6 +112,10 @@ class ProfileViewController: UIViewController, WKUIDelegate   {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        self.refreshData(success: {}, failureBlock: {})
+    }
+    
     
     func launchWebView(with url: URL){
         let config = WKWebViewConfiguration()
