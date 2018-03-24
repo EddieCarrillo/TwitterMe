@@ -43,6 +43,7 @@
 		F72AA05C202D14FA00E33B38 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72AA05A202D14FA00E33B38 /* FeedCell.swift */; };
 		F72AA05D202D14FA00E33B38 /* FeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F72AA05B202D14FA00E33B38 /* FeedCell.xib */; };
 		F7611B272060656C008DE8B3 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7611B262060656C008DE8B3 /* ProfileHeaderView.swift */; };
+		F797659820670061002375F3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = F797659720670061002375F3 /* README.md */; };
 		F7F5ED161FFDA6DF0030A276 /* AnimatedMedia.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7F5ED0C1FFDA6DE0030A276 /* AnimatedMedia.xib */; };
 		F7F5ED171FFDA6DF0030A276 /* AnimatedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F5ED0D1FFDA6DE0030A276 /* AnimatedView.swift */; };
 		F7F5ED181FFDA6DF0030A276 /* OnePhotoMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F5ED0E1FFDA6DE0030A276 /* OnePhotoMedia.swift */; };
@@ -111,6 +112,7 @@
 		F72AA05A202D14FA00E33B38 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		F72AA05B202D14FA00E33B38 /* FeedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedCell.xib; sourceTree = "<group>"; };
 		F7611B262060656C008DE8B3 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		F797659720670061002375F3 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		F7F37E9C1FF16791001F36E6 /* BDBOAuth1Manager */ = {isa = PBXFileReference; lastKnownFileType = folder; name = BDBOAuth1Manager; path = Pods/BDBOAuth1Manager/BDBOAuth1Manager; sourceTree = "<group>"; };
 		F7F37E9E1FF167DC001F36E6 /* BDBOAuth1Manager */ = {isa = PBXFileReference; lastKnownFileType = folder; name = BDBOAuth1Manager; path = Pods/BDBOAuth1Manager; sourceTree = "<group>"; };
 		F7F5ED0C1FFDA6DE0030A276 /* AnimatedMedia.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnimatedMedia.xib; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 		1F5A58EB1FA8F03A0065A8C5 = {
 			isa = PBXGroup;
 			children = (
+				F797659720670061002375F3 /* README.md */,
 				1F5A58F61FA8F03B0065A8C5 /* TwitterMe */,
 				1F5A590B1FA8F03D0065A8C5 /* TwitterMeTests */,
 				1F5A58F51FA8F03B0065A8C5 /* Products */,
@@ -398,6 +401,7 @@
 				1F5A58FD1FA8F03B0065A8C5 /* Main.storyboard in Resources */,
 				F7F5ED191FFDA6DF0030A276 /* OnePhotoView.xib in Resources */,
 				F71D3D322000143C000269F4 /* Podfile in Resources */,
+				F797659820670061002375F3 /* README.md in Resources */,
 				F72AA05D202D14FA00E33B38 /* FeedCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
