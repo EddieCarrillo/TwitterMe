@@ -42,11 +42,21 @@ The following **additional** features are implemented:
 
 - [x] Sidebar menu
 
-## Video Walkthrough
+## GIF Walkthrough
 
-Here's a walkthrough of implemented user stories:
+Using active labels
 
 <img src='https://i.imgur.com/0PQ1rw3.gif'   title=Active Labels  width='' alt='Video Walkthrough' />
+
+Tweet Details screen
+
+<img src='https://i.imgur.com/M4HPdZ4.gif'  title= Detail screen  width='' alt='Video Walkthrough' />
+
+
+
+
+
+##
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
