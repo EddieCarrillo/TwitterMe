@@ -62,8 +62,13 @@ Image media
 
 New tweet
 
-
 <img src='https://i.imgur.com/0uPRoE9.gif'  title= Detail screen  width='' alt='Video Walkthrough' />
+
+Intro screen
+
+<img src='https://i.imgur.com/cNPGvuG.gif'  title= Detail screen  width='' alt='Video Walkthrough' />
+
+
 
 
 
