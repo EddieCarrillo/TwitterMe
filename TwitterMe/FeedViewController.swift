@@ -346,6 +346,38 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
         
         let tweet = tweets[indexPath.row]
         
+        cell.pressedUserHandle = { (handle: String) in
+            
+            guard let entities = tweet.entities else {
+                print("Could not return the entitites")
+                return
+            }
+            
+            guard let userMentions = entities.userMentions else {
+                print("Could not get the user mentions")
+                return
+            }
+            
+            
+            var userId: Int?
+            for mention in userMentions {
+                if let name = mention.screenName {
+                    if (handle == name){
+                        userId = mention.id
+                    }
+                }
+            }
+            //If we actually were to find a match with the mention object...
+            if let userId = userId {
+                let api = TwitterClient.sharedInstance
+                api?.getUser(with: userId, success: { (user) in
+                    self.goToUserProfile(user: user)
+                }, failure: { (error) in
+                    print("[ERROR] SUM TING WONG")
+                })
+            }
+        }
+        
         let tapGestureNameLabel = UITapGestureRecognizer(target: self, action: #selector(FeedViewController.didTapName(_:)))
         cell.nameLabel.addGestureRecognizer(tapGestureNameLabel)
         
@@ -360,6 +392,12 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
         
         
+    }
+    
+    func goToUserProfile(user: User){
+        let tabBarController = self.parent as! HomeTabBarController
+        tabBarController.profilePictureTapped?((user))
+
     }
     
     func galleryConfiguration() -> GalleryConfiguration {

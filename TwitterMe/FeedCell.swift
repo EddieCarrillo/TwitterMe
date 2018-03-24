@@ -191,7 +191,11 @@ class FeedCell: UITableViewCell {
         
         self.tweetTextLabel.handleMentionTap { (handle) in
             print("user with handle: @\(handle) pressed!")
-            self.pressedUserHandle?(handle)
+           if let pressedHandle = self.pressedUserHandle{
+                pressedHandle(handle)
+           }else {
+            print("No behavior defined for pressing handle!")
+            }
         }
         
         

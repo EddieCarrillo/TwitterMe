@@ -207,9 +207,9 @@ class ProfileViewController: UIViewController  {
         if offset < base {
           bannerPosition = offset
           bannerHeight = CGFloat(headerView.bannerDefaultHeight) - offset
-            blurImage()
+           // blurImage()
         }else {
-            reverseBlur()
+            //reverseBlur()
         }
         
         headerView.headerTopConstraint.constant = bannerPosition
@@ -241,7 +241,9 @@ class ProfileViewController: UIViewController  {
             if let filteredCIImage = filter?.value(forKey: kCIOutputImageKey) as? CIImage {
                 let cgImgResult = context.createCGImage(filteredCIImage, from: filteredCIImage.extent)
                 let result = UIImage(cgImage: cgImgResult!)
-                self.headerView.profileBanner.image = result
+                OperationQueue.main.addOperation {
+                    self.headerView.profileBanner.image = result
+                }
                 
             }
         }
