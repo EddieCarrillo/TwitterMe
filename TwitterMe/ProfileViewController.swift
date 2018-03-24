@@ -278,6 +278,13 @@ class ProfileViewController: UIViewController  {
         
     }
     
+    func pushItself(with user: User){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let profileViewController = storyboard.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+        profileViewController.user = user
+        self.navigationController?.pushViewController(profileViewController, animated: true)
+    }
+    
     
      func didTapName(_ sender: UITapGestureRecognizer) {
         print("Profile name tapped")
@@ -417,7 +424,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             if let userId = userId {
                 let api = TwitterClient.sharedInstance
                 api?.getUser(with: userId, success: { (user) in
-                    print("user object successfully created: \(user)")
+                    self.pushItself(with: user)
                 }, failure: { (error) in
                     print("[ERROR] SUM TING WONG")
                 })
