@@ -9,13 +9,16 @@
 import UIKit
 import BDBOAuth1Manager
 import ImageViewer
+import WebKit
 
-class ProfileViewController: UIViewController  {
+class ProfileViewController: UIViewController, WKUIDelegate   {
     
     //User profile
     var user: User?
     //Tweets for feed of timeline
     var tweets: [Tweet] = []
+    
+    var webView: WKWebView!
     
     var currentData: [Tweet] = []{
         didSet{
@@ -109,6 +112,19 @@ class ProfileViewController: UIViewController  {
         
     }
     
+    
+    func launchWebView(with url: URL){
+        let config = WKWebViewConfiguration()
+        webView = WKWebView(frame: .zero, configuration: config)
+        webView.uiDelegate = self
+        view = webView
+//        view.addSubview(webView)
+//        view.insertSubview(webView, at: view.subviews.endIndex - 1)
+        
+        let request = URLRequest(url: url)
+        webView.load(request)
+    }
+    
     func initSegmentedControl(){
         tweetsSegementedControl.setTitle("Tweets", forSegmentAt: 0)
         tweetsSegementedControl.setTitle("Media", forSegmentAt: 1)
@@ -182,6 +198,10 @@ class ProfileViewController: UIViewController  {
     }
     
     func sizeHeaderToFit(){
+        guard let headerView = headerView else{
+            print("Header view is nil")
+            return
+        }
         headerView.setNeedsLayout()
         headerView.layoutIfNeeded()
         
@@ -218,6 +238,9 @@ class ProfileViewController: UIViewController  {
         
         
     }
+    
+    
+    
     
     
     func blurImage(){
@@ -431,6 +454,18 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
                     print("[ERROR] SUM TING WONG")
                 })
             }
+        }
+        
+        cell.pressedTwitterLink = {(url: URL) in
+          //  self.launchWebView(with: url)
+            let options: [String: Any] = [:]
+            UIApplication.shared.open(url, options: options, completionHandler: { (success) in
+                if success {
+                    print("successfully opened link")
+                }else {
+                    print("Could not open url")
+                }
+            })
         }
 
         cell.selectionStyle = UITableViewCellSelectionStyle.none

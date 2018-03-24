@@ -70,6 +70,7 @@ class FeedCell: UITableViewCell {
     var imageViewTapped: ((Int, [UIImage]) -> ())?
     
     var pressedUserHandle: ((String) -> ())?
+    var pressedTwitterLink: ((URL) -> ())?
     
     var videoPlayTriggered: ((AVPlayerViewController,AVPlayer)->())?
     
@@ -187,6 +188,15 @@ class FeedCell: UITableViewCell {
         
         self.tweetTextLabel.handleHashtagTap { (hashtag: String) in
             print("hashtag character tapped: \(hashtag)")
+        }
+        
+        self.tweetTextLabel.handleURLTap { (url) in
+            print("url tapped: \(url.absoluteString)")
+            if let pressedLink = self.pressedTwitterLink {
+                pressedLink(url)
+            }else {
+                print("No behavior defined for pressing handle!")
+            }
         }
         
         self.tweetTextLabel.handleMentionTap { (handle) in

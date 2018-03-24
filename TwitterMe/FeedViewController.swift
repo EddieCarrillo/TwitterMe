@@ -380,6 +380,18 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
         
         let tapGestureNameLabel = UITapGestureRecognizer(target: self, action: #selector(FeedViewController.didTapName(_:)))
         cell.nameLabel.addGestureRecognizer(tapGestureNameLabel)
+        cell.pressedTwitterLink = {(url: URL) in
+            //  self.launchWebView(with: url)
+            let options: [String: Any] = [:]
+            UIApplication.shared.open(url, options: options, completionHandler: { (success) in
+                if success {
+                    print("successfully opened link")
+                }else {
+                    print("Could not open url")
+                }
+            })
+        }
+        
         
         let tapGestureProfilePicture = UITapGestureRecognizer(target: self, action: #selector (FeedViewController.didTapName(_:)))
         cell.profilePictureImageView.addGestureRecognizer(tapGestureProfilePicture)
