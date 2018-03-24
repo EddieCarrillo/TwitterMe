@@ -72,6 +72,12 @@ Cool sidebar
 
 <img src='https://i.imgur.com/cCeiNEC.gif'  title= Detail screen  width='' alt='Video Walkthrough' />
 
+Profile screen
+
+<img src='https://i.imgur.com/1vFJRDA.gif'  title= Detail screen  width='' alt='Video Walkthrough' />
+
+
+
 
 
 
