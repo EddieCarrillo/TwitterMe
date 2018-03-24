@@ -69,6 +69,8 @@ class FeedCell: UITableViewCell {
     
     var imageViewTapped: ((Int, [UIImage]) -> ())?
     
+    var pressedUserHandle: ((String) -> ())?
+    
     var videoPlayTriggered: ((AVPlayerViewController,AVPlayer)->())?
     
     var displayedTweet: Tweet?
@@ -185,6 +187,11 @@ class FeedCell: UITableViewCell {
         
         self.tweetTextLabel.handleHashtagTap { (hashtag: String) in
             print("hashtag character tapped: \(hashtag)")
+        }
+        
+        self.tweetTextLabel.handleMentionTap { (handle) in
+            print("user with handle: @\(handle) pressed!")
+            self.pressedUserHandle?(handle)
         }
         
         
