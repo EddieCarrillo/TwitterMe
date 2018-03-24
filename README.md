@@ -52,6 +52,11 @@ Tweet Details screen
 
 <img src='https://i.imgur.com/M4HPdZ4.gif'  title= Detail screen  width='' alt='Video Walkthrough' />
 
+Feed Screen
+
+<img src='https://i.imgur.com/yeSyhw7.gif'  title= Detail screen  width='' alt='Video Walkthrough' />
+
+
 
 
 
