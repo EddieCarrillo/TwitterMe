@@ -391,6 +391,39 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.reusableFeedCellId ) as! FeedCell
+        let tweet = currentData[indexPath.row]
+        cell.pressedUserHandle = { (handle: String) in
+            
+            guard let entities = tweet.entities else {
+                print("Could not return the entitites")
+                return
+            }
+            
+            guard let userMentions = entities.userMentions else {
+                print("Could not get the user mentions")
+                return
+            }
+            
+            
+            var userId: Int?
+            for mention in userMentions {
+                if let name = mention.screenName {
+                    if (handle == name){
+                        userId = mention.id
+                    }
+                }
+            }
+            //If we actually were to find a match with the mention object...
+            if let userId = userId {
+                let api = TwitterClient.sharedInstance
+                api?.getUser(with: userId, success: { (user) in
+                    print("user object successfully created: \(user)")
+                }, failure: { (error) in
+                    print("[ERROR] SUM TING WONG")
+                })
+            }
+        }
+
         cell.selectionStyle = UITableViewCellSelectionStyle.none
         cell.imageViewTapped = { (index: Int, images: [UIImage]) in
             
@@ -411,7 +444,6 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         //Duct tape bug fix.
         cell.mediaView.frame = CGRect(x: cell.mediaView.frame.origin.x, y: cell.mediaView.frame.origin.y, width: cell.mediaView.frame.width, height: CGFloat(cell.defaultMediaViewHeight))
         
-        let tweet = currentData[indexPath.row]
         
         let tapGestureNameLabel = UITapGestureRecognizer(target: self, action: #selector(FeedViewController.didTapName(_:)))
         cell.nameLabel.addGestureRecognizer(tapGestureNameLabel)

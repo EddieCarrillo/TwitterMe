@@ -52,6 +52,10 @@ class Entities: NSObject {
             self.symbols = Symbol.toSymbolArray(from: symbols)
         }
         
+        if let userMentions = dictionary[urlMentionsKey] as? [NSDictionary]{
+            self.userMentions = UserMention.toMentionArray(dictionaries: userMentions)
+        }
+        
         
         if let extendedEntities = rootDictionary[Tweet.extendedEntitiesKey] as? NSDictionary {
             if let medias = extendedEntities[mediaKey] as? [NSDictionary] {

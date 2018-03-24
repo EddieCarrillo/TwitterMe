@@ -33,12 +33,36 @@ class TwitterClient: BDBOAuth1SessionManager{
     let favoriteEndpoint = "1.1/favorites/create"
     let getFavoritesEndpoint = "1.1/favorites/list.json"
     let unfavoriteEndpoint = "1.1/favorites/destroy"
+    let getUserByIdEndpoint = "1.1/users/show.json"
     
    // let oauthAccessTokenEndpoint = ""
     
     
     var loginSucess: (()->())?
     var failure:  ((Error) -> ())?
+    
+    
+    
+    func getUser(with id: Int, success: @escaping (User) -> (), failure: @escaping (Error) -> ()){
+        var params: [String: Any] = [:]
+        let failureCode = 505
+        
+        
+        params["user_id"] = id
+        get(getUserByIdEndpoint, parameters: params, success: { (task, response) in
+            //HEre is some code
+            
+            if let userDictionary  = response as? NSDictionary{
+                 success(User(dictionary: userDictionary))
+            }else {
+                failure(NSError(domain: "Could not parse user object", code: failureCode, userInfo: nil))
+            }
+            
+        }) { (task, error) in
+            //Here is some more code here
+            failure(error)
+        }
+    }
 
     
     func homeTimeline(success: @escaping ([Tweet]) -> (), failure: @escaping (Error) -> ()){
