@@ -362,8 +362,15 @@ class ProfileViewController: UIViewController, WKUIDelegate   {
     
     
     func transparentBar() {
-       self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
+    
+       let navbar = self.navigationController?.navigationBar
+        print("navbar: \(navbar)")
+//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+//        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.barTintColor = UIColor.black
+        self.navigationController?.navigationBar.tintColor = UIColor.red
+        self.parent?.navigationController?.navigationBar.tintColor = UIColor.red
+        self.navigationController?.navigationBar.alpha = 0.01
         self.navigationController?.navigationBar.isTranslucent = true
     
     }

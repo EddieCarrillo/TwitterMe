@@ -17,6 +17,11 @@ class CentralNavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let navbar = self.navigationBar
+        
+        UINavigationBar.appearance().backgroundColor = UIColor.red
+        self.navigationBar.tintColor = UIColor.red
+        self.navigationBar.barTintColor = UIColor.red
         var tabBarController: HomeTabBarController?
         
         for viewController in viewControllers {

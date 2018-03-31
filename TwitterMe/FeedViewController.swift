@@ -69,7 +69,7 @@ class FeedViewController: UIViewController {
         
         //Have to access parent view controller (tab bar controller) because this view controller is nested in
         self.parent?.title = "Home"
-        // transparentBar()
+         transparentBar()
         
         setupNavigationBar()
         // Do any additional setup after loading the view.

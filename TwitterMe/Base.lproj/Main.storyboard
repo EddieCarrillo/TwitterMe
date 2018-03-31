@@ -364,7 +364,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7xq-bs-j9M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1104" y="-439"/>
+            <point key="canvasLocation" x="1714" y="-356"/>
         </scene>
         <!--Central Navigation Controller-->
         <scene sceneID="QSj-nH-61J">
@@ -374,7 +374,7 @@
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <color key="barTintColor" red="0.94885319471359253" green="0.92880446090268376" blue="0.92648242259490365" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.060794733502538056" green="0.05960267990444907" blue="0.05960267990444907" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="kgL-yH-cj3">
                         <autoresizingMask key="autoresizingMask"/>
@@ -955,20 +955,6 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="russian" translatesAutoresizingMaskIntoConstraints="NO" id="zmE-E4-TI8">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
-                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="120" id="0lm-SS-ahz"/>
-                                            </constraints>
-                                        </imageView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="russian" translatesAutoresizingMaskIntoConstraints="NO" id="nyv-kx-1rG">
-                                            <rect key="frame" x="4" y="75" width="90" height="90"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="90" id="CRq-6p-Rsi"/>
-                                                <constraint firstAttribute="width" constant="90" id="yZA-qW-6zX"/>
-                                            </constraints>
-                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@benshapiro" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1id-Eh-1WS">
                                             <rect key="frame" x="4" y="203" width="95.666666666666671" height="19.333333333333343"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -1049,6 +1035,20 @@
                                                 <action selector="didTapSettingsButton:" destination="4hP-vd-Dtf" eventType="touchUpInside" id="ipT-hf-5gR"/>
                                             </connections>
                                         </button>
+                                        <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="russian" translatesAutoresizingMaskIntoConstraints="NO" id="zmE-E4-TI8">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="120" id="0lm-SS-ahz"/>
+                                            </constraints>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="russian" translatesAutoresizingMaskIntoConstraints="NO" id="nyv-kx-1rG">
+                                            <rect key="frame" x="4" y="75" width="90" height="90"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="90" id="CRq-6p-Rsi"/>
+                                                <constraint firstAttribute="width" constant="90" id="yZA-qW-6zX"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
