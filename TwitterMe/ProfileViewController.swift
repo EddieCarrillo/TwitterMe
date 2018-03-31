@@ -99,8 +99,11 @@ class ProfileViewController: UIViewController, WKUIDelegate   {
         
         initTableViews()
         //We don't want title appearing for profile screen.
-        if let tabBarController = self.parent{ // If this is true this means that it is nested in tab bar
-           tabBarController.navigationItem.title = ""
+        if let tabBarController = self.parent as? UITabBarController{ // If this is true this means that it is nested in tab bar
+           tabBarController.navigationItem.title = user?.name
+        }else if let navigationController = self.parent as? CentralNavigationController{ // navigated to this screen
+            self.navigationItem.title = user?.name
+            
         }
 
         //self.navigationItem.title = "Profile"
@@ -363,15 +366,23 @@ class ProfileViewController: UIViewController, WKUIDelegate   {
     
     func transparentBar() {
     
-       let navbar = self.navigationController?.navigationBar
-        print("navbar: \(navbar)")
-//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-//        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.barTintColor = UIColor.black
-        self.navigationController?.navigationBar.tintColor = UIColor.red
-        self.parent?.navigationController?.navigationBar.tintColor = UIColor.red
-        self.navigationController?.navigationBar.alpha = 0.01
-        self.navigationController?.navigationBar.isTranslucent = true
+       let navigationBar = self.navigationController?.navigationBar
+//
+//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "girl"), for: .default)
+////        self.navigationController?.navigationBar.shadowImage = UIImage()
+//        self.navigationController?.navigationBar.barTintColor = .clear
+//        self.navigationController?.navigationBar.tintColor = .clear
+//        self.navigationController?.navigationBar.backgroundColor = .clear
+//
+//
+//        self.navigationController?.navigationBar.isTranslucent = false
+////        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+////        self.navigationController?.navigationBar.shadowImage = UIImage()
+//        self.navigationController?.navigationBar.barTintColor = UIColor.clear
+////        self.navigationController?.navigationBar.tintColor = UIColor.red
+////        self.parent?.navigationController?.navigationBar.tintColor = UIColor.red
+////        self.navigationController?.navigationBar.alpha = 0.01
+//        self.navigationController?.navigationBar.isTranslucent = true
     
     }
     

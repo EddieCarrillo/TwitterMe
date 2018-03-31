@@ -32,15 +32,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Setting category to AVAudioSessionCategoryPlayback failed")
         }
         
-        TwitterClient.sharedInstance?.deauthorize()
-        User.currentUser = nil
-        User._currentUser = nil
+      //  TwitterClient.sharedInstance?.deauthorize()
+      //  User.currentUser = nil
+      //  User._currentUser = nil
         if User.currentUser != nil {
              print("There is a current user")
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: containerViewControllerId)
 
             window?.rootViewController = vc
+            
+            return true
 
         }else {
            print("There is not a current user.")

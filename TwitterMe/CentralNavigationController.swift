@@ -19,9 +19,11 @@ class CentralNavigationController: UINavigationController {
         super.viewDidLoad()
         let navbar = self.navigationBar
         
-        UINavigationBar.appearance().backgroundColor = UIColor.red
-        self.navigationBar.tintColor = UIColor.red
-        self.navigationBar.barTintColor = UIColor.red
+        self.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationBar.shadowImage = UIImage()
+        self.navigationBar.backgroundColor = UIColor.red
+        self.navigationBar.isTranslucent = true
+
         var tabBarController: HomeTabBarController?
         
         for viewController in viewControllers {
