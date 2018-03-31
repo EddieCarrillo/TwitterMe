@@ -41,9 +41,11 @@ class CentralNavigationController: UINavigationController {
             homeTabBarController.profileTabPressed?()
         }
         
-        
-        
-        
+    }
+    
+    
+    func getNavBarHeight() -> CGFloat{
+        return self.navigationBar.frame.height
     }
     
     

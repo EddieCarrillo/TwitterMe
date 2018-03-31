@@ -91,6 +91,10 @@ class ProfileViewController: UIViewController, WKUIDelegate   {
         if user == nil {
             self.user = User.currentUser
         }
+        
+        
+        print("[ACTUALBASE]: \(tableview.contentOffset.y)")
+        
         // If the current user is not loaded then this app has bigger problems to deal with
         guard let currentUser = self.user else  {
             print("Trouble loading user.")
@@ -101,8 +105,22 @@ class ProfileViewController: UIViewController, WKUIDelegate   {
         //We don't want title appearing for profile screen.
         if let tabBarController = self.parent as? UITabBarController{ // If this is true this means that it is nested in tab bar
            tabBarController.navigationItem.title = user?.name
+            self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+            self.navigationController?.navigationBar.shadowImage = UIImage()
+            
         }else if let navigationController = self.parent as? CentralNavigationController{ // navigated to this screen
             self.navigationItem.title = user?.name
+            self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+            self.navigationController?.navigationBar.shadowImage = UIImage()
+            self.navigationController?.navigationBar.barTintColor = UIColor.clear
+            self.navigationController?.navigationBar.isTranslucent = true
+            
+            let navbar = self.navigationController?.navigationBar
+            let height = navbar?.frame.height
+            print("height: \(height)")
+//            self.navigationController?.navigationBar.barTintColor = UIColor.clear
+//            self.navigationController?.navigationBar.isTranslucent = true
+//            self.navigationController?.navigationBar.isOpaque = false
             
         }
 
@@ -226,9 +244,16 @@ class ProfileViewController: UIViewController, WKUIDelegate   {
     
     func updateHeaderWithConstraints(){
         let offset = tableview.contentOffset.y
-        let base = CGFloat(0)
         
-        var bannerPosition = CGFloat(headerView.headerTopDefault)
+        var base = CGFloat(0)
+        
+        if let tabBarController = self.parent as? UITabBarController{ // If this is true this means that it is nested in tab bar
+            base = (tabBarController.parent as? CentralNavigationController)?.getNavBarHeight() ?? 0
+        }else if let navigationController = self.parent as? CentralNavigationController{ // navigated to this screen
+            base = navigationController.getNavBarHeight()
+        }
+        base = -base
+        var bannerPosition = CGFloat(base)
         var bannerHeight = CGFloat(headerView.bannerDefaultHeight)
         
         if offset < base {
