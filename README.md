@@ -86,8 +86,6 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Credits
 
-List an 3rd party libraries, icons, graphics, or other assets you used in your app.
-
 - [AFNetworking](https://github.com/AFNetworking/AFNetworking) - networking task library
 - [ActiveLavel](https://github.com/optonaut/ActiveLabel.swift) - UILabel drop-in replacement for supporting Hashtags, Mentions, and URLs written in Swift
 - [ImageViewer](https://github.com/MailOnline/ImageViewer) - An image viewer a la Twitter
