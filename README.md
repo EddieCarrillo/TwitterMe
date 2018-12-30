@@ -25,15 +25,15 @@ The following functionality is completed:
 - Contains a section with the users basic stats: # tweets, # following, # followers
 - [x] Profile view should include that user's timeline
 - [x] User should display the relative timestamp for each tweet "8m", "7h"
-- [x] User should be able to unretweet and unfavorite and should decrement the retweet and favorite count. Refer to [[this guide|unretweeting]] for help on implementing unretweeting.
+- [x] User should be able to unretweet and unfavorite and should decrement the retweet and favorite count.
 - [x] Links in tweets are clickable.
 - [x] User can tap the profile image in any tweet to see another user's profile
 - Contains the user header view: picture and tagline
 - Contains a section with the users basic stats: # tweets, # following, # followers
-- [x] When composing, you should have a countdown for the number of characters remaining for the tweet (out of 140) (**1 point**)
+- [x] When composing, you should have a countdown for the number of characters remaining for the tweet (out of 140) 
 - [x] User sees embedded images in tweet if available
-- [x] User can switch between timeline, mentions, or profile view through a tab bar (**3 points**)
-- [x] Profile Page: pulling down the profile page should  resize the header image. (**4 points**)
+- [x] User can switch between timeline, mentions, or profile view through a tab bar 
+- [x] Profile Page: pulling down the profile page should  resize the header image. 
 - [x] Sidebar menu
 
 ## GIF Walkthrough
