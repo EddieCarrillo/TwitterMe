@@ -1,12 +1,11 @@
-# Project 4 - *TwitterClient*
+# Project 4 - *TwitterMe*
 
 **TwitterClient** is a basic twitter app to read and compose tweets the [Twitter API](https://apps.twitter.com/).
 
-Time spent: **Too many** hours spent in total
 
 ## User Stories
 
-The following **required** functionality is completed:
+The following functionality is completed:
 
 - [x] User sees app icon in home screen and styled launch screen
 - [x] User can sign in using OAuth login flow
@@ -19,7 +18,6 @@ The following **required** functionality is completed:
 - [x] Using AutoLayout, the Tweet cell should adjust it's layout for iPhone 7, Plus and SE device sizes as well as accommodate device rotation.
 - [x] The current signed in user will be persisted across restarts
 
-The following **optional** features are implemented:
 
 - [x] Tweet Details Page: User can tap on a tweet to view it, with controls to retweet, favorite, and reply.
 - [x] User can view their profile in a *profile tab*
@@ -36,10 +34,6 @@ The following **optional** features are implemented:
 - [x] User sees embedded images in tweet if available
 - [x] User can switch between timeline, mentions, or profile view through a tab bar (**3 points**)
 - [x] Profile Page: pulling down the profile page should  resize the header image. (**4 points**)
-
-
-The following **additional** features are implemented:
-
 - [x] Sidebar menu
 
 ## GIF Walkthrough
